@@ -602,7 +602,7 @@ function extPage(x, ogSet) {
 
 <section class="band band--alt">
   <div class="wrap center">
-    <div class="prose measure-l" style="margin-inline:auto;text-align:left">
+    <div class="prose" style="max-width:48ch;margin-inline:auto">
       ${(x.description || []).map(p => `<p class="t-sub" style="color:var(--ink)">${esc(p)}</p>`).join('')}
     </div>
   </div>
