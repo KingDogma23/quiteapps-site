@@ -1,0 +1,5 @@
+# quiteapps.co.uk
+User-agent: *
+Allow: /
+
+Sitemap: https://quiteapps.co.uk/sitemap.xml

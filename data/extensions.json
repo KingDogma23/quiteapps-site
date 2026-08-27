@@ -1,0 +1,294 @@
+{
+  "_README": "Real data, drawn from the manifests and READMEs at github.com/KingDogma23 on 27 Aug 2026, with the product names updated to the 'Quite for ...' branding. Three things to check before launch: (2) `version` is the version a visitor can actually download, not the repo manifest version — see _versionNotes; (3) yt-ad-cleaner has no published release yet, so its download link points at the repo rather than a release asset. NOTE ON STATS: the Quite for Facebook figures (213/313/65) are real, taken from the live popup. The Quite for YouTube figures are PLACEHOLDERS — replace them with real ones from its diagnostics before launch.",
+  "_versionNotes": {
+    "checked": "GitHub API, 27 Aug 2026. Never use raw.githubusercontent.com — it serves a stale CDN cache.",
+    "releases": "Both repos are tagged (v0.20.8 / v2.5.4) and releaseUrl points at those tag pages, which carry GitHub's auto-generated source zip. Those zips are ~300 KB because they include test/ and repo metadata. package.sh builds a lean ~40 KB zip instead — attach it via 'Create release from tag' on GitHub and the download gets 7x smaller. Then releaseUrl can become /releases/latest.",
+    "size": "Reflects the GitHub source zip a visitor actually downloads, not the packaged extension."
+  },
+  "extensions": [
+    {
+      "slug": "quite-for-youtube",
+      "name": "Quite for YouTube",
+      "shortName": "YouTube",
+      "accent": "#35b98c",
+      "tagline": "YouTube, without the advertising.",
+      "summary": "Skips video ads and hides the ad panels in your feed, sidebar, search results and Shorts — without tripping YouTube's anti-adblock check.",
+      "metaDescription": "Free, open-source Chrome extension that skips YouTube video ads and hides feed, sidebar, search and Shorts ad panels. One permission, no tracking.",
+      "description": [
+        "Quite for YouTube deals with advertising in two places at once. Video ads are got past — Skip is clicked the moment it appears, and unskippable ads are fast-forwarded. The ad panels scattered through the homepage, sidebar, search results and masthead never paint at all, because they are hidden before the page renders.",
+        "The interesting part is what it does not do. YouTube's responses are never modified. Instead the ad schedule is stopped at source: the request the player sends is declared as an ad unit rather than a watch page, and YouTube answers without an ad schedule of its own. Nothing is deleted and nothing is faked, so there is no mismatch between what the server sent and what the player sees — which is exactly what YouTube's anti-adblock check looks for."
+      ],
+      "status": "live",
+      "price": "Free",
+      "priceValue": "0",
+      "currency": "GBP",
+      "licence": "MIT",
+      "version": "0.20.8",
+      "released": "2026-08-24",
+      "updated": "2026-08-27",
+      "size": "About 300 KB",
+      "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
+      "manifest": "Manifest V3",
+      "reloadTarget": "YouTube",
+      "githubUrl": "https://github.com/KingDogma23/yt-ad-cleaner",
+      "releaseUrl": "https://github.com/KingDogma23/yt-ad-cleaner/releases/tag/v0.20.8",
+      "permissions": [
+        {
+          "name": "storage",
+          "why": "To remember your checkbox settings. That is the only thing it stores, and it stores it in your own browser."
+        }
+      ],
+      "hostPermissions": [
+        {
+          "name": "*://*.youtube.com/*",
+          "why": "The extension runs on YouTube and nowhere else. It has no permission to read, or even see, any other site you visit."
+        }
+      ],
+      "features": [
+        {
+          "title": "Video ads, got past",
+          "body": "Skip is clicked as soon as it appears and unskippable ads are fast-forwarded. Seeking is a last resort that never touches anything longer than three minutes, because that is not an ad."
+        },
+        {
+          "title": "Feed ads never paint",
+          "body": "Homepage, sidebar, search results and the masthead banner are hidden before the page renders, so there is no flicker of an ad you then watch disappear."
+        },
+        {
+          "title": "Player overlays gone",
+          "body": "The banners drawn on top of the video while you are watching it are removed along with everything else."
+        },
+        {
+          "title": "Merch shelves, if you want",
+          "body": "Product shelves under videos can go too. Off by default, because some people actually use them."
+        },
+        {
+          "title": "Stopped at source, not faked",
+          "body": "The ad schedule is never edited after the fact. That is what keeps the session out of YouTube's anti-adblock net, and why videos still play normally."
+        },
+        {
+          "title": "Diagnostics built in",
+          "body": "The popup shows the version actually running in the page and reports what it has done this session, with a Copy report button for when something needs looking at."
+        }
+      ],
+      "options": [
+        {
+          "name": "Protection",
+          "default": "On",
+          "what": "Master switch."
+        },
+        {
+          "name": "Stop ads loading",
+          "default": "On",
+          "what": "Asks YouTube for the video in a way that comes back without ads."
+        },
+        {
+          "name": "Skip video ads",
+          "default": "On",
+          "what": "Clicks Skip, fast-forwards unskippable ones."
+        },
+        {
+          "name": "Hide feed & search ads",
+          "default": "On",
+          "what": "Homepage, sidebar, search, Shorts, masthead."
+        },
+        {
+          "name": "Hide player overlays",
+          "default": "On",
+          "what": "Banners on top of the video."
+        },
+        {
+          "name": "Hide merch shelves",
+          "default": "Off",
+          "what": "Product shelves under videos."
+        },
+        {
+          "name": "Status badge",
+          "default": "Off",
+          "what": "Troubleshooting overlay on the page."
+        }
+      ],
+      "screenshots": [],
+      "faq": [
+        {
+          "q": "Why not just use a normal ad blocker?",
+          "a": "Network-level blockers trigger YouTube's anti-adblock wall. This works differently — it stops the ad schedule being issued rather than blocking the request afterwards. Running both at once is worse than running either, because you cannot tell which caused what."
+        },
+        {
+          "q": "Will I still see an ad start?",
+          "a": "Briefly, sometimes. The default is to let the ad begin and then get past it. On one verified session of 37 live ads: 35 skipped, 2 fast-forwarded, 2 seeked, and no false seeks."
+        },
+        {
+          "q": "It stopped working after a YouTube update.",
+          "a": "YouTube changes its player regularly, and skipping can break until the extension catches up. Expected rather than a regression. Click the icon to check the version actually running in the page, and reload the extension if it does not match what you installed."
+        },
+        {
+          "q": "Does it work on Edge or Brave?",
+          "a": "Yes. It runs in Chrome, Edge, Brave, Arc, Opera and other Chromium browsers."
+        }
+      ],
+      "privacy": "Quite for YouTube runs only on youtube.com and has no permission to access any other site. It sends nothing anywhere — no server, no analytics, no account, no tracking. The only thing it stores is your checkbox settings, in your own browser.",
+      "popupSub": "Ads removed before they load",
+      "stats": [
+        {
+          "value": "1,284",
+          "label": "Ads stopped"
+        },
+        {
+          "value": "3h 41m",
+          "label": "Time saved"
+        },
+        {
+          "value": "412",
+          "label": "Ads skipped"
+        }
+      ],
+      "metaTitle": "Remove YouTube Ads — Quite for YouTube, Chrome extension",
+      "ground": "#14201b"
+    },
+    {
+      "slug": "quite-for-facebook",
+      "name": "Quite for Facebook",
+      "shortName": "Facebook",
+      "accent": "#e0a341",
+      "tagline": "A feed of the people you actually know.",
+      "summary": "Hides ads, suggested posts, suggested groups and the Sponsored column, and leaves your friends' posts exactly where they were.",
+      "metaDescription": "Free, open-source Chrome extension that hides ads, suggested posts, suggested groups and the Sponsored column from your Facebook feed. No tracking.",
+      "description": [
+        "Quite for Facebook strips out the things you never asked to see: posts marked Sponsored or Ad, pages you do not follow pushed into your feed, groups you are not a member of, and the ad panel sitting above your contacts on the right.",
+        "What it leaves alone matters just as much. Your own posts, your friends' posts, groups you are in and pages you already follow are never touched. Nothing is blocked, unfollowed or reported on your behalf — posts are hidden from view, and everything comes straight back the moment you switch it off."
+      ],
+      "status": "live",
+      "price": "Free",
+      "priceValue": "0",
+      "currency": "GBP",
+      "licence": "MIT",
+      "version": "2.5.4",
+      "released": "2026-08-23",
+      "updated": "2026-08-27",
+      "size": "About 310 KB",
+      "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
+      "manifest": "Manifest V3",
+      "reloadTarget": "Facebook",
+      "githubUrl": "https://github.com/KingDogma23/fb-feed-cleaner",
+      "releaseUrl": "https://github.com/KingDogma23/fb-feed-cleaner/releases/tag/v2.5.4",
+      "permissions": [
+        {
+          "name": "storage",
+          "why": "To remember your checkbox settings. That is the only thing it stores, and it stores it in your own browser."
+        }
+      ],
+      "hostPermissions": [
+        {
+          "name": "*://*.facebook.com/*",
+          "why": "The extension runs on Facebook and nowhere else. It has no permission to read, or even see, any other site you visit."
+        }
+      ],
+      "features": [
+        {
+          "title": "Ads out of the feed",
+          "body": "Anything marked Sponsored or Ad is hidden as the page builds, so it never reaches you in the first place."
+        },
+        {
+          "title": "Suggested posts gone",
+          "body": "Pages you do not follow, pushed into your feed by the algorithm, stop appearing. Strict mode narrows this to posts explicitly marked \"Suggested for you\"."
+        },
+        {
+          "title": "The Sponsored column",
+          "body": "The advertising panel on the right, above your contacts, goes with the rest of it."
+        },
+        {
+          "title": "Your people stay put",
+          "body": "Your posts, your friends' posts, groups you are in and pages you follow are never touched. Nothing is unfollowed or reported on your behalf."
+        },
+        {
+          "title": "See what was caught",
+          "body": "Turn on the placeholder option and each hidden post leaves a small strip with a Show button, so you can check nothing you wanted has been swept up."
+        },
+        {
+          "title": "A running count",
+          "body": "The popup keeps a tally of the ads, suggested posts and groups it has hidden for you, with Copy report, Show all and Reset underneath."
+        }
+      ],
+      "options": [
+        {
+          "name": "Protection",
+          "default": "On",
+          "what": "Master switch."
+        },
+        {
+          "name": "Hide ads",
+          "default": "On",
+          "what": "Posts marked “Sponsored” or “Ad”."
+        },
+        {
+          "name": "Hide suggested posts",
+          "default": "On",
+          "what": "Pages you don’t follow, pushed into your feed."
+        },
+        {
+          "name": "Hide suggested groups",
+          "default": "Off",
+          "what": "Groups you’re not a member of."
+        },
+        {
+          "name": "Hide the Sponsored column",
+          "default": "On",
+          "what": "The ad panel on the right, above your contacts."
+        },
+        {
+          "name": "Strict mode",
+          "default": "Off",
+          "what": "Only hide posts also marked “Suggested for you”."
+        },
+        {
+          "name": "Show a placeholder",
+          "default": "Off",
+          "what": "Leave a strip with a Show button instead of removing."
+        },
+        {
+          "name": "Status badge",
+          "default": "Off",
+          "what": "Troubleshooting overlay on the page."
+        }
+      ],
+      "screenshots": [],
+      "faq": [
+        {
+          "q": "It hid a post I wanted to see.",
+          "a": "Facebook shows a Follow button on any page post you do not already follow, including one a friend shared, so those get caught too. Turn on Strict mode and it will only remove posts explicitly marked \"Suggested for you\" — fewer suggestions disappear, but nothing you actually follow will."
+        },
+        {
+          "q": "Ads have started appearing again.",
+          "a": "Facebook disguises the labels this relies on and changes the disguise periodically. When that happens ads reappear until the extension is updated. Expected rather than a regression."
+        },
+        {
+          "q": "Does it unfollow or block anything?",
+          "a": "No. Nothing is blocked, unfollowed or reported on your behalf. Posts are hidden from view and everything returns the moment you switch it off."
+        },
+        {
+          "q": "How do I tell which version is running?",
+          "a": "Click the extension icon. The version shown is the one actually running in the page — if it does not match what you installed, Chrome is serving an old build. Hit reload on chrome://extensions, then reload Facebook."
+        }
+      ],
+      "privacy": "Quite for Facebook runs only on facebook.com and has no permission to access any other site. It sends nothing anywhere — no server, no analytics, no account, no tracking. The only thing it stores is your checkbox settings, in your own browser.",
+      "popupSub": "Feed clutter hidden as it loads",
+      "stats": [
+        {
+          "value": "213",
+          "label": "Ads hidden"
+        },
+        {
+          "value": "313",
+          "label": "Suggestions"
+        },
+        {
+          "value": "65",
+          "label": "Groups"
+        }
+      ],
+      "metaTitle": "Hide Facebook Ads & Suggested Posts — Quite for Facebook",
+      "ground": "#1a1820"
+    }
+  ],
+  "_brand": "Icons, accents and popup copy match the shipped extensions as of 27 Aug 2026. The mark is a ring with a tail crossing at 45 degrees, in the product accent on a dark ground — same mark for both, differentiated only by colour. Product accents are for artwork only; the site's action colour stays #0071e3. Never use #DF2A24 or #2B83EE — YouTube red and Meta blue read as impersonation."
+}

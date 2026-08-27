@@ -1,0 +1,8 @@
+# Build artefacts that are not the deployed site
+.shots/
+*.zip
+
+# macOS
+.DS_Store
+
+# dist/ is deliberately NOT ignored — it is what 20i deploys.
