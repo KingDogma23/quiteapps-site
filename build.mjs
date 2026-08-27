@@ -91,7 +91,7 @@ function popupMock(x) {
   const ROW_H = 47, ROW_TOP = 272;
   const panelEnd = ROW_TOP + rows.length * ROW_H + 6;   // last sub-label sits ~27 below row top
   const panelH = panelEnd - 50;
-  const canvasH = panelEnd + 8;
+  const canvasH = panelEnd - 42;
 
   // Columns are spaced evenly inside the stats box, and the numerals step down a
   // size when the values are long, so a 5-digit count reads the same as a 2-digit
@@ -120,19 +120,8 @@ function popupMock(x) {
   return `<div class="pop-frame" style="${themeVars(x)}">
 <svg viewBox="0 0 420 ${canvasH}" role="img"
      aria-label="The ${esc(x.name)} popup, showing the master toggle, all-time counts and every option">
-  <!-- browser toolbar the popup hangs from -->
-  <rect x="0" y="0" width="420" height="44" rx="10" fill="var(--mock-bg)"/>
-  <circle cx="26" cy="22" r="4" fill="var(--mock)" fill-opacity=".22"/>
-  <circle cx="42" cy="22" r="4" fill="var(--mock)" fill-opacity=".22"/>
-  <rect x="58" y="12" width="270" height="20" rx="10" fill="var(--mock)" fill-opacity=".09"/>
-  <rect x="348" y="9" width="26" height="26" rx="5.72" fill="${x.ground || '#14201b'}"/>
-  <g transform="translate(348 9) scale(.5417)" fill="none" stroke="${a}" stroke-width="5.52">
-    <circle cx="24" cy="24" r="11.52"/><path d="M26.04 26.04 33.61 33.61"/>
-  </g>
-  <path d="M361 40 353 50h16z" fill="var(--mock-bg)"/>
-
   <!-- popup panel — shifted so the panel itself is centred on the canvas -->
-  <g transform="translate(-18 0)">
+  <g transform="translate(-18 -42)">
   <rect x="56" y="50" width="344" height="${panelH}" rx="15" fill="var(--mock-bg)" stroke="var(--mock-line)"/>
 
   <rect x="76" y="66" width="24" height="24" rx="5.28" fill="${x.ground || '#14201b'}"/>
@@ -649,13 +638,13 @@ function extPage(x, ogSet) {
       ].map((step, i) => `
       <li><span class="steps__n">${i + 1}</span><p>${step}</p></li>`).join('')}
     </ol>
-    <p class="perms__note">${esc(site.installNote)}</p>
-    <p class="btnrow" style="margin-top:2rem">
+    <p class="perms__note" style="margin-top:2.25rem">${esc(site.installNote)}</p>
+    <p class="btnrow" style="margin-top:2.5rem">
       ${x.releaseUrl
         ? `<a class="btn" href="${esc(x.releaseUrl)}" rel="noopener">Download ${esc(x.name)} ${esc(x.version)}</a>`
         : `<a class="btn" href="${esc(x.githubUrl)}" rel="noopener">Get ${esc(x.name)} on GitHub</a>`}
     </p>
-    ${site.donate ? `<p class="center" style="margin-top:1.25rem">
+    ${site.donate ? `<p class="center" style="margin-top:1.5rem">
       <a class="clink clink--sm" href="${esc(site.donate)}" rel="noopener">${CUP} Free forever &mdash; buy me a coffee if it helped ${CHEV}</a>
     </p>` : ''}
   </div>
