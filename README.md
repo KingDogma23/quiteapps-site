@@ -4,14 +4,52 @@ A static site for Quite Apps: a home page plus one page per Chrome extension.
 Built to the apple.com style guide. No framework, no dependencies, no build
 toolchain beyond Node.
 
-## Build
+## Build and deploy
 
 ```
-node build.mjs
+node build.mjs && node audit.mjs
 ```
 
-Writes `dist/`. Upload the **contents** of `dist/` into `public_html` on 20i
-(including the dotfile `.htaccess` — most FTP clients hide it by default).
+`audit.mjs` exits non-zero on failure, so it can gate a deploy.
+
+**Deployment is git.** The domain's document root points at the repository's
+build directory, not at `public_html`:
+
+```
+quiteapps.co.uk  →  /home/sites/41a/0/0c83a40a54/quiteapps-web/dist
+```
+
+So a pull *is* the deploy — nothing is copied anywhere. To ship a change:
+
+1. `node build.mjs && node audit.mjs`
+2. Commit and push (`git push origin master`)
+3. 20i → Files → Git Version Control → Quiteapps Web → Deployment → **Deploy**
+
+`.git` lives in `quiteapps-web/`, one level above the document root, so it is
+physically unreachable from the web rather than merely blocked by `.htaccess`.
+The same goes for `build.mjs`, `data/` and `README.md`.
+
+### Two traps that cost an afternoon
+
+**StackCDN serves stale HTML.** A `GET` can return a cached page for up to an
+hour while a `HEAD` to the same URL reaches the origin and reports the current
+file. So header checks look correct while the page is visibly old. If a deploy
+looks like it has not landed, compare them before believing it:
+
+```
+curl -sSI https://quiteapps.co.uk/ | grep -i content-length   # origin
+curl -sS  https://quiteapps.co.uk/ | wc -c                    # edge
+```
+
+If they disagree, purge **Manage Services → CDN → Edge Caching**.
+
+**20i's Deployment Script never runs.** It saves, the UI confirms it, Deploy
+reports "completed successfully" — and the script does not execute, with no
+error. That is why the document root approach is used instead of copying into
+`public_html`. Reported to 20i; see `20i-support-ticket.md`.
+
+`public_html` is left in place, unused, as a rollback: point the document root
+back at it to return to the last manually uploaded build.
 
 ## Adding or changing an extension
 
