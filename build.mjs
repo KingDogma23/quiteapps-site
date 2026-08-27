@@ -1179,8 +1179,8 @@ write('robots.txt', robots());
 write('llms.txt', llmsTxt());
 write('favicon.svg', favicon());
 write('.htaccess', htaccess());
-// Visible twin — upload, then rename to .htaccess where dotfiles are hidden.
-write('htaccess.txt', htaccess());
+// No visible twin in dist/: deploys are via git now, and anything in dist/ is
+// served, which would publish the server config at /htaccess.txt.
 
 console.log('  · index.html');
 exts.forEach(x => console.log(`  · extensions/${x.slug}/index.html`));
