@@ -476,6 +476,7 @@ h1, h2, h3, h4 { font-weight: 600; letter-spacing: -.015em; line-height: 1.08; }
 .pm-cap    { font-size: 9px; font-weight: 600; fill: var(--ink-3); letter-spacing: 1.4px; }
 .pm-stat   { font-size: 25px; font-weight: 600; fill: var(--ink); letter-spacing: -.5px; }
 .pm-statlab{ font-size: 10px; fill: var(--ink-2); }
+.pm-btn    { font-size: 12px; font-weight: 600; fill: var(--mock-bg); letter-spacing: -.1px; }
 
 /* On a home tile the popup bleeds off the bottom edge, Apple-style. */
 .tile__art { max-height: clamp(14rem, 26vw, 18rem); overflow: hidden; }
@@ -574,4 +575,23 @@ h1, h2, h3, h4 { font-weight: 600; letter-spacing: -.015em; line-height: 1.08; }
 @media (max-width: 34rem) {
   .gnav__coffee span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .gnav__coffee { padding-left: clamp(.9rem, 3vw, 1.25rem); }
+}
+
+/* ------------------------------------ built, but not yet released
+   Quite for Cookies is finished and has no public repo yet, so its
+   download links would be dead. These stand in until it ships. */
+.clink--soon, .btn--soon { cursor: default; }
+.clink--soon {
+  font-size: .9375rem; font-weight: 500; color: var(--ink-3);
+}
+.btn--soon {
+  background: transparent; color: var(--ink-3);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.btn--soon:hover { background: transparent; color: var(--ink-3); }
+.soonbadge {
+  display: inline-block; margin: 0;
+  padding: .55rem 1.1rem; border-radius: 980px;
+  font-size: .9375rem; font-weight: 500; color: var(--ink-2);
+  box-shadow: inset 0 0 0 1px var(--line);
 }

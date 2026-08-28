@@ -61,7 +61,7 @@ function err(array $e, string $k): string {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact — Quite Apps</title>
-<meta name="description" content="Get in touch about Quite for YouTube or Quite for Facebook. Bug reports, feature requests and questions, all read by the person who wrote the code.">
+<meta name="description" content="Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.">
 <link rel="canonical" href="https://quiteapps.co.uk/contact/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -71,7 +71,7 @@ function err(array $e, string $k): string {
 <meta property="og:site_name" content="Quite Apps">
 <meta property="og:locale" content="en_GB">
 <meta property="og:title" content="Contact — Quite Apps">
-<meta property="og:description" content="Get in touch about Quite for YouTube or Quite for Facebook. Bug reports, feature requests and questions, all read by the person who wrote the code.">
+<meta property="og:description" content="Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.">
 <meta property="og:url" content="https://quiteapps.co.uk/contact/">
 <meta property="og:image" content="https://quiteapps.co.uk/og/default.png">
 <meta property="og:image:width" content="1200">
@@ -80,8 +80,8 @@ function err(array $e, string $k): string {
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://quiteapps.co.uk/og/default.png">
 <meta name="twitter:title" content="Contact — Quite Apps">
-<meta name="twitter:description" content="Get in touch about Quite for YouTube or Quite for Facebook. Bug reports, feature requests and questions, all read by the person who wrote the code.">
-<link rel="stylesheet" href="/styles.css?v=de03c840">
+<meta name="twitter:description" content="Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.">
+<link rel="stylesheet" href="/styles.css?v=144e2f37">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script>document.documentElement.classList.add('js')</script>
@@ -177,7 +177,7 @@ function err(array $e, string $k): string {
     <div class="foot__grid">
       <div>
         <h2>Extensions</h2>
-        <ul><li><a href="/extensions/quite-for-youtube/">Quite for YouTube</a></li><li><a href="/extensions/quite-for-facebook/">Quite for Facebook</a></li></ul>
+        <ul><li><a href="/extensions/quite-for-youtube/">Quite for YouTube</a></li><li><a href="/extensions/quite-for-facebook/">Quite for Facebook</a></li><li><a href="/extensions/quite-for-cookies/">Quite for Cookies</a></li></ul>
       </div>
       <div>
         <h2>Studio</h2>
@@ -197,7 +197,7 @@ function err(array $e, string $k): string {
       <div>
         <h2>Source</h2>
         <ul>
-          <li><a href="https://github.com/KingDogma23/yt-ad-cleaner" rel="noopener">YouTube on GitHub</a></li><li><a href="https://github.com/KingDogma23/fb-feed-cleaner" rel="noopener">Facebook on GitHub</a></li>
+          <li><a href="https://github.com/KingDogma23/quite-for-youtube" rel="noopener">YouTube on GitHub</a></li><li><a href="https://github.com/KingDogma23/quite-for-facebook" rel="noopener">Facebook on GitHub</a></li><li><a href="https://github.com/KingDogma23/quite-for-cookies" rel="noopener">Cookies on GitHub</a></li>
           <li><a href="https://github.com/KingDogma23" rel="noopener">All repositories</a></li>
         </ul>
       </div>

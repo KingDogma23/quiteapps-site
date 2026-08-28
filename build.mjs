@@ -80,16 +80,25 @@ const CHEV = '<span aria-hidden="true">&rsaquo;</span>';
 /** The extension's own popup, drawn to scale — icon, master toggle, all-time
  *  stats and the option list. This is the product shot. */
 function popupMock(x) {
+  // Two shapes, one set of metrics. The toggle products (YouTube, Facebook)
+  // put a master switch above the counters; Cookies puts the site it is looking
+  // at there instead, because it has no master switch — it does nothing until
+  // you press the button. Everything else — header, counters box, row rhythm —
+  // is shared, which is what keeps the three looking like one family.
+  const list = x.popupStyle === 'list';
   const opts = x.options || [];
   const master = opts[0] || { name: 'Protection' };
-  const rows = opts.slice(1, 6);
+  const rows = x.popupRows
+    ? x.popupRows.slice(0, 5)
+    : opts.slice(1, 6).map(o => ({ name: o.name, what: o.what, on: String(o.default).toLowerCase() === 'on' }));
   const stats = (x.stats || []).slice(0, 3);
   const a = accentOf(x);
   const clip = (t, n) => (t.length > n ? t.slice(0, n - 1).trimEnd() + '…' : t);
   const GREEN = '#34C759';
 
   const ROW_H = 47, ROW_TOP = 272;
-  const panelEnd = ROW_TOP + rows.length * ROW_H + 6;   // last sub-label sits ~27 below row top
+  const rowsEnd = ROW_TOP + rows.length * ROW_H + 6;   // last sub-label sits ~27 below row top
+  const panelEnd = rowsEnd + (list ? 52 : 0);          // room for the primary button
   const panelH = panelEnd - 50;
   const canvasH = panelEnd - 42;
 
@@ -103,12 +112,12 @@ function popupMock(x) {
     const cx = BOX_X + (BOX_W / stats.length) * (i + 0.5);
     return `<text class="pm-stat" x="${cx}" y="216" text-anchor="middle"
       style="font-size:${statSize}px">${esc(st.value)}</text>
-    <text class="pm-statlab" x="${cx}" y="234" text-anchor="middle">${esc(clip(st.label, 13))}</text>`;
+    <text class="pm-statlab" x="${cx}" y="234" text-anchor="middle">${esc(clip(st.label, 19))}</text>`;
   }).join('');
 
   const optRows = rows.map((o, i) => {
     const y = ROW_TOP + i * ROW_H;
-    const on = String(o.default).toLowerCase() === 'on';
+    const on = !!o.on;
     return `<rect x="76" y="${y}" width="15" height="15" rx="3.5"
         fill="${on ? GREEN : 'none'}" stroke="${on ? GREEN : 'var(--mock-line)'}" stroke-width="1.3"/>
       ${on ? `<path d="m79.5 ${y + 7.6} 2.8 3 5.2-5.6" fill="none" stroke="#fff" stroke-width="1.8"
@@ -117,9 +126,26 @@ function popupMock(x) {
       <text class="pm-sub" x="102" y="${y + 27}">${esc(clip(o.what, 52))}</text>`;
   }).join('');
 
+  // The band between the header and the counters.
+  const band = list
+    ? `<text class="pm-opt" x="76" y="130">${esc(x.popupSite || 'this site')}</text>
+  <text class="pm-sub" x="76" y="147">${esc(x.popupSub || '')}</text>`
+    : `<text class="pm-opt" x="76" y="130">${esc(master.name.replace(/\s+on$/i, ''))} on</text>
+  <text class="pm-sub" x="76" y="147">${esc(x.popupSub || 'Running on this page')}</text>
+  <rect x="336" y="118" width="46" height="26" rx="13" fill="${GREEN}"/>
+  <circle cx="369" cy="131" r="10.5" fill="#fff"/>`;
+
+  const action = list && x.popupAction
+    ? `<rect x="76" y="${rowsEnd + 4}" width="304" height="34" rx="9" fill="${a}"/>
+  <text class="pm-btn" x="228" y="${rowsEnd + 26}" text-anchor="middle">${esc(x.popupAction)}</text>`
+    : '';
+
+  const label = list
+    ? `The ${esc(x.name)} popup, showing the site it is looking at, all-time counts and the cookies it found`
+    : `The ${esc(x.name)} popup, showing the master toggle, all-time counts and every option`;
+
   return `<div class="pop-frame" style="${themeVars(x)}">
-<svg viewBox="0 0 420 ${canvasH}" role="img"
-     aria-label="The ${esc(x.name)} popup, showing the master toggle, all-time counts and every option">
+<svg viewBox="0 0 420 ${canvasH}" role="img" aria-label="${label}">
   <!-- popup panel — shifted so the panel itself is centred on the canvas -->
   <g transform="translate(-18 -42)">
   <rect x="56" y="50" width="344" height="${panelH}" rx="15" fill="var(--mock-bg)" stroke="var(--mock-line)"/>
@@ -131,16 +157,14 @@ function popupMock(x) {
   <text class="pm-name" x="110" y="83">${esc(x.name)}</text>
   <line x1="56" y1="104" x2="400" y2="104" stroke="var(--mock-line)"/>
 
-  <text class="pm-opt" x="76" y="130">${esc(master.name.replace(/\s+on$/i, ''))} on</text>
-  <text class="pm-sub" x="76" y="147">${esc(x.popupSub || 'Running on this page')}</text>
-  <rect x="336" y="118" width="46" height="26" rx="13" fill="${GREEN}"/>
-  <circle cx="369" cy="131" r="10.5" fill="#fff"/>
+  ${band}
 
   <rect x="72" y="166" width="312" height="82" rx="10" fill="var(--mock)" fill-opacity=".06"
         stroke="var(--mock-line)" stroke-opacity=".6"/>
-  <text class="pm-cap" x="228" y="186" text-anchor="middle">ALL TIME</text>
+  <text class="pm-cap" x="228" y="186" text-anchor="middle">${esc(x.statsCaption || 'ALL TIME')}</text>
   ${statCols}
   ${optRows}
+  ${action}
   </g>
 </svg></div>`;
 }
@@ -303,10 +327,12 @@ const lnav = (x) => `
     <a class="lnav__name" href="/extensions/${x.slug}/">${esc(x.name)}</a>
     <div class="lnav__right">
       <a class="is-optional" href="#features">Features</a>
-      <a class="is-optional" href="#install">Install</a>
+      ${x.githubUrl || x.releaseUrl ? `<a class="is-optional" href="#install">Install</a>` : ''}
       <a href="#permissions">Permissions</a>
       <a class="is-optional" href="#questions">Questions</a>
-      <a class="btn btn--sm" href="#install">Download</a>
+      ${x.githubUrl || x.releaseUrl
+        ? `<a class="btn btn--sm" href="#install">Download</a>`
+        : `<span class="btn btn--sm btn--soon">Coming soon</span>`}
     </div>
   </div>
 </div>`;
@@ -337,7 +363,7 @@ const footer = () => `
       <div>
         <h2>Source</h2>
         <ul>
-          ${exts.map(e => `<li><a href="${esc(e.githubUrl)}" rel="noopener">${esc(e.shortName || e.name)} on GitHub</a></li>`).join('')}
+          ${exts.filter(e => e.githubUrl).map(e => `<li><a href="${esc(e.githubUrl)}" rel="noopener">${esc(e.shortName || e.name)} on GitHub</a></li>`).join('')}
           <li><a href="${esc(site.github)}" rel="noopener">All repositories</a></li>
         </ul>
       </div>
@@ -432,7 +458,8 @@ function tile(x, i, total) {
     <p class="tile__price">${esc(x.price)} &middot; ${esc(x.licence || 'MIT')} &middot; Open source</p>
     <p class="linkrow">
       <a class="clink" href="/extensions/${x.slug}/">Learn more ${CHEV}</a>
-      <a class="clink" href="${esc(x.githubUrl)}" rel="noopener">Source ${CHEV}</a>
+      ${x.githubUrl ? `<a class="clink" href="${esc(x.githubUrl)}" rel="noopener">Source ${CHEV}</a>`
+        : `<span class="clink clink--soon">Coming soon</span>`}
     </p>
   </div>
   <div class="tile__art">${popupMock(x)}</div>
@@ -549,7 +576,7 @@ function extPage(x, ogSet) {
   const spec = [
     ['Browsers', (site.browsers || []).join(', ')],
     ['Price', x.price],
-    ['Licence', `${x.licence} — source on GitHub`],
+    ['Licence', x.githubUrl ? `${x.licence} — source on GitHub` : x.licence],
     ['Version', x.version],
     ['Updated', fmtDate(x.updated)],
     ['Size', x.size],
@@ -562,8 +589,12 @@ function extPage(x, ogSet) {
   const cta = x.releaseUrl
     ? `<a class="btn" href="${esc(x.releaseUrl)}" rel="noopener">Download the latest release</a>
        <a class="clink" href="${esc(x.githubUrl)}" rel="noopener" style="margin-left:.5rem">View the source ${CHEV}</a>`
-    : `<a class="btn" href="${esc(x.githubUrl)}" rel="noopener">Get it on GitHub</a>
-       <a class="clink" href="#install" style="margin-left:.5rem">How to install it ${CHEV}</a>`;
+    : x.githubUrl
+    ? `<a class="btn" href="${esc(x.githubUrl)}" rel="noopener">Get it on GitHub</a>
+       <a class="clink" href="#install" style="margin-left:.5rem">How to install it ${CHEV}</a>`
+    : `<p class="soonbadge">Finished, not yet released</p>
+       <p class="t-sub" style="margin-top:.75rem">It is built and working. The source goes up on GitHub
+       shortly, and this page will carry the download the moment it does.</p>`;
 
   const main = `
 <div class="wrap crumbs">
@@ -585,7 +616,7 @@ function extPage(x, ogSet) {
       ${(site.browsers || []).slice(0, 4).map(b => `<span class="pill">${esc(b)}</span>`).join('')}
     </p>
     <p class="btnrow">${cta}</p>
-    <p class="ahero__note">${nPerms} permission${nPerms === 1 ? '' : 's'} &middot; Runs only on ${esc(x.reloadTarget)} &middot; No tracking &middot; ${esc(x.licence)} licensed</p>
+    <p class="ahero__note">${nPerms} permission${nPerms === 1 ? '' : 's'} &middot; ${esc(x.accessNote || `Runs only on ${x.reloadTarget}`)} &middot; No tracking &middot; ${esc(x.licence)} licensed</p>
   </div>
   <div class="wrapw" style="margin-top:clamp(2.5rem,5vw,4rem)">
     ${(x.screenshots && x.screenshots.length) ? `
@@ -624,6 +655,7 @@ function extPage(x, ogSet) {
   </div>
 </section>
 
+${!(x.githubUrl || x.releaseUrl) ? '' : `
 <section class="band" id="install">
   <div class="wrap">
     <div class="band__head center reveal">
@@ -648,7 +680,7 @@ function extPage(x, ogSet) {
       <a class="clink clink--sm" href="${esc(site.donate)}" rel="noopener">${CUP} Free forever &mdash; buy me a coffee if it helped ${CHEV}</a>
     </p>` : ''}
   </div>
-</section>
+</section>`}
 
 ${(x.options || []).length ? `
 <section class="band band--alt" id="options">
@@ -676,14 +708,14 @@ ${(x.options || []).length ? `
   <div class="wrap">
     <div class="band__head center reveal">
       <h2 class="t-h2">What it asks for</h2>
-      <p class="t-sub" style="margin-top:.85rem">${nPerms} permission${nPerms === 1 ? '' : 's'} and one site, and why each is there.</p>
+      <p class="t-sub" style="margin-top:.85rem">${esc(x.permsNote || `${nPerms} permission${nPerms === 1 ? '' : 's'} and one site, and why each is there.`)}</p>
     </div>
     <dl class="perms reveal">
       ${[...(x.permissions || []), ...(x.hostPermissions || [])].map(p => `
       <div><dt><code>${esc(p.name)}</code></dt><dd>${esc(p.why)}</dd></div>`).join('')}
     </dl>
-    <p class="perms__note">Chrome shows you this list at install time. We would rather you saw it first &mdash;
-      and since the source is public, you can check that it is the whole list.</p>
+    <p class="perms__note">Chrome shows you this list at install time. We would rather you saw it first${
+      x.githubUrl ? ` &mdash; and since the source is public, you can check that it is the whole list` : ''}.</p>
   </div>
 </section>
 
@@ -921,7 +953,7 @@ function err(array $e, string $k): string {
 
   return PHP + layout({
     title: `Contact — ${site.name}`,
-    description: `Get in touch about Quite for YouTube or Quite for Facebook. Bug reports, feature requests and questions, all read by the person who wrote the code.`,
+    description: `Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.`,
     path: '/contact/',
     og: ogSet.has('default') ? 'default' : null,
     jsonld: {
@@ -955,17 +987,18 @@ function privacyPage(ogSet) {
         keeps standard server access logs, which include IP addresses, for security and
         troubleshooting; we do not analyse them or share them.</p>
       <h2 class="t-h3">The extensions</h2>
-      <p>Each extension requests one permission and access to one site, listed with its reason on
-        the extension's own page. Neither contains analytics, remote code, or a server of ours for
-        your data to sit on. Both run only on the single site they are for and cannot see any other
-        tab you have open.</p>
+      <p>Every permission each extension asks for is listed with its reason on that extension's own
+        page. Two of them run on a single site and cannot see any other tab you have open; the third
+        installs with no access to any site at all and asks for one domain at a time, when you press
+        the button. None of them contain analytics, remote code, or a server of ours for your data to
+        sit on.</p>
       ${exts.map(e => `<p><strong>${esc(e.name)}.</strong> ${esc(e.privacy)}
         <a href="/extensions/${e.slug}/#permissions">See its permissions</a>.</p>`).join('')}
       <h2 class="t-h3">Nothing is sold</h2>
-      <p>Both extensions are free and MIT licensed. There is no purchase, no licence key and no
+      <p>The extensions are free and MIT licensed. There is no purchase, no licence key and no
         payment processor involved, so there is no payment data for anyone to hold.</p>
       <h2 class="t-h3">You can check all of this</h2>
-      <p>The full source of both extensions is public. If you would rather verify than trust,
+      <p>The full source of every released extension is public. If you would rather verify than trust,
         the code is at <a href="${esc(site.github)}" rel="noopener">${esc(site.github.replace(/^https?:\/\//, ''))}</a>.</p>
       <h2 class="t-h3">Email</h2>
       <p>If you write to us, we keep the message so we can reply and so we remember the
@@ -1056,13 +1089,13 @@ ${site.leadIn}
 
 ## Extensions
 
-${exts.map(x => `- [${x.name}](${abs(`/extensions/${x.slug}/`)}): ${x.summary} ${x.price}, ${x.licence} licensed. Source: ${x.githubUrl}
+${exts.map(x => `- [${x.name}](${abs(`/extensions/${x.slug}/`)}): ${x.summary} ${x.price}, ${x.licence} licensed.${x.githubUrl ? ` Source: ${x.githubUrl}` : ' Not yet released.'}
   - Permissions: ${[...(x.permissions || []), ...(x.hostPermissions || [])].map(p => p.name).join(', ')}
   - Version ${x.version}, updated ${fmtDate(x.updated)}. Runs on ${(site.browsers || []).join(', ')}.`).join('\n')}
 
 ## How the extensions are distributed
 
-Not on the Chrome Web Store. Both install unpacked: download the folder from
+Not on the Chrome Web Store. They install unpacked: download the folder from
 GitHub, open chrome://extensions, turn on Developer mode, and use Load unpacked.
 
 ## Privacy

@@ -7,9 +7,9 @@
   "country": "United Kingdom",
   "tagline": "Small extensions, quietly made.",
   "metaTitle": "Quite Apps — free Chrome extensions to remove ads & clutter",
-  "metaDescription": "Free, open-source Chrome extensions from an independent UK studio. Remove YouTube ads and clear your Facebook feed. One permission each, no tracking.",
+  "metaDescription": "Free, open-source Chrome extensions from an independent UK studio. Remove YouTube ads, clear your Facebook feed, and see what sites store on you.",
   "leadIn": "We are a small independent studio in the UK. We make Chrome extensions that take things away rather than add them — and we publish the source, so you never have to take our word for what they do.",
-  "heroLead": "Two open-source Chrome extensions that take the advertising and the clutter out of the sites you use most. One permission each. No accounts, no tracking, nothing sent anywhere.",
+  "heroLead": "Three open-source Chrome extensions that take the advertising and the clutter out of the sites you use most. Every permission listed, with the reason for it. No accounts, no tracking, nothing sent anywhere.",
   "accent": "#2F5D50",
   "email": "hello@quiteapps.co.uk",
   "supportEmail": "support@quiteapps.co.uk",
@@ -45,15 +45,15 @@
   "principles": [
     {
       "title": "One job, done properly",
-      "body": "Every extension has a single purpose and runs on a single site. If a feature does not serve that purpose it does not ship, however much we would enjoy building it."
+      "body": "Every extension has a single purpose. If a feature does not serve that purpose it does not ship, however much we would enjoy building it."
     },
     {
       "title": "The fewest permissions we can ask for",
-      "body": "One permission each, plus access to the one site the extension is for. No access to your other tabs, no browsing history, nothing that reaches beyond the job."
+      "body": "Two of them ask for a single permission and access to the one site they are for. The third starts with no access to any site at all, and asks for one domain at a time, at the moment you press the button."
     },
     {
       "title": "Read the code yourself",
-      "body": "Both extensions are MIT licensed and public on GitHub. Nothing is sent anywhere, there is no server and no analytics — and you do not have to trust us on that, because you can check."
+      "body": "Everything we ship is MIT licensed, with the source public on GitHub. Nothing is sent anywhere, there is no server and no analytics — and you do not have to trust us on that, because you can check."
     }
   ],
   "contactHeading": "Get in touch",
@@ -62,7 +62,7 @@
   "heroHeadline": "Small extensions,<br>quietly made.",
   "donate": "https://buymeacoffee.com/kingdogma23",
   "donateHeading": "Free, and staying free.",
-  "donateBody": "Both extensions are free, MIT licensed and always will be. There is no paid tier waiting behind them. If one has saved you some irritation and you feel like putting something in the hat, it keeps the work going — and if not, that is genuinely fine.",
+  "donateBody": "All three extensions are free, MIT licensed and always will be. There is no paid tier waiting behind them. If one has saved you some irritation and you feel like putting something in the hat, it keeps the work going — and if not, that is genuinely fine.",
   "installFirstRelease": "Download the latest release and unzip it. You need the <b>folder</b> — keep it somewhere permanent, because moving or deleting it stops the extension working.",
   "installFirstZip": "On GitHub, click the green <b>Code</b> button, choose <b>Download ZIP</b>, and unzip it. You need the <b>folder</b> — keep it somewhere permanent, because moving or deleting it stops the extension working.",
   "sslLive": true,

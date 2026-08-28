@@ -1,5 +1,5 @@
 {
-  "_README": "Real data, drawn from the manifests and READMEs at github.com/KingDogma23 on 27 Aug 2026, with the product names updated to the 'Quite for ...' branding. Three things to check before launch: (2) `version` is the version a visitor can actually download, not the repo manifest version — see _versionNotes; (3) yt-ad-cleaner has no published release yet, so its download link points at the repo rather than a release asset. NOTE ON STATS: the Quite for Facebook figures (213/313/65) are real, taken from the live popup. The Quite for YouTube figures are PLACEHOLDERS — replace them with real ones from its diagnostics before launch.",
+  "_README": "Real data, drawn from the extension manifests, READMEs and popup source on 28 Aug 2026. NOTE ON STATS: the Quite for Facebook figures (213/313/65) are real, taken from the live popup, and the Quite for Cookies figures (357/45/228) are real, measured. The Quite for YouTube figures are PLACEHOLDERS — replace them with real ones from its diagnostics before launch. NOTE ON VERSIONS: `version` is the version a visitor can actually download, not the local manifest version — see _versionNotes. As of 28 Aug 2026 the YouTube manifest is 0.26.0 and Facebook's is 2.5.5, both ahead of their newest tags (v0.20.8, v2.5.4). Quite for Cookies has NO tag, so its releaseUrl is empty and the page sends people to the repo's Download ZIP; tag v0.20.0 and set releaseUrl to turn on the release button. NOTE ON REPO NAMES: yt-ad-cleaner and fb-feed-cleaner were renamed to quite-for-youtube and quite-for-facebook on 28 Aug 2026. The old URLs only redirect; use the new ones.",
   "_versionNotes": {
     "checked": "GitHub API, 27 Aug 2026. Never use raw.githubusercontent.com — it serves a stale CDN cache.",
     "releases": "Both repos are tagged (v0.20.8 / v2.5.4) and releaseUrl points at those tag pages, which carry GitHub's auto-generated source zip. Those zips are ~300 KB because they include test/ and repo metadata. package.sh builds a lean ~40 KB zip instead — attach it via 'Create release from tag' on GitHub and the download gets 7x smaller. Then releaseUrl can become /releases/latest.",
@@ -30,8 +30,8 @@
       "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
       "manifest": "Manifest V3",
       "reloadTarget": "YouTube",
-      "githubUrl": "https://github.com/KingDogma23/yt-ad-cleaner",
-      "releaseUrl": "https://github.com/KingDogma23/yt-ad-cleaner/releases/tag/v0.20.8",
+      "githubUrl": "https://github.com/KingDogma23/quite-for-youtube",
+      "releaseUrl": "https://github.com/KingDogma23/quite-for-youtube/releases/tag/v0.20.8",
       "permissions": [
         {
           "name": "storage",
@@ -169,8 +169,8 @@
       "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
       "manifest": "Manifest V3",
       "reloadTarget": "Facebook",
-      "githubUrl": "https://github.com/KingDogma23/fb-feed-cleaner",
-      "releaseUrl": "https://github.com/KingDogma23/fb-feed-cleaner/releases/tag/v2.5.4",
+      "githubUrl": "https://github.com/KingDogma23/quite-for-facebook",
+      "releaseUrl": "https://github.com/KingDogma23/quite-for-facebook/releases/tag/v2.5.4",
       "permissions": [
         {
           "name": "storage",
@@ -288,6 +288,212 @@
       ],
       "metaTitle": "Hide Facebook Ads & Suggested Posts — Quite for Facebook",
       "ground": "#1a1820"
+    },
+    {
+      "slug": "quite-for-cookies",
+      "name": "Quite for Cookies",
+      "shortName": "Cookies",
+      "accent": "#55a8e8",
+      "tagline": "See it before you delete it.",
+      "summary": "Shows exactly what a site has stored in your browser, deletes only what you pick, then counts again and tells you what actually went — and can clear a site on its own when you close its last tab.",
+      "metaDescription": "Free, open-source Chrome extension that shows every cookie a site has stored, deletes only what you pick, then checks it actually went.",
+      "description": [
+        "Most cookie cleaners delete first and tell you nothing. Quite for Cookies shows you the list before anything is removed — every cookie the site has stored, grouped by the domain that set it, with sizes. The ones that keep you signed in are marked as such, and left alone unless you say otherwise. Local storage, databases, caches and service workers are listed alongside them.",
+        "Removal is cookie by cookie rather than a blunt sweep of the whole site, so unticking a domain genuinely spares it. Afterwards the extension counts again and reports the result: how many went, how many could not be removed, and how many the page has already set again because it is still open. Those numbers come from re-reading the browser, never from assuming the delete worked.",
+        "It can also do the job without being asked. Turn on “clear a site when I close its last tab” and the sweep runs in the background as you browse, sparing sign-ins and anything on your spared list. Chrome’s own session-only setting cannot do this — it waits until you close the whole browser. Every sweep is recorded and shown in the popup, so a run that cleared nothing can never be mistaken for one that worked."
+      ],
+      "status": "live",
+      "price": "Free",
+      "priceValue": "0",
+      "currency": "GBP",
+      "licence": "MIT",
+      "version": "0.20.0",
+      "released": "2026-08-27",
+      "updated": "2026-08-28",
+      "size": "About 77 KB",
+      "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
+      "manifest": "Manifest V3",
+      "reloadTarget": "site you were looking at",
+      "githubUrl": "https://github.com/KingDogma23/quite-for-cookies",
+      "releaseUrl": "",
+      "permissions": [
+        {
+          "name": "activeTab",
+          "why": "To read the address of the tab you are on when you click the icon, so everything can be scoped to that one site. Nothing is read from the page until you press a button."
+        },
+        {
+          "name": "cookies",
+          "why": "To list and delete cookies. This is what the extension is for."
+        },
+        {
+          "name": "browsingData",
+          "why": "To clear local storage, databases, caches and service workers — restricted to the site you are looking at."
+        },
+        {
+          "name": "scripting",
+          "why": "To run a short read-only snippet in the page that counts the cookies the page itself can see. This is what makes the preview accurate rather than approximate."
+        },
+        {
+          "name": "storage",
+          "why": "To remember which domains you have chosen to spare on each site, and the totals shown in the popup. Nothing leaves your browser."
+        }
+      ],
+      "hostPermissions": [
+        {
+          "name": "None at install",
+          "why": "Unlike the other two, this one starts with no access to any site at all. When you press “Show what this site stored”, it asks for the one domain you are on, and nothing else. Clearing sites automatically as you close them does need browser-wide access, because it has to see which site a closing tab belonged to — that is asked for separately, only if you switch it on, and taken back from the same line of text in the popup."
+        }
+      ],
+      "features": [
+        {
+          "title": "The list comes first",
+          "body": "Every cookie the site has stored, grouped by the domain that set it, with sizes. Nothing is removed until you have seen it and pressed the button."
+        },
+        {
+          "title": "Sign-in cookies are marked",
+          "body": "The ones holding your session are flagged and spared by default, so cleaning a site does not quietly log you out of it."
+        },
+        {
+          "title": "Cookie by cookie, not all or nothing",
+          "body": "Untick a domain and it is genuinely left alone. No blunt “clear everything for this site” that takes your other subdomains with it."
+        },
+        {
+          "title": "It checks afterwards",
+          "body": "After deleting it counts again and reports what actually went, what could not be removed, and what the page has already set again because it is still open."
+        },
+        {
+          "title": "Clear a site as you close it",
+          "body": "Switch it on and closing a site’s last tab clears it, in the background, without you doing anything. Sign-ins and anything on your spared list are left alone, and a second tab still open on the same site stops the sweep."
+        },
+        {
+          "title": "Every sweep is recorded",
+          "body": "The background job runs where nobody is watching, so it writes down what it did. A sweep that removed nothing says so, rather than looking the same as one that worked."
+        },
+        {
+          "title": "Or sweep the whole browser",
+          "body": "A second tab cleans every site at once. The default removes advertising and analytics cookies only, matched against known tracking domains — it cannot sign you out, because nothing you can log in to is on that list."
+        },
+        {
+          "title": "No access until you ask",
+          "body": "It installs with no permission to see any site. Access is requested one domain at a time, at the moment you press the button, and is reversible from the popup."
+        }
+      ],
+      "options": [
+        {
+          "name": "This site",
+          "default": "—",
+          "what": "What the site you are on has stored, grouped by who set it."
+        },
+        {
+          "name": "Every site",
+          "default": "—",
+          "what": "One sweep across the whole browser."
+        },
+        {
+          "name": "Trackers only",
+          "default": "On",
+          "what": "Advertising and analytics cookies. Cannot sign you out."
+        },
+        {
+          "name": "Everything",
+          "default": "Off",
+          "what": "All cookies and site data. Says plainly that it will sign you out."
+        },
+        {
+          "name": "Keep sign-in cookies",
+          "default": "On",
+          "what": "Spares the cookies holding your session."
+        },
+        {
+          "name": "Include other companies’ cookies",
+          "default": "Off",
+          "what": "Cookies set by domains the page loaded, rather than the site itself."
+        },
+        {
+          "name": "Clear a site when I close its last tab",
+          "default": "Off",
+          "what": "Runs on its own, in the background. Sites on your spared list are never touched. Needs access to every site."
+        },
+        {
+          "name": "Keep sign-in cookies when it does",
+          "default": "On",
+          "what": "Leaves anything that looks like a login, so closing a tab tidies the tracking without logging you out."
+        },
+        {
+          "name": "Also clear stored site data",
+          "default": "Off",
+          "what": "Without it, trackers keeping a copy of your ID in local storage put the same cookie straight back."
+        }
+      ],
+      "screenshots": [],
+      "faq": [
+        {
+          "q": "Will it sign me out?",
+          "a": "Not unless you ask it to. Cookies that hold your session are marked and spared by default, the whole-browser sweep defaults to advertising and analytics cookies only, and the automatic clear keeps sign-ins too. The options that do sign you out say so where you turn them on."
+        },
+        {
+          "q": "What does “clear a site when I close its last tab” actually do?",
+          "a": "When the last tab for a site closes, it clears that site’s cookies in the background. If you still have the site open in another tab, nothing happens. Sites on your spared list are never touched, and sign-in cookies are kept unless you turn that off. Chrome’s own session-only setting cannot do this — it waits until you close the entire browser."
+        },
+        {
+          "q": "Why does it need access to a site?",
+          "a": "Chrome’s activeTab permission does not cover the cookies API, so reading a site’s cookies genuinely requires host access. Asking for one registrable domain at the moment you press the button is the narrowest form of that. It is granted per site, and revoked from the same line of text in the popup. The automatic clear is the exception: it has to watch tabs closing, so it needs browser-wide access before it will run."
+        },
+        {
+          "q": "How is this different from clearing cookies in Chrome?",
+          "a": "Chrome clears without showing you what was there, and works on the whole site. This lists everything first, grouped by the domain that set it, lets you spare individual domains, and counts again afterwards to check the removal actually worked."
+        },
+        {
+          "q": "Some cookies came back straight away.",
+          "a": "If the page is still open it can set them again the moment they go. The report says so explicitly rather than showing a tick — that is the point of counting a second time. Trackers that keep a copy of your ID in local storage do the same thing, which is what the “also clear stored site data” option is for."
+        }
+      ],
+      "privacy": "Quite for Cookies installs with no access to any website. It sends nothing anywhere — no server, no analytics, no account, no tracking. The only things it stores are your per-site choices, the counters shown in the popup, and a short local log of what the automatic clear has done, all in your own browser.",
+      "popupSub": "22 cookies across 3 domains",
+      "stats": [
+        {
+          "value": "357",
+          "label": "Cookies removed"
+        },
+        {
+          "value": "45",
+          "label": "Data items cleared"
+        },
+        {
+          "value": "228",
+          "label": "Sites cleaned"
+        }
+      ],
+      "metaTitle": "See and Delete Cookies — Quite for Cookies, Chrome extension",
+      "ground": "#141c24",
+      "statsCaption": "ALL TIME, EVERY SITE",
+      "popupStyle": "list",
+      "popupSite": "bbc.co.uk",
+      "popupRows": [
+        {
+          "name": ".bbc.co.uk",
+          "what": "17 cookies · 3.7 KB · 2 sign-in",
+          "on": false
+        },
+        {
+          "name": "www.bbc.co.uk",
+          "what": "3 cookies · 123 B",
+          "on": true
+        },
+        {
+          "name": ".session.bbc.co.uk",
+          "what": "2 cookies · 3.0 KB · 2 sign-in",
+          "on": false
+        },
+        {
+          "name": "www.bbc.co.uk",
+          "what": "46 items local storage · 4 caches",
+          "on": true
+        }
+      ],
+      "popupAction": "Remove 3 cookies and site data",
+      "accessNote": "No site access until you ask",
+      "permsNote": "Five permissions, and no access to any site until you ask for it. Here is why each is there."
     }
   ],
   "_brand": "Icons, accents and popup copy match the shipped extensions as of 27 Aug 2026. The mark is a ring with a tail crossing at 45 degrees, in the product accent on a dark ground — same mark for both, differentiated only by colour. Product accents are for artwork only; the site's action colour stays #0071e3. Never use #DF2A24 or #2B83EE — YouTube red and Meta blue read as impersonation."
