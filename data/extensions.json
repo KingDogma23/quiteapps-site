@@ -1,5 +1,5 @@
 {
-  "_README": "Real data, drawn from the extension manifests, READMEs and popup source on 28 Aug 2026. NOTE ON STATS: the Quite for Facebook figures (213/313/65) are real, taken from the live popup, and the Quite for Cookies figures (357/45/228) are real, measured. The Quite for YouTube figures are PLACEHOLDERS — replace them with real ones from its diagnostics before launch. NOTE ON VERSIONS: `version` is the version a visitor can actually download, not the local manifest version — see _versionNotes. As of 28 Aug 2026 the YouTube manifest is 0.26.0 and Facebook's is 2.5.5, both ahead of their newest tags (v0.20.8, v2.5.4). Quite for Cookies has NO tag, so its releaseUrl is empty and the page sends people to the repo's Download ZIP; tag v0.20.0 and set releaseUrl to turn on the release button. NOTE ON REPO NAMES: yt-ad-cleaner and fb-feed-cleaner were renamed to quite-for-youtube and quite-for-facebook on 28 Aug 2026. The old URLs only redirect; use the new ones.",
+  "_README": "Real data, drawn from the extension manifests, READMEs and popup source on 28 Aug 2026. NOTE ON STATS: the Quite for Facebook figures (213/313/65) are real, taken from the live popup, and the Quite for Cookies figures (357/45/228) are real, measured. The Quite for YouTube figures are PLACEHOLDERS — replace them with real ones from its diagnostics before launch. NOTE ON VERSIONS: `version` is the version a visitor can actually download, not the local manifest version — see _versionNotes. As of 28 Aug 2026 the YouTube manifest is 0.26.0 and Facebook's is 2.5.5, both ahead of their newest tags (v0.20.8, v2.5.4). All three link to a bare tag rather than a formal GitHub Release, so the download is GitHub's auto-generated source zip. NOTE ON REPO NAMES: yt-ad-cleaner and fb-feed-cleaner were renamed to quite-for-youtube and quite-for-facebook on 28 Aug 2026. The old URLs only redirect; use the new ones.",
   "_versionNotes": {
     "checked": "GitHub API, 27 Aug 2026. Never use raw.githubusercontent.com — it serves a stale CDN cache.",
     "releases": "Both repos are tagged (v0.20.8 / v2.5.4) and releaseUrl points at those tag pages, which carry GitHub's auto-generated source zip. Those zips are ~300 KB because they include test/ and repo metadata. package.sh builds a lean ~40 KB zip instead — attach it via 'Create release from tag' on GitHub and the download gets 7x smaller. Then releaseUrl can become /releases/latest.",
@@ -315,7 +315,7 @@
       "manifest": "Manifest V3",
       "reloadTarget": "site you were looking at",
       "githubUrl": "https://github.com/KingDogma23/quite-for-cookies",
-      "releaseUrl": "",
+      "releaseUrl": "https://github.com/KingDogma23/quite-for-cookies/releases/tag/v0.20.0",
       "permissions": [
         {
           "name": "activeTab",
