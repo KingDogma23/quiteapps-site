@@ -4,7 +4,8 @@
     "checked": "GitHub API, 27 Aug 2026. Never use raw.githubusercontent.com — it serves a stale CDN cache.",
     "releases": "Both repos are tagged (v0.20.8 / v2.5.4) and releaseUrl points at those tag pages, which carry GitHub's auto-generated source zip. Those zips are ~300 KB because they include test/ and repo metadata. package.sh builds a lean ~40 KB zip instead — attach it via 'Create release from tag' on GitHub and the download gets 7x smaller. Then releaseUrl can become /releases/latest.",
     "size": "Reflects the GitHub source zip a visitor actually downloads, not the packaged extension.",
-    "cookies": "Store ships 0.22.0 and GitHub is tagged v0.22.0, so both routes now offer the same build. They were briefly out of step: the only tag was v0.20.0 while the manifest had moved to 0.22.0, which put an older build behind a button labelled 'latest release', directly under an Add to Chrome installing the newer one."
+    "cookies": "Store ships 0.22.0 and GitHub is tagged v0.22.0, so both routes now offer the same build. They were briefly out of step: the only tag was v0.20.0 while the manifest had moved to 0.22.0, which put an older build behind a button labelled 'latest release', directly under an Add to Chrome installing the newer one.",
+    "facebook": "GitHub main is 2.6.0 and that is what the site offers, via Download ZIP. The newest tag is v2.5.4 and the store Draft is 2.5.5, so releaseUrl is deliberately empty: pointing it at v2.5.4 would name 2.6.0 while handing over an older build. 2.6.0 is not tagged because it has not been through store review; tag it and restore releaseUrl if that changes."
   },
   "extensions": [
     {
@@ -161,15 +162,15 @@
       "priceValue": "0",
       "currency": "GBP",
       "licence": "MIT",
-      "version": "2.5.4",
+      "version": "2.6.0",
       "released": "2026-08-23",
-      "updated": "2026-08-27",
+      "updated": "2026-08-29",
       "size": "About 310 KB",
       "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
       "manifest": "Manifest V3",
       "reloadTarget": "Facebook",
       "githubUrl": "https://github.com/KingDogma23/quite-for-facebook",
-      "releaseUrl": "https://github.com/KingDogma23/quite-for-facebook/releases/tag/v2.5.4",
+      "releaseUrl": "",
       "permissions": [
         {
           "name": "storage",
@@ -287,7 +288,7 @@
       ],
       "metaTitle": "Hide Facebook Ads & Suggested Posts: Quite for Facebook",
       "ground": "#1a1820",
-      "notice": "Finished, and not on the Chrome Web Store yet. Quite for YouTube and Quite for Cookies hold the two store slots, so this one waits its turn. It is done, it works, and you can install it from GitHub today."
+      "notice": "Not on the Chrome Web Store yet. A new publisher account may hold only two extensions, and Quite for YouTube and Quite for Cookies have those slots, so this one sits finished and waiting. GitHub carries the newest build in the meantime, and installing it unpacked takes about two minutes."
     },
     {
       "slug": "quite-for-cookies",
