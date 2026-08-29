@@ -75,7 +75,7 @@ function icon(x, cls = 'icon', px = 56) {
   return `<svg class="${cls}" viewBox="0 0 48 48" width="${px}" height="${px}" role="img" aria-label="${esc(x.name)} icon">
   <rect class="icon__tile" width="48" height="48" rx="10.56" fill="${ground}"/>
   <g fill="none" stroke="${a}" stroke-width="5.52">
-    <circle cx="24" cy="24" r="11.52"/>
+    <circle cx="24" cy="24" r="8.68"/>
     <path d="M26.04 26.04 33.61 33.61"/>
   </g>
 </svg>`;
@@ -163,7 +163,7 @@ function popupMock(x) {
 
   <rect x="76" y="66" width="24" height="24" rx="5.28" fill="${x.ground || '#14201b'}"/>
   <g transform="translate(76 66) scale(.5)" fill="none" stroke="${a}" stroke-width="5.52">
-    <circle cx="24" cy="24" r="11.52"/><path d="M26.04 26.04 33.61 33.61"/>
+    <circle cx="24" cy="24" r="8.68"/><path d="M26.04 26.04 33.61 33.61"/>
   </g>
   <text class="pm-name" x="110" y="83">${esc(x.name)}</text>
   <line x1="56" y1="104" x2="400" y2="104" stroke="var(--mock-line)"/>
@@ -328,7 +328,7 @@ function renderTouchIcon(chrome) {
 display:flex;align-items:center;justify-content:center}</style>
 <svg width="112" height="112" viewBox="0 0 48 48">
   <g fill="none" stroke="${site.markInk || '#f2f0f4'}" stroke-width="5.52">
-    <circle cx="24" cy="24" r="11.52"/>
+    <circle cx="24" cy="24" r="8.68"/>
     <path d="M26.04 26.04 33.61 33.61"/>
   </g>
 </svg>`);
@@ -1356,7 +1356,7 @@ Sitemap: ${abs('/sitemap.xml')}
 const favicon = () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
   <rect width="48" height="48" rx="10.56" fill="${site.accent}"/>
   <g fill="none" stroke="${site.markInk || '#f2f0f4'}" stroke-width="5.52">
-    <circle cx="24" cy="24" r="11.52"/>
+    <circle cx="24" cy="24" r="8.68"/>
     <path d="M26.04 26.04 33.61 33.61"/>
   </g>
 </svg>

@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Quite Apps">
   <!-- The canonical Quite mark. Same geometry as every extension icon: ring at
-       (24,24) r 11.52, stroke 5.52, tail (26.04,26.04) to (33.61,33.61), tile
+       (24,24) r 8.68, stroke 5.52, tail (26.04,26.04) to (33.61,33.61), tile
        radius 10.56. The parent mark is white on the promo ground; the three
        products are the same shape in their own accents. -->
   <rect width="48" height="48" rx="10.56" fill="#110f16"/>
   <g fill="none" stroke="#f2f0f4" stroke-width="5.52">
-    <circle cx="24" cy="24" r="11.52"/>
+    <circle cx="24" cy="24" r="8.68"/>
     <path d="M26.04 26.04 L33.61 33.61"/>
   </g>
 </svg>

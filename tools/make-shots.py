@@ -119,7 +119,7 @@ def mark(size, colour):
     s = size / 48 * K * 2
     img = Image.new("RGBA", (size * K * 2, size * K * 2), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    r = 11.52 * s
+    r = 8.68 * s          # measured off the shipped PNGs; 11.52 hides the tail
     d.ellipse([(24 * s) - r, (24 * s) - r, (24 * s) + r, (24 * s) + r],
               outline=colour, width=round(5.52 * s))
     d.line([26.04 * s, 26.04 * s, 33.61 * s, 33.61 * s], fill=colour, width=round(5.52 * s))
