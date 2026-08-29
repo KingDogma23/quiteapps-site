@@ -145,7 +145,8 @@
       "ground": "#14201b",
       "storeUrl": "https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci",
       "notice": "This page describes version 0.31.8. The Chrome Web Store is still reviewing it, so Add to Chrome installs 0.30.0 today, which shows a third counter in the popup and carries the older wording. The update arrives on its own once approved. If you want it now, the GitHub release below is 0.31.8.",
-      "noticeShort": "Store is on 0.30.0 while 0.31.8 is in review. GitHub has 0.31.8 now."
+      "noticeShort": "Store is on 0.30.0 while 0.31.8 is in review. GitHub has 0.31.8 now.",
+      "pitch": "Skip is clicked the moment it appears and unskippable ads are fast-forwarded. The ad panels in your feed, sidebar, search results and Shorts never paint at all."
     },
     {
       "slug": "quite-for-facebook",
@@ -291,7 +292,8 @@
       "metaTitle": "Hide Facebook Ads & Suggested Posts: Quite for Facebook",
       "ground": "#1a1820",
       "notice": "Not on the Chrome Web Store yet. A new publisher account may hold only two extensions, and Quite for YouTube and Quite for Cookies have those slots, so this one sits finished and waiting. GitHub carries the newest build in the meantime, and installing it unpacked takes about two minutes.",
-      "noticeShort": "Not on the Chrome Web Store yet. Install it from GitHub in about two minutes."
+      "noticeShort": "Not on the Chrome Web Store yet. Install it from GitHub in about two minutes.",
+      "pitch": "Sponsored posts, suggested pages and groups you never joined are hidden as the feed loads. What is left is the people you actually follow."
     },
     {
       "slug": "quite-for-cookies",
@@ -498,7 +500,8 @@
       "popupAction": "Remove 3 cookies and site data",
       "accessNote": "No site access until you ask",
       "permsNote": "Five permissions, and no access to any site until you ask for it. Here is why each is there.",
-      "storeUrl": "https://chromewebstore.google.com/detail/quite-for-cookies/iagkmeadnfkmgocminiglpibkcnibnch"
+      "storeUrl": "https://chromewebstore.google.com/detail/quite-for-cookies/iagkmeadnfkmgocminiglpibkcnibnch",
+      "pitch": "See every cookie a site has stored, delete only what you pick, and watch it check that the deletion actually worked. Or have it clear each site as you close its last tab."
     }
   ],
   "_brand": "Icons, accents and popup copy match the shipped extensions as of 27 Aug 2026. The mark is a ring with a tail crossing at 45 degrees, in the product accent on a dark ground — same mark for both, differentiated only by colour. Product accents are for artwork only; the site's action colour stays #0071e3. Never use #DF2A24 or #2B83EE — YouTube red and Meta blue read as impersonation."

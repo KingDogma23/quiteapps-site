@@ -560,8 +560,10 @@ function homePage(ogSet) {
     <p class="t-eyebrow reveal">${esc(site.name)}</p>
     <h1 class="t-hero reveal">${site.heroHeadline}</h1>
     <p class="t-sub measure reveal" style="margin-inline:auto">${esc(site.heroLead)}</p>
-    <p class="linkrow reveal">
-      <a class="clink" href="#extensions">See the extensions ${CHEV}</a>
+    <p class="btnrow reveal" style="margin-top:1.75rem">
+      <a class="btn" href="#extensions">See the extensions</a>
+    </p>
+    <p class="linkrow reveal" style="margin-top:1.1rem">
       <a class="clink" href="#approach">How we go about it ${CHEV}</a>
     </p>
   </div>
@@ -700,6 +702,7 @@ function extPage(x, ogSet) {
     ${icon(x, 'ahero__icon', 88)}
     <h1>${esc(x.name)}</h1>
     <p class="t-sub">${esc(x.tagline)}</p>
+    <p class="ahero__lead">${esc(x.pitch || x.summary)}</p>
     <p class="ahero__pills">
       <span class="pill">${esc(x.price)}</span>
       <span class="pill">${esc(x.licence)}</span>
