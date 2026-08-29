@@ -1,6 +1,19 @@
 {
-  "_README": "Reverse-chronological. Newest first — the build does not sort, so keep them in order. `id` becomes the anchor (/news/#id) and the RSS guid, so never change one once published. `date` is the publication date and drives both the page and the feed; `updated` is optional and only for a post edited in place after publishing. `ext` ties a post to an extension slug so its page can show the latest entry inline. `body` is an array of paragraphs, rendered as-is into both the page and the feed — the feed carries the full text, not a teaser. `works` is the 'what still works' list used by breakage posts; omit it elsewhere. See _template at the bottom.",
+  "_README": "Reverse-chronological. Newest first — the build does not sort, so keep them in order. `id` becomes the anchor (/news/#id) and the RSS guid, so never change one once published. `date` is the publication date and drives both the page and the feed; `updated` is optional and only for a post edited in place after publishing. `ext` ties a post to an extension slug so its page can show the latest entry inline. `body` is an array of paragraphs, rendered as-is into both the page and the feed — the feed carries the full text, not a teaser. `works` is the 'what still works' list used by breakage posts; omit it elsewhere. See _template at the bottom. PENDING: when Chrome Web Store approves 0.31.8, two edits fire together. The post 2026-08-29-saying-what-it-does turns 'replaces ... once it is approved' and 'will say' into past tense, and the embargoed 0.31.8 post (held in the extensions session, WEBSITE-NEWS-2026-08-29.md post 1) is published dated that day. Both regenerate their RSS entries automatically. Remove the storeLag notice on quite-for-youtube at the same time.",
   "posts": [
+    {
+      "id": "2026-08-29-saying-what-it-does",
+      "date": "2026-08-29",
+      "title": "Quite for YouTube: saying what it actually does",
+      "ext": "quite-for-youtube",
+      "tag": "Changed",
+      "body": [
+        "The store listing says Quite for YouTube stops most video ads loading. We spent a day trying to measure that and could not show it was true, so we have taken the claim out. The corrected listing is with the Chrome Web Store now and replaces the current one once it is approved.",
+        "What it does, and what we can demonstrate: it skips video ads as they appear, fast-forwards the ones that cannot be skipped, and hides the ad panels in the feed, sidebar, search results and Shorts. The listing will say that instead. This site already does.",
+        "The same update removes a counter from the extension's popup. It reported videos protected, and on inspection it was counting videos that had no advert to begin with. A number that flatters is worse than no number, so it is gone. The two that remain, ads skipped and time saved, are both counted from adverts actually seen.",
+        "The setting that does the stripping stays, renamed to Strip ad schedule, and stays on by default. It does no harm. We simply cannot show you what it prevents, so we no longer say."
+      ]
+    },
     {
       "id": "2026-08-29-cookies-on-the-store",
       "date": "2026-08-29",
@@ -76,24 +89,6 @@
     "works": [
       "The parts still working, listed one by one",
       "So nobody uninstalls a thing that is 90% fine"
-    ]
-  },
-  "_held": {
-    "_why": "Written and ready, deliberately unpublished. Martin told this session to publish it; the extensions session then relayed that he had not approved it. Two accounts of the same decision, so it waits for him to settle it rather than going out on an inference. Move the entry back into `posts` to publish, and check the date is still right. Nothing else needs changing: the site copy it refers to is already live.",
-    "posts": [
-      {
-        "id": "2026-08-29-saying-what-it-does",
-        "date": "2026-08-29",
-        "title": "Quite for YouTube: saying what it actually does",
-        "ext": "quite-for-youtube",
-        "tag": "Changed",
-        "body": [
-          "The store listing used to say Quite for YouTube stops most video ads loading. We spent a day trying to measure that and could not show it was true, so we have changed the wording rather than leave a claim standing that we cannot back.",
-          "What it does, and what we can demonstrate: it skips video ads as they appear, fast-forwards the ones that cannot be skipped, and hides the ad panels in the feed, sidebar, search results and Shorts. The listing now says that instead, and so does this site.",
-          "We also removed a counter from the extension's popup. It reported videos protected, and on inspection it was counting videos that had no advert to begin with. A number that flatters is worse than no number, so it is gone. The two that remain, ads skipped and time saved, are both counted from adverts actually seen.",
-          "The setting that does the stripping is still there, renamed to Strip ad schedule, and still on by default. It does no harm. We simply cannot show you what it prevents, so we no longer say."
-        ]
-      }
     ]
   }
 }

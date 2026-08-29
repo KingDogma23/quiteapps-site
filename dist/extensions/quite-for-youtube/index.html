@@ -87,7 +87,7 @@
     </p>
     <p class="btnrow"><a class="btn" href="https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci" rel="noopener">Add to Chrome, it's free</a>
        <a class="clink" href="https://github.com/KingDogma23/quite-for-youtube" rel="noopener" style="margin-left:.5rem">View the source <span aria-hidden="true">&rsaquo;</span></a></p>
-    
+    <p class="notice">This page describes version 0.31.8, which is with the Chrome Web Store for review. Installing today gives you the previous version, which still shows a third counter in the popup and carries the older wording. The update arrives on its own once approved, with nothing for you to do.</p>
     <p class="ahero__note">1 permission &middot; Runs only on YouTube &middot; No tracking &middot; MIT licensed</p>
   </div>
   <div class="wrapw" style="margin-top:clamp(2.5rem,5vw,4rem)">
@@ -257,20 +257,18 @@
       <p class="t-sub" style="margin-top:.85rem">Releases and breakages for Quite for YouTube.</p>
     </div>
     <div class="posts measure-l">
-<article class="post reveal" id="2026-08-29-stuck-player">
+<article class="post reveal" id="2026-08-29-saying-what-it-does">
   <div class="post__meta">
     <time datetime="2026-08-29">29 August 2026</time>
-    <span class="post__tag">Breakage</span>
+    <span class="post__tag">Changed</span>
     <a class="post__ext" href="/extensions/quite-for-youtube/">Quite for YouTube</a>
   </div>
   <h3 class="t-h3 post__title">
-    <a href="/news/2026-08-29-stuck-player/">Some videos start black and silent instead of playing</a>
+    <a href="/news/2026-08-29-saying-what-it-does/">Quite for YouTube: saying what it actually does</a>
   </h3>
-  <p>On some videos an advert still gets through. When it does, the player can sit black and silent instead of playing either the advert or your video. It looks like the extension has broken, which is the worst way for this to fail, so it is worth saying plainly what is happening.</p><p>The extension does not block requests. It stops YouTube issuing an ad schedule in the first place, which is what keeps your session out of the anti-adblock net. It does not catch every response, and on the ones it misses an advert starts inside a player that was not expecting one.</p><p>There is deliberately no automatic recovery. An earlier version reloaded the player after a stall; measured over repeated loads it produced a YouTube error screen more often than it rescued anything, so it was taken out. A stuck video you can reload is better than an error screen you cannot.</p><p>Reload the video and it usually plays. If it sticks again, add ?ytacoff=1 to the end of the URL. That loads that one video with the extension switched off, which is also how to confirm the extension is what is causing it rather than YouTube having a bad day.</p><p>This is why we do not claim to stop every advert. Saying otherwise would earn one-star reviews describing exactly this.</p>
+  <p>The store listing says Quite for YouTube stops most video ads loading. We spent a day trying to measure that and could not show it was true, so we have taken the claim out. The corrected listing is with the Chrome Web Store now and replaces the current one once it is approved.</p><p>What it does, and what we can demonstrate: it skips video ads as they appear, fast-forwards the ones that cannot be skipped, and hides the ad panels in the feed, sidebar, search results and Shorts. The listing will say that instead. This site already does.</p><p>The same update removes a counter from the extension&#39;s popup. It reported videos protected, and on inspection it was counting videos that had no advert to begin with. A number that flatters is worse than no number, so it is gone. The two that remain, ads skipped and time saved, are both counted from adverts actually seen.</p><p>The setting that does the stripping stays, renamed to Strip ad schedule, and stays on by default. It does no harm. We simply cannot show you what it prevents, so we no longer say.</p>
   
-  <p class="post__works-head">What still works</p>
-  <ul class="post__works"><li>Feed, sidebar, search and Shorts ad panels are still hidden</li><li>Overlay banners drawn on top of the video are still removed</li><li>Most video ads are still stopped before they load, and skippable ones still get skipped</li><li>Nothing about your account, watch history or any other tab is touched</li></ul>
-  <p class="t-tiny post__updated">Updated 29 August 2026</p>
+  
 </article></div>
     <p class="center" style="margin-top:2rem">
       <a class="clink" href="/news/">All news <span aria-hidden="true">&rsaquo;</span></a>

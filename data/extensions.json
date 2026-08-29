@@ -140,7 +140,8 @@
       ],
       "metaTitle": "Remove YouTube Ads: Quite for YouTube, Chrome extension",
       "ground": "#14201b",
-      "storeUrl": "https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci"
+      "storeUrl": "https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci",
+      "notice": "This page describes version 0.31.8, which is with the Chrome Web Store for review. Installing today gives you the previous version, which still shows a third counter in the popup and carries the older wording. The update arrives on its own once approved, with nothing for you to do."
     },
     {
       "slug": "quite-for-facebook",
