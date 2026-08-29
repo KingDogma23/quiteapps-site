@@ -1199,10 +1199,11 @@ function newsPostPage(p, ogSet) {
       <a class="clink clink--sm" href="/extensions/${x.slug}/">About ${esc(x.name)} ${CHEV}</a>
       ${x.storeUrl ? `<a class="clink clink--sm" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome ${CHEV}</a>` : ''}
     </p>` : ''}
-    <nav class="postnav measure-l" aria-label="More news">
-      ${newer ? `<a href="/news/${esc(newer.id)}/"><span>Newer</span>${esc(newer.title)}</a>` : '<span></span>'}
-      ${older ? `<a href="/news/${esc(older.id)}/"><span>Older</span>${esc(older.title)}</a>` : '<span></span>'}
-    </nav>
+    ${newer || older ? `
+    <nav class="postnav measure-l ${newer && older ? '' : 'postnav--one'}" aria-label="More news">
+      ${newer ? `<a href="/news/${esc(newer.id)}/"><span>Newer</span>${esc(newer.title)}</a>` : ''}
+      ${older ? `<a class="postnav__older" href="/news/${esc(older.id)}/"><span>Older</span>${esc(older.title)}</a>` : ''}
+    </nav>` : ''}
     <p class="linkrow linkrow--start" style="margin-top:2.5rem">
       <a class="clink clink--sm" href="/news/">All news ${CHEV}</a>
       <a class="clink clink--sm" href="/news/feed.xml">${RSS_ICON} RSS ${CHEV}</a>

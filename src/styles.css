@@ -649,7 +649,9 @@ h1, h2, h3, h4 { font-weight: 600; letter-spacing: -.015em; line-height: 1.08; }
   display: block; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase;
   color: var(--ink-3); font-weight: 600; margin-bottom: .35rem;
 }
-.postnav a:last-child { text-align: right; }
+.postnav__older { text-align: right; }
+.postnav--one { grid-template-columns: 1fr; }
+.postnav--one .postnav__older { text-align: left; }
 @media (max-width: 34rem) {
   .postnav { grid-template-columns: 1fr; }
   .postnav a:last-child { text-align: left; }
