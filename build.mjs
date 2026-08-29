@@ -327,8 +327,10 @@ function renderTouchIcon(chrome) {
 <style>*{margin:0}body{width:180px;height:180px;background:${site.accent};
 display:flex;align-items:center;justify-content:center}</style>
 <svg width="112" height="112" viewBox="0 0 48 48">
-  <circle cx="23" cy="22" r="9.5" fill="none" stroke="#fff" stroke-width="3.4"/>
-  <path d="M28.5 28 34 34" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>
+  <g fill="none" stroke="${site.markInk || '#f2f0f4'}" stroke-width="5.52">
+    <circle cx="24" cy="24" r="11.52"/>
+    <path d="M26.04 26.04 33.61 33.61"/>
+  </g>
 </svg>`);
   try {
     execFileSync(chrome, [
@@ -1352,9 +1354,11 @@ Sitemap: ${abs('/sitemap.xml')}
 `;
 
 const favicon = () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-  <rect width="48" height="48" rx="11.2" fill="${site.accent}"/>
-  <circle cx="23" cy="22" r="9.5" fill="none" stroke="#fff" stroke-width="3.4"/>
-  <path d="M28.5 28 34 34" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>
+  <rect width="48" height="48" rx="10.56" fill="${site.accent}"/>
+  <g fill="none" stroke="${site.markInk || '#f2f0f4'}" stroke-width="5.52">
+    <circle cx="24" cy="24" r="11.52"/>
+    <path d="M26.04 26.04 33.61 33.61"/>
+  </g>
 </svg>
 `;
 

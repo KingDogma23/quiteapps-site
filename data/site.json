@@ -10,7 +10,7 @@
   "metaDescription": "Free, open-source Chrome extensions from an independent UK studio. Remove YouTube ads, clear your Facebook feed, and see what sites store on you.",
   "leadIn": "We are a small independent studio in the UK. We make Chrome extensions that take things away rather than add them — and we publish the source, so you never have to take our word for what they do.",
   "heroLead": "Three open-source Chrome extensions that take the advertising and the clutter out of the sites you use most. Every permission listed, with the reason for it. No accounts, no tracking, nothing sent anywhere.",
-  "accent": "#2F5D50",
+  "accent": "#110f16",
   "email": "hello@quiteapps.co.uk",
   "supportEmail": "support@quiteapps.co.uk",
   "github": "https://github.com/KingDogma23",
@@ -69,5 +69,6 @@
   "forceHttps": false,
   "updated": "2026-08-29",
   "privacyUpdated": "2026-08-28",
-  "facebook": "https://www.facebook.com/quiteapps/"
+  "facebook": "https://www.facebook.com/quiteapps/",
+  "markInk": "#f2f0f4"
 }
