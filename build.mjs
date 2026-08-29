@@ -497,10 +497,13 @@ function tile(x, i, total) {
     <p class="tile__tag">${esc(x.tagline)}</p>
     <p class="tile__price">${esc(x.price)} &middot; ${esc(x.licence || 'MIT')} &middot; Open source</p>
     ${x.notice ? `<p class="tile__notice">${esc(x.notice)}</p>` : ''}
-    <p class="linkrow">
+    <p class="btnrow" style="margin-top:1.1rem">
+      ${x.storeUrl ? `<a class="btn btn--sm" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome</a>` : ''}
       <a class="clink" href="/extensions/${x.slug}/">Learn more ${CHEV}</a>
-      ${x.githubUrl ? `<a class="clink" href="${esc(x.githubUrl)}" rel="noopener">Source ${CHEV}</a>`
-        : `<span class="clink clink--soon">Coming soon</span>`}
+    </p>
+    <p class="linkrow">
+      ${x.githubUrl ? `<a class="clink clink--sm" href="${esc(x.githubUrl)}" rel="noopener">Source ${CHEV}</a>`
+        : `<span class="clink clink--sm clink--soon">Source coming soon</span>`}
     </p>
   </div>
   <div class="tile__art">${popupMock(x)}</div>
@@ -627,7 +630,10 @@ function extPage(x, ogSet) {
     ['Requires', x.requires],
   ].filter(([, v]) => v);
 
-  const cta = x.releaseUrl
+  const cta = x.storeUrl
+    ? `<a class="btn" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome &mdash; it's free</a>
+       ${x.githubUrl ? `<a class="clink" href="${esc(x.githubUrl)}" rel="noopener" style="margin-left:.5rem">View the source ${CHEV}</a>` : ''}`
+    : x.releaseUrl
     ? `<a class="btn" href="${esc(x.releaseUrl)}" rel="noopener">Download the latest release</a>
        <a class="clink" href="${esc(x.githubUrl)}" rel="noopener" style="margin-left:.5rem">View the source ${CHEV}</a>`
     : x.githubUrl
@@ -702,7 +708,12 @@ ${!(x.githubUrl || x.releaseUrl) ? '' : `
   <div class="wrap">
     <div class="band__head center reveal">
       <h2 class="t-h2">Installing it</h2>
-      <p class="t-sub" style="margin-top:.85rem">Not on the Chrome Web Store, so it installs unpacked. Two minutes, once.</p>
+      <p class="t-sub" style="margin-top:.85rem">${x.storeUrl
+        ? `One click from the Chrome Web Store. The unpacked route below still works if you would rather run the source.`
+        : `Not on the Chrome Web Store, so it installs unpacked. Two minutes, once.`}</p>
+      ${x.storeUrl ? `<p class="btnrow" style="margin-top:1.75rem">
+        <a class="btn" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome</a>
+      </p>` : ''}
     </div>
     <ol class="steps reveal">
       ${[
@@ -831,15 +842,15 @@ ${(x.faq || []).length ? `
         '@type': 'Offer',
         price: x.priceValue ?? '0', priceCurrency: x.currency || 'GBP',
         availability: soon ? 'https://schema.org/PreOrder' : 'https://schema.org/InStock',
-          ...(x.releaseUrl || x.githubUrl ? { url: x.releaseUrl || x.githubUrl } : {}),
+          ...(x.storeUrl || x.releaseUrl || x.githubUrl ? { url: x.storeUrl || x.releaseUrl || x.githubUrl } : {}),
       },
       publisher: { '@id': abs('/#org') },
       ...(x.licence ? { license: `https://spdx.org/licenses/${x.licence}.html` } : {}),
-      ...(x.releaseUrl ? { downloadUrl: x.releaseUrl } : {}),
+      ...(x.storeUrl || x.releaseUrl ? { downloadUrl: x.storeUrl || x.releaseUrl } : {}),
       ...(x.githubUrl ? {
         codeRepository: x.githubUrl,
         isAccessibleForFree: true,
-        installUrl: x.releaseUrl || x.githubUrl,
+        installUrl: x.storeUrl || x.releaseUrl || x.githubUrl,
         softwareHelp: abs(`/extensions/${x.slug}/#questions`),
       } : {}),
       applicationSubCategory: 'Chrome Extension',
@@ -1264,7 +1275,7 @@ ${site.leadIn}
 
 ## Extensions
 
-${exts.map(x => `- [${x.name}](${abs(`/extensions/${x.slug}/`)}): ${x.summary} ${x.price}, ${x.licence} licensed.${x.githubUrl ? ` Source: ${x.githubUrl}` : ' Not yet released.'}
+${exts.map(x => `- [${x.name}](${abs(`/extensions/${x.slug}/`)}): ${x.summary} ${x.price}, ${x.licence} licensed.${x.storeUrl ? ` Chrome Web Store: ${x.storeUrl}.` : ''}${x.githubUrl ? ` Source: ${x.githubUrl}` : ' Not yet released.'}
   - Permissions: ${[...(x.permissions || []), ...(x.hostPermissions || [])].map(p => p.name).join(', ')}
   - Version ${x.version}, updated ${fmtDate(x.updated)}. Runs on ${(site.browsers || []).join(', ')}.`).join('\n')}
 

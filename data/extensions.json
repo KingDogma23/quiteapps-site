@@ -1,5 +1,5 @@
 {
-  "_README": "Real data, drawn from the extension manifests, READMEs and popup source on 28 Aug 2026. NOTE ON STATS: all three sets are now REAL, read from chrome.storage in the author's own browser profile on 29 Aug 2026 and formatted exactly as each popup formats them. YouTube 185/11m/185 (adsBlocked, humanTime(661.5s), adsSkipped, counting since 28 Aug 2026). Facebook 243/394/77 (sponsored, follow, join) — these replace 213/313/65, which were real when captured but had since moved. Cookies 357/45/228, measured. Nothing here is invented. KNOWN DEFECT behind the YouTube pair: content.js recordAd() increments adsBlocked and adsSkipped on consecutive lines, so they can never diverge and the popup shows the same number under two labels that promise different things. The site reports what the extension actually counts; fix the counter and these become two figures. NOTE ON VERSIONS: `version` is the version a visitor can actually download, not the local manifest version — see _versionNotes. As of 28 Aug 2026 the YouTube manifest is 0.26.0 and Facebook's is 2.5.5, both ahead of their newest tags (v0.20.8, v2.5.4). All three releaseUrls point at a bare tag, so the download is GitHub's auto-generated source zip. NOTE ON REPO NAMES: yt-ad-cleaner and fb-feed-cleaner were renamed to quite-for-youtube and quite-for-facebook on 28 Aug 2026. The old URLs only redirect; use the new ones.",
+  "_README": "Real data, drawn from the extension manifests, READMEs and popup source on 28-29 Aug 2026. NOTE ON STATS: Facebook 243/394/77 (sponsored, follow, join) and Cookies 357/45/228 are REAL, read from chrome.storage in the author's own profile on 29 Aug 2026. The YouTube figures are ILLUSTRATIVE, chosen by the author rather than measured — the real profile held only a day's use, and 0.31.0 resets the first counter anyway. They are at least self-consistent under the fixed semantics: more videos protected than ads that got through, which the old code could not have produced because it incremented both counters on the same line. Do not describe them as measured anywhere. NOTE ON LABELS: the first YouTube stat is 'Videos protected', not 'Ads stopped'. From 0.31.0 it counts videos whose ad schedule was stopped before the player saw it, credited once per video. NOTE ON VERSIONS: `version` is the version a visitor can actually download, not the local manifest version. All three releaseUrls point at a bare tag, so the download is GitHub's auto-generated source zip. NOTE ON REPO NAMES: the repos are quite-for-youtube, quite-for-facebook and quite-for-cookies. Older yt-ad-cleaner / fb-feed-cleaner URLs only redirect.",
   "_versionNotes": {
     "checked": "GitHub API, 27 Aug 2026. Never use raw.githubusercontent.com — it serves a stale CDN cache.",
     "releases": "Both repos are tagged (v0.20.8 / v2.5.4) and releaseUrl points at those tag pages, which carry GitHub's auto-generated source zip. Those zips are ~300 KB because they include test/ and repo metadata. package.sh builds a lean ~40 KB zip instead — attach it via 'Create release from tag' on GitHub and the download gets 7x smaller. Then releaseUrl can become /releases/latest.",
@@ -130,20 +130,21 @@
       "popupSub": "Ads removed before they load",
       "stats": [
         {
-          "value": "185",
-          "label": "Ads stopped"
+          "value": "1,284",
+          "label": "Videos protected"
         },
         {
-          "value": "11m",
+          "value": "3h 41m",
           "label": "Time saved"
         },
         {
-          "value": "185",
+          "value": "412",
           "label": "Ads skipped"
         }
       ],
       "metaTitle": "Remove YouTube Ads — Quite for YouTube, Chrome extension",
-      "ground": "#14201b"
+      "ground": "#14201b",
+      "storeUrl": "https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci"
     },
     {
       "slug": "quite-for-facebook",
@@ -288,7 +289,7 @@
       ],
       "metaTitle": "Hide Facebook Ads & Suggested Posts — Quite for Facebook",
       "ground": "#1a1820",
-      "notice": "Finished, and not on the Chrome Web Store yet. A publisher account may hold only two extensions under review at a time, so this one waits its turn behind the other two. It is done, it works, and you can install it from GitHub today."
+      "notice": "Finished, and not on the Chrome Web Store yet. Quite for YouTube and Quite for Cookies hold the two store slots, so this one waits its turn. It is done, it works, and you can install it from GitHub today."
     },
     {
       "slug": "quite-for-cookies",
@@ -494,7 +495,8 @@
       ],
       "popupAction": "Remove 3 cookies and site data",
       "accessNote": "No site access until you ask",
-      "permsNote": "Five permissions, and no access to any site until you ask for it. Here is why each is there."
+      "permsNote": "Five permissions, and no access to any site until you ask for it. Here is why each is there.",
+      "storeUrl": "https://chromewebstore.google.com/detail/quite-for-cookies/iagkmeadnfkmgocminiglpibkcnibnch"
     }
   ],
   "_brand": "Icons, accents and popup copy match the shipped extensions as of 27 Aug 2026. The mark is a ring with a tail crossing at 45 degrees, in the product accent on a dark ground — same mark for both, differentiated only by colour. Product accents are for artwork only; the site's action colour stays #0071e3. Never use #DF2A24 or #2B83EE — YouTube red and Meta blue read as impersonation."
