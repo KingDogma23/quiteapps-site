@@ -976,7 +976,7 @@ function privacyPage(ogSet) {
 <section class="band band--tight">
   <div class="wrap">
     <h1 class="t-h2">Privacy</h1>
-    <p class="t-tiny" style="margin-top:.75rem">Last updated ${fmtDate(new Date().toISOString().slice(0, 10))}</p>
+    <p class="t-tiny" style="margin-top:.75rem">Last updated ${fmtDate(site.privacyUpdated)}</p>
     <div class="prose measure-l" style="margin-top:2.5rem">
       <p class="t-sub" style="color:var(--ink)">The short version: our extensions collect nothing about you,
         and this website sets no cookies, loads no webfonts and runs no analytics.</p>
@@ -1047,12 +1047,19 @@ function notFoundPage() {
 /* ------------------------------------------------------------- non-html */
 
 const sitemap = () => {
-  const today = new Date().toISOString().slice(0, 10);
+  // lastmod must say when the page's CONTENT changed, not when the build ran.
+  // Stamping today's date on every rebuild told crawlers all six pages changed
+  // every time anything shipped, which makes the signal worthless — and it put a
+  // "Last updated" on the privacy policy that moved without the policy moving.
+  // The home page lists every extension, so it is as fresh as the freshest of
+  // them or the site's own copy, whichever is later.
+  const newest = (...d) => d.filter(Boolean).sort().pop();
+  const home = newest(site.updated, ...exts.map(x => x.updated));
   const urls = [
-    { loc: BASE + '/', pri: '1.0', mod: today },
-    ...exts.map(x => ({ loc: abs(`/extensions/${x.slug}/`), pri: '0.8', mod: x.updated || today })),
-    { loc: abs('/contact/'), pri: '0.5', mod: today },
-    { loc: abs('/privacy/'), pri: '0.3', mod: today },
+    { loc: BASE + '/', pri: '1.0', mod: home },
+    ...exts.map(x => ({ loc: abs(`/extensions/${x.slug}/`), pri: '0.8', mod: x.updated || site.updated })),
+    { loc: abs('/contact/'), pri: '0.5', mod: site.updated },
+    { loc: abs('/privacy/'), pri: '0.3', mod: site.privacyUpdated },
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

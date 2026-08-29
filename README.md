@@ -51,6 +51,30 @@ error. That is why the document root approach is used instead of copying into
 `public_html` is left in place, unused, as a rollback: point the document root
 back at it to return to the last manually uploaded build.
 
+## Dates are data, not build time
+
+Nothing in the output reads the clock except the copyright year. `sitemap.xml`
+and the privacy page's "Last updated" line come from three hand-maintained
+fields:
+
+| Field | Where | Bump it when |
+|---|---|---|
+| `updated` (per extension) | `data/extensions.json` | that extension's page content changes |
+| `site.updated` | `data/site.json` | site copy changes — hero, principles, contact, footer |
+| `site.privacyUpdated` | `data/site.json` | the privacy policy itself changes |
+
+The home page's `lastmod` is the latest of `site.updated` and every extension's
+`updated`, since it lists them all.
+
+This used to be `new Date()`. Rebuilding on any day rewrote all six `lastmod`
+values, so the sitemap told crawlers every page had changed whenever anything
+shipped — and the privacy policy claimed a new "last updated" without a word of
+it having changed. `audit.mjs` now fails if any `lastmod` is not traceable to
+one of the fields above, so it cannot come back.
+
+To check the build really is clock-independent, run it under a faked date and
+diff `dist/` — only the copyright year should move.
+
 ## Adding or changing an extension
 
 Everything on the site comes from two files:

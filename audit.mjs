@@ -102,6 +102,17 @@ ok(locs.every(l => l.startsWith(site.url + '/')), 'all sitemap urls on the canon
 ok(!locs.some(l => l.includes('404')), '404 excluded from sitemap');
 ok(read('robots.txt').includes('Sitemap:'), 'robots.txt points at the sitemap');
 
+// lastmod has to describe the content, not the build. Stamping today's date on
+// every rebuild made all six pages look freshly changed whenever anything
+// shipped, so every date here must be traceable to site.json or an extension's
+// own `updated`. A build run tomorrow must produce the same sitemap.
+const mods = [...sm.matchAll(/<lastmod>(.*?)<\/lastmod>/g)].map(m => m[1]);
+const known = new Set([site.updated, site.privacyUpdated, ...exts.map(x => x.updated)].filter(Boolean));
+const today = new Date().toISOString().slice(0, 10);
+ok(mods.length === locs.length, `every sitemap url carries a lastmod`);
+ok(mods.every(d => known.has(d)), 'every lastmod comes from the data, not the build date');
+ok(!mods.some(d => d > today), 'no lastmod is in the future');
+
 /* ----------------------------------------------------- internal links */
 head('Links');
 let refs = 0, broken = 0;
