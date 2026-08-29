@@ -539,7 +539,7 @@ function tile(x, i, total) {
     <h2 class="tile__name">${esc(x.name)}</h2>
     <p class="tile__tag">${esc(x.tagline)}</p>
     <p class="tile__price">${esc(x.price)} &middot; ${esc(x.licence || 'MIT')} &middot; Open source</p>
-    ${x.noticeShort ? `<p class="tile__notice">${esc(x.noticeShort)}</p>` : ''}
+    ${x.noticeShort && !x.storeUrl ? `<p class="tile__notice">${esc(x.noticeShort)}</p>` : ''}
     <p class="btnrow" style="margin-top:1.1rem">
       ${x.storeUrl ? `<a class="btn btn--sm" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome</a>` : ''}
       <a class="clink" href="/extensions/${x.slug}/">Learn more ${CHEV}</a>
