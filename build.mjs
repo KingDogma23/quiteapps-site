@@ -1148,9 +1148,9 @@ function newsPage(ogSet) {
     <h1 class="t-h2">News</h1>
     <p class="t-sub measure-l" style="margin-top:.85rem">Releases, and what to do when a site changes
       its markup and an extension stops working. Newest first.</p>
-    <p class="linkrow" style="margin-top:1.25rem">
-      <a class="clink" href="/news/feed.xml">${RSS_ICON} Subscribe by RSS ${CHEV}</a>
-      ${site.facebook ? `<a class="clink" href="${esc(site.facebook)}" rel="noopener">Breakage notices on Facebook ${CHEV}</a>` : ''}
+    <p class="linkrow linkrow--start" style="margin-top:1.5rem">
+      <a class="clink clink--sm" href="/news/feed.xml">${RSS_ICON} Subscribe by RSS ${CHEV}</a>
+      ${site.facebook ? `<a class="clink clink--sm" href="${esc(site.facebook)}" rel="noopener">Breakage notices on Facebook ${CHEV}</a>` : ''}
     </p>
     <div class="posts measure-l" style="margin-top:3rem">
       ${news.length ? news.map(p => newsEntry(p)).join('') : '<p>Nothing yet.</p>'}
