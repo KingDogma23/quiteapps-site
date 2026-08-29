@@ -9,15 +9,15 @@
   <lastBuildDate>Sat, 29 Aug 2026 09:00:00 GMT</lastBuildDate>
   <item>
     <title>The YouTube counter was measuring the same thing twice</title>
-    <link>https://quiteapps.co.uk/news/#2026-08-29-counters</link>
-    <guid isPermaLink="true">https://quiteapps.co.uk/news/#2026-08-29-counters</guid>
+    <link>https://quiteapps.co.uk/news/2026-08-29-counters/</link>
+    <guid isPermaLink="true">https://quiteapps.co.uk/news/2026-08-29-counters/</guid>
     <pubDate>Sat, 29 Aug 2026 09:00:00 GMT</pubDate>
     <description><![CDATA[<p>The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive lines. One of them was never a measurement of anything.</p><p>Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different — videos where the ad schedule was stopped before the player ever saw it — and is labelled “Videos protected”, which is what it counts.</p><p>It credits once per video rather than once per stopped response, because a single video can produce several: a retry, or returning to the same watch page. Counting each would inflate the figure with work done twice on one video.</p><p>Stored totals are reset once on upgrade. Every previous value was a copy of the skip count, and carrying it forward would have left a number that was never true sitting under a label that now means something specific. The counter starts again from zero, honestly.</p>]]></description>
   </item>
   <item>
     <title>Quite for Cookies</title>
-    <link>https://quiteapps.co.uk/news/#2026-08-28-cookies</link>
-    <guid isPermaLink="true">https://quiteapps.co.uk/news/#2026-08-28-cookies</guid>
+    <link>https://quiteapps.co.uk/news/2026-08-28-cookies/</link>
+    <guid isPermaLink="true">https://quiteapps.co.uk/news/2026-08-28-cookies/</guid>
     <pubDate>Fri, 28 Aug 2026 09:00:00 GMT</pubDate>
     <description><![CDATA[<p>A third extension. It shows exactly what a site has stored in your browser — every cookie, grouped by the domain that set it, with sizes, and the ones holding your sign-in marked as such — and removes only what you pick.</p><p>Then it counts again and tells you what actually went: how many were removed, how many could not be, and how many the page has already set again because it is still open. Those numbers come from re-reading the browser rather than assuming the delete worked.</p><p>Version 0.20.0 adds a sweep that runs on its own. Turn on “clear a site when I close its last tab” and the job happens in the background as you browse, sparing sign-ins and anything on your spared list. Chrome&#39;s own session-only setting cannot do this — it waits until you close the entire browser. Every sweep is recorded, so a run that cleared nothing can never be mistaken for one that worked.</p><p>It installs with no access to any website. Access is asked for one domain at a time, at the moment you press the button, and is reversible from the popup.</p>]]></description>
   </item>

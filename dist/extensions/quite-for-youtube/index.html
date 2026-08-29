@@ -24,7 +24,7 @@
 <meta name="twitter:image" content="https://quiteapps.co.uk/og/quite-for-youtube.png">
 <meta name="twitter:title" content="Remove YouTube Ads — Quite for YouTube, Chrome extension">
 <meta name="twitter:description" content="Free, open-source Chrome extension that skips YouTube video ads and hides feed, sidebar, search and Shorts ad panels. One permission, no tracking.">
-<link rel="stylesheet" href="/styles.css?v=8e2f4a55">
+<link rel="stylesheet" href="/styles.css?v=664c9c45">
 <link rel="alternate" type="application/rss+xml" title="Quite Apps news" href="https://quiteapps.co.uk/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -266,7 +266,7 @@
     <a class="post__ext" href="/extensions/quite-for-youtube/">Quite for YouTube</a>
   </div>
   <h3 class="t-h3 post__title">
-    <a href="/news/#2026-08-29-counters">The YouTube counter was measuring the same thing twice</a>
+    <a href="/news/2026-08-29-counters/">The YouTube counter was measuring the same thing twice</a>
   </h3>
   <p>The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive lines. One of them was never a measurement of anything.</p><p>Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different — videos where the ad schedule was stopped before the player ever saw it — and is labelled “Videos protected”, which is what it counts.</p><p>It credits once per video rather than once per stopped response, because a single video can produce several: a retry, or returning to the same watch page. Counting each would inflate the figure with work done twice on one video.</p><p>Stored totals are reset once on upgrade. Every previous value was a copy of the skip count, and carrying it forward would have left a number that was never true sitting under a label that now means something specific. The counter starts again from zero, honestly.</p>
   

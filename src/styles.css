@@ -637,3 +637,20 @@ h1, h2, h3, h4 { font-weight: 600; letter-spacing: -.015em; line-height: 1.08; }
 /* Post titles are links, but the underline on a heading reads as emphasis. */
 .post__title a { text-decoration: none; }
 .post__title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ------------------------------------------- next / previous post */
+.postnav {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);
+}
+.postnav a { color: var(--ink); text-decoration: none; font-weight: 500; line-height: 1.35; }
+.postnav a:hover { color: var(--a); }
+.postnav a span {
+  display: block; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-3); font-weight: 600; margin-bottom: .35rem;
+}
+.postnav a:last-child { text-align: right; }
+@media (max-width: 34rem) {
+  .postnav { grid-template-columns: 1fr; }
+  .postnav a:last-child { text-align: left; }
+}

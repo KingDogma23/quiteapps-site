@@ -101,7 +101,9 @@ const newsPosts = existsSync(join(ROOT, 'data/news.json'))
   ? JSON.parse(readFileSync(join(ROOT, 'data/news.json'), 'utf8')).posts || []
   : [];
 // home, news (only when there are posts), contact, privacy
-ok(locs.length === exts.length + 3 + (newsPosts.length ? 1 : 0), `sitemap lists ${locs.length} urls`);
+// home, news index (only when there are posts), one page per post, contact, privacy
+ok(locs.length === exts.length + 3 + (newsPosts.length ? 1 + newsPosts.length : 0),
+   `sitemap lists ${locs.length} urls`);
 ok(locs.every(l => l.startsWith(site.url + '/')), 'all sitemap urls on the canonical host');
 ok(!locs.some(l => l.includes('404')), '404 excluded from sitemap');
 ok(read('robots.txt').includes('Sitemap:'), 'robots.txt points at the sitemap');

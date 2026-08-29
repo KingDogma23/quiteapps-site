@@ -228,6 +228,43 @@ function browserMock(x, variant) {
 
 /* ------------------------------------------------- open graph rendering */
 
+/**
+ * A card per news post.
+ *
+ * Anchors cannot carry their own og:image — a scraper handed /news/#some-post
+ * reads the tags on /news/ and shows whatever that page declares. So every
+ * post gets its own URL, and this draws its card: the headline set large, the
+ * date and tag above it, tinted with the extension's accent so a YouTube
+ * breakage and a Cookies release do not look like the same announcement.
+ */
+function ogNewsDoc(p) {
+  const x = exts.find(e => e.slug === p.ext);
+  const a = x ? accentOf(x) : site.accent;
+  return `<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+body{width:1200px;height:630px;background:#fff;color:#1d1d1f;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;padding:84px 88px;position:relative;
+  display:flex;flex-direction:column;justify-content:center}
+.rule{position:absolute;left:0;top:0;width:100%;height:10px;background:${a}}
+.meta{display:flex;align-items:center;gap:18px;margin-bottom:26px;font-size:24px;color:#6e6e73}
+.tag{background:${a};color:#fff;font-weight:600;padding:5px 16px;border-radius:980px;font-size:21px}
+h1{font-size:${p.title.length > 46 ? 68 : 82}px;font-weight:600;letter-spacing:-.019em;line-height:1.06;max-width:20ch}
+.foot{position:absolute;left:88px;right:88px;bottom:52px;display:flex;
+  align-items:center;justify-content:space-between;font-size:23px;color:#86868b}
+.foot b{font-weight:600;color:#1d1d1f}
+</style></head><body>
+<div class="rule"></div>
+<div class="meta">
+  <span>${esc(fmtDate(p.date))}</span>
+  ${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ''}
+  ${x ? `<span>${esc(x.name)}</span>` : ''}
+</div>
+<h1>${esc(p.title)}</h1>
+<div class="foot"><b>${esc(site.domain)}</b><span>News</span></div>
+</body></html>`;
+}
+
 function ogDoc(x) {
   const a = x ? accentOf(x) : site.accent;
   const title = x ? x.name : site.name;
@@ -312,14 +349,18 @@ function renderOgImages() {
   mkdirSync(OGSRC, { recursive: true });
   mkdirSync(join(DIST, 'og'), { recursive: true });
   const done = new Set();
-  for (const { name, x } of [{ name: 'default', x: null }, ...exts.map(e => ({ name: e.slug, x: e }))]) {
+  for (const { name, x, post } of [
+    { name: 'default', x: null },
+    ...exts.map(e => ({ name: e.slug, x: e })),
+    ...news.map(p => ({ name: `news-${p.id}`, post: p })),
+  ]) {
     const src = join(OGSRC, `${name}.html`);
     const out = join(DIST, 'og', `${name}.png`);
     // The default card is the one every shared link of the home page renders,
     // so a designed version matters most there.
     const supplied = name === 'default' ? brandFile('og-default.png') : null;
     if (supplied) { copyFileSync(supplied, out); done.add(name); continue; }
-    writeFileSync(src, ogDoc(x));
+    writeFileSync(src, post ? ogNewsDoc(post) : ogDoc(x));
     try {
       execFileSync(chrome, [
         '--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-sandbox',
@@ -1116,7 +1157,7 @@ function notFoundPage() {
 /* ------------------------------------------------------------- news */
 
 /** One post, used by the news page and, in short form, by extension pages. */
-function newsEntry(p, { heading = 'h2' } = {}) {
+function newsEntry(p, { heading = 'h2', linked = true } = {}) {
   const x = exts.find(e => e.slug === p.ext);
   return `
 <article class="post reveal" id="${esc(p.id)}">
@@ -1125,8 +1166,8 @@ function newsEntry(p, { heading = 'h2' } = {}) {
     ${p.tag ? `<span class="post__tag">${esc(p.tag)}</span>` : ''}
     ${x ? `<a class="post__ext" href="/extensions/${x.slug}/">${esc(x.name)}</a>` : ''}
   </div>
-  <${heading} class="t-h3 post__title">
-    <a href="/news/#${esc(p.id)}">${esc(p.title)}</a>
+  <${heading} class="${heading === 'h1' ? 't-h2' : 't-h3'} post__title">
+    ${linked ? `<a href="/news/${esc(p.id)}/">${esc(p.title)}</a>` : esc(p.title)}
   </${heading}>
   ${(p.body || []).map(t => `<p>${esc(t)}</p>`).join('')}
   ${(p.works || []).length ? `
@@ -1134,6 +1175,56 @@ function newsEntry(p, { heading = 'h2' } = {}) {
   <ul class="post__works">${p.works.map(w => `<li>${esc(w)}</li>`).join('')}</ul>` : ''}
   ${p.updated ? `<p class="t-tiny post__updated">Updated ${fmtDate(p.updated)}</p>` : ''}
 </article>`;
+}
+
+/** One post, on its own URL, so a share of it carries its own card. */
+function newsPostPage(p, ogSet) {
+  const x = exts.find(e => e.slug === p.ext);
+  const idx = news.indexOf(p);
+  const newer = news[idx - 1] || null;
+  const older = news[idx + 1] || null;
+  const ogName = `news-${p.id}`;
+  const main = `
+<div class="wrap crumbs">
+  <nav aria-label="Breadcrumb"><ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/news/">News</a></li>
+    <li><span aria-current="page">${esc(p.title)}</span></li>
+  </ol></nav>
+</div>
+<section class="band band--tight">
+  <div class="wrap">
+    <div class="posts measure-l">${newsEntry(p, { heading: 'h1', linked: false })}</div>
+    ${x ? `<p class="linkrow linkrow--start" style="margin-top:2.5rem">
+      <a class="clink clink--sm" href="/extensions/${x.slug}/">About ${esc(x.name)} ${CHEV}</a>
+      ${x.storeUrl ? `<a class="clink clink--sm" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome ${CHEV}</a>` : ''}
+    </p>` : ''}
+    <nav class="postnav measure-l" aria-label="More news">
+      ${newer ? `<a href="/news/${esc(newer.id)}/"><span>Newer</span>${esc(newer.title)}</a>` : '<span></span>'}
+      ${older ? `<a href="/news/${esc(older.id)}/"><span>Older</span>${esc(older.title)}</a>` : '<span></span>'}
+    </nav>
+    <p class="linkrow linkrow--start" style="margin-top:2.5rem">
+      <a class="clink clink--sm" href="/news/">All news ${CHEV}</a>
+      <a class="clink clink--sm" href="/news/feed.xml">${RSS_ICON} RSS ${CHEV}</a>
+    </p>
+  </div>
+</section>`;
+  return layout({
+    title: `${p.title} — ${site.name}`,
+    description: (p.body || [])[0] ? String(p.body[0]).slice(0, 155) : `News from ${site.name}.`,
+    path: `/news/${p.id}/`,
+    og: ogSet.has(ogName) ? ogName : (ogSet.has('default') ? 'default' : null),
+    jsonld: {
+      '@context': 'https://schema.org', '@type': 'BlogPosting',
+      headline: p.title, datePublished: p.date,
+      ...(p.updated ? { dateModified: p.updated } : {}),
+      url: abs(`/news/${p.id}/`),
+      author: { '@type': 'Organization', name: site.name, url: BASE },
+      publisher: { '@type': 'Organization', name: site.name, url: BASE },
+      ...(ogSet.has(ogName) ? { image: abs(`/og/${ogName}.png`) } : {}),
+    },
+    main,
+  });
 }
 
 function newsPage(ogSet) {
@@ -1171,7 +1262,7 @@ function newsPage(ogSet) {
         headline: p.title,
         datePublished: p.date,
         ...(p.updated ? { dateModified: p.updated } : {}),
-        url: abs(`/news/#${p.id}`),
+        url: abs(`/news/${p.id}/`),
         author: { '@type': 'Organization', name: site.name },
       })),
     },
@@ -1192,7 +1283,7 @@ const rssDate = (d) => new Date(`${d}T09:00:00Z`).toUTCString();
 
 function feed() {
   const items = news.map(p => {
-    const url = abs(`/news/#${p.id}`);
+    const url = abs(`/news/${p.id}/`);
     const html = [
       ...(p.body || []).map(t => `<p>${esc(t)}</p>`),
       ...((p.works || []).length
@@ -1237,6 +1328,7 @@ const sitemap = () => {
     { loc: BASE + '/', pri: '1.0', mod: home },
     ...exts.map(x => ({ loc: abs(`/extensions/${x.slug}/`), pri: '0.8', mod: x.updated || site.updated })),
     ...(news.length ? [{ loc: abs('/news/'), pri: '0.6', mod: news[0].updated || news[0].date }] : []),
+    ...news.map(p => ({ loc: abs(`/news/${p.id}/`), pri: '0.5', mod: p.updated || p.date })),
     { loc: abs('/contact/'), pri: '0.5', mod: site.updated },
     { loc: abs('/privacy/'), pri: '0.3', mod: site.privacyUpdated },
   ];
@@ -1386,6 +1478,7 @@ write('index.html', homePage(ogSet));
 for (const x of exts) write(`extensions/${x.slug}/index.html`, extPage(x, ogSet));
 write('contact/index.php', contactPage(ogSet));
 write('news/index.html', newsPage(ogSet));
+for (const p of news) write(`news/${p.id}/index.html`, newsPostPage(p, ogSet));
 write('news/feed.xml', feed());
 write('privacy/index.html', privacyPage(ogSet));
 write('404.html', notFoundPage());
