@@ -16,7 +16,7 @@
       "metaDescription": "Free, open-source Chrome extension that skips YouTube video ads and hides feed, sidebar, search and Shorts ad panels. One permission, no tracking.",
       "description": [
         "Quite for YouTube deals with advertising in two places at once. Video ads are got past: Skip is clicked the moment it appears, and unskippable ads are fast-forwarded. The ad panels scattered through the homepage, sidebar, search results and masthead never paint at all, because they are hidden before the page renders.",
-        "The interesting part is what it does not do. YouTube's responses are never modified. Instead the ad schedule is stopped at source: the request the player sends is declared as an ad unit rather than a watch page, and YouTube answers without an ad schedule of its own. Nothing is deleted and nothing is faked, so there is no mismatch between what the server sent and what the player sees. That mismatch is exactly what YouTube's anti-adblock check looks for."
+        "There is a second setting, Strip ad schedule, which removes the ad list from the video's data before the player reads it. It works by declaring the player's request as an ad unit rather than a watch page, so nothing in YouTube's answer is edited after the fact. We spent a day trying to measure how many adverts that actually prevents and could not show a clear effect, so we no longer claim one. It is on by default and it does no harm; we would rather describe it than sell it."
       ],
       "status": "live",
       "price": "Free",
@@ -62,8 +62,8 @@
           "body": "Product shelves under videos can go too. Off by default, because some people actually use them."
         },
         {
-          "title": "Stopped at source, not faked",
-          "body": "The ad schedule is never edited after the fact. That is what keeps the session out of YouTube's anti-adblock net, and why videos still play normally."
+          "title": "Nothing is faked",
+          "body": "The ad schedule is never edited after the fact, which is what keeps the session out of YouTube's anti-adblock net. Whether it also prevents adverts is something we tried to measure and could not demonstrate, so the listing no longer says it does."
         },
         {
           "title": "Diagnostics built in",
@@ -77,9 +77,9 @@
           "what": "Master switch."
         },
         {
-          "name": "Stop ads loading",
+          "name": "Strip ad schedule",
           "default": "On",
-          "what": "Asks YouTube for the video in a way that comes back without ads."
+          "what": "Removes the ad list from the video's data before the player reads it."
         },
         {
           "name": "Skip video ads",
@@ -127,19 +127,15 @@
         }
       ],
       "privacy": "Quite for YouTube runs only on youtube.com and has no permission to access any other site. It sends nothing anywhere. No server, no analytics, no account, no tracking. The only thing it stores is your checkbox settings, in your own browser.",
-      "popupSub": "Ads removed before they load",
+      "popupSub": "Ads skipped as they appear",
       "stats": [
         {
-          "value": "1,284",
-          "label": "Videos protected"
+          "value": "412",
+          "label": "Ads skipped"
         },
         {
           "value": "3h 41m",
           "label": "Time saved"
-        },
-        {
-          "value": "412",
-          "label": "Ads skipped"
         }
       ],
       "metaTitle": "Remove YouTube Ads: Quite for YouTube, Chrome extension",
