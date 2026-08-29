@@ -9,7 +9,7 @@
  * every page, the sitemap and all structured data regenerate. No dependencies.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, copyFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { join, dirname } from 'node:path';
@@ -21,6 +21,13 @@ const OGSRC = join(ROOT, '.ogsrc');
 
 const site = JSON.parse(readFileSync(join(ROOT, 'data/site.json'), 'utf8'));
 const exts = JSON.parse(readFileSync(join(ROOT, 'data/extensions.json'), 'utf8')).extensions;
+// Kept in the order the file gives, newest first: an editor reading the JSON
+// sees the same order as the page, and a post cannot be silently reordered by
+// a date typo.
+const news = existsSync(join(ROOT, 'data/news.json'))
+  ? JSON.parse(readFileSync(join(ROOT, 'data/news.json'), 'utf8')).posts || []
+  : [];
+const latestNewsFor = (slug) => news.find(p => p.ext === slug) || null;
 const BASE = site.url.replace(/\/+$/, '');
 
 /* ---------------------------------------------------------------- utils */
@@ -76,6 +83,10 @@ function icon(x, cls = 'icon', px = 56) {
 
 const CUP = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none"><path d="M4 8h13v6.5A5.5 5.5 0 0 1 11.5 20h-2A5.5 5.5 0 0 1 4 14.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M17 9.5h1.75a2.75 2.75 0 0 1 0 5.5H17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 2.5v2.2M12 2.5v2.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>`;
 const CHEV = '<span aria-hidden="true">&rsaquo;</span>';
+const RSS_ICON = '<svg class="rss" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">'
+  + '<circle cx="3" cy="13" r="2"/>'
+  + '<path d="M1 8.5a6.5 6.5 0 0 1 6.5 6.5h2.6A9.1 9.1 0 0 0 1 5.9z"/>'
+  + '<path d="M1 3.4A11.6 11.6 0 0 1 12.6 15h2.6A14.2 14.2 0 0 0 1 .8z"/></svg>';
 
 /** The extension's own popup, drawn to scale — icon, master toggle, all-time
  *  stats and the option list. This is the product shot. */
@@ -248,8 +259,29 @@ function findChrome() {
   ].find(existsSync) || null;
 }
 
+/**
+ * Brand assets supplied by hand, in src/brand/.
+ *
+ * The build can draw a favicon, a touch icon and an OG card from the accent
+ * colour, which is what it did before the rename. Anything in src/brand/ wins:
+ * these are the designed versions, and a generated stand-in silently replacing
+ * one is how the site went on serving a pre-rename green OG card long after the
+ * brand had changed. Missing files fall back to generation, so the build still
+ * works on a clean checkout.
+ */
+const BRAND = join(ROOT, 'src', 'brand');
+const brandFile = (name) => {
+  const p = join(BRAND, name);
+  return existsSync(p) ? p : null;
+};
+
 /** 180x180 PNG for iOS home screens, rendered from the same mark as the favicon. */
 function renderTouchIcon(chrome) {
+  const supplied = brandFile('apple-touch-icon.png');
+  if (supplied) {
+    copyFileSync(supplied, join(DIST, 'apple-touch-icon.png'));
+    return true;
+  }
   if (!chrome) return false;
   mkdirSync(OGSRC, { recursive: true });
   const src = join(OGSRC, 'touch.html');
@@ -283,6 +315,10 @@ function renderOgImages() {
   for (const { name, x } of [{ name: 'default', x: null }, ...exts.map(e => ({ name: e.slug, x: e }))]) {
     const src = join(OGSRC, `${name}.html`);
     const out = join(DIST, 'og', `${name}.png`);
+    // The default card is the one every shared link of the home page renders,
+    // so a designed version matters most there.
+    const supplied = name === 'default' ? brandFile('og-default.png') : null;
+    if (supplied) { copyFileSync(supplied, out); done.add(name); continue; }
     writeFileSync(src, ogDoc(x));
     try {
       execFileSync(chrome, [
@@ -314,6 +350,7 @@ const gnav = () => `
     <ul>
       <li><a class="gnav__link" href="/#extensions">Extensions</a></li>
       <li class="is-optional"><a class="gnav__link" href="/#approach">Approach</a></li>
+      <li><a class="gnav__link" href="/news/">News</a></li>
       <li><a class="gnav__link" href="/contact/">Contact</a></li>
       ${site.donate ? `<li class="gnav__coffee"><a class="gnav__link" href="${esc(site.donate)}" rel="noopener">
         ${CUP}<span>Buy me a coffee</span></a></li>` : ''}
@@ -349,7 +386,9 @@ const footer = () => `
         <h2>Studio</h2>
         <ul>
           <li><a href="/#approach">Approach</a></li>
+          <li><a href="/news/">News</a></li>
           <li><a href="/contact/">Contact</a></li>
+          ${site.facebook ? `<li><a href="${esc(site.facebook)}" rel="noopener">Breakage notices</a></li>` : ''}
         </ul>
       </div>
       <div>
@@ -426,6 +465,7 @@ function layout({ title, description, path, og, jsonld, main, local = '', bodyAt
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <link rel="stylesheet" href="/styles.css?v=${CSS_V}">
+<link rel="alternate" type="application/rss+xml" title="${esc(site.name)} news" href="${abs('/news/feed.xml')}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 ${existsSync(join(DIST, 'apple-touch-icon.png')) ? '<link rel="apple-touch-icon" href="/apple-touch-icon.png">' : ''}
 <script>document.documentElement.classList.add('js')</script>
@@ -456,6 +496,7 @@ function tile(x, i, total) {
     <h2 class="tile__name">${esc(x.name)}</h2>
     <p class="tile__tag">${esc(x.tagline)}</p>
     <p class="tile__price">${esc(x.price)} &middot; ${esc(x.licence || 'MIT')} &middot; Open source</p>
+    ${x.notice ? `<p class="tile__notice">${esc(x.notice)}</p>` : ''}
     <p class="linkrow">
       <a class="clink" href="/extensions/${x.slug}/">Learn more ${CHEV}</a>
       ${x.githubUrl ? `<a class="clink" href="${esc(x.githubUrl)}" rel="noopener">Source ${CHEV}</a>`
@@ -616,6 +657,7 @@ function extPage(x, ogSet) {
       ${(site.browsers || []).slice(0, 4).map(b => `<span class="pill">${esc(b)}</span>`).join('')}
     </p>
     <p class="btnrow">${cta}</p>
+    ${x.notice ? `<p class="notice">${esc(x.notice)}</p>` : ''}
     <p class="ahero__note">${nPerms} permission${nPerms === 1 ? '' : 's'} &middot; ${esc(x.accessNote || `Runs only on ${x.reloadTarget}`)} &middot; No tracking &middot; ${esc(x.licence)} licensed</p>
   </div>
   <div class="wrapw" style="margin-top:clamp(2.5rem,5vw,4rem)">
@@ -681,6 +723,21 @@ ${!(x.githubUrl || x.releaseUrl) ? '' : `
     </p>` : ''}
   </div>
 </section>`}
+
+${latestNewsFor(x.slug) ? `
+<section class="band" id="latest">
+  <div class="wrap">
+    <div class="band__head center reveal">
+      <h2 class="t-h2">Latest news</h2>
+      <p class="t-sub" style="margin-top:.85rem">Releases and breakages for ${esc(x.name)}.</p>
+    </div>
+    <div class="posts measure-l">${newsEntry(latestNewsFor(x.slug), { heading: 'h3' })}</div>
+    <p class="center" style="margin-top:2rem">
+      <a class="clink" href="/news/">All news ${CHEV}</a>
+      <a class="clink" href="/news/feed.xml" style="margin-left:1rem">${RSS_ICON} RSS ${CHEV}</a>
+    </p>
+  </div>
+</section>` : ''}
 
 ${(x.options || []).length ? `
 <section class="band band--alt" id="options">
@@ -1044,6 +1101,116 @@ function notFoundPage() {
   });
 }
 
+
+/* ------------------------------------------------------------- news */
+
+/** One post, used by the news page and, in short form, by extension pages. */
+function newsEntry(p, { heading = 'h2' } = {}) {
+  const x = exts.find(e => e.slug === p.ext);
+  return `
+<article class="post reveal" id="${esc(p.id)}">
+  <div class="post__meta">
+    <time datetime="${esc(p.date)}">${fmtDate(p.date)}</time>
+    ${p.tag ? `<span class="post__tag">${esc(p.tag)}</span>` : ''}
+    ${x ? `<a class="post__ext" href="/extensions/${x.slug}/">${esc(x.name)}</a>` : ''}
+  </div>
+  <${heading} class="t-h3 post__title">
+    <a href="/news/#${esc(p.id)}">${esc(p.title)}</a>
+  </${heading}>
+  ${(p.body || []).map(t => `<p>${esc(t)}</p>`).join('')}
+  ${(p.works || []).length ? `
+  <p class="post__works-head">What still works</p>
+  <ul class="post__works">${p.works.map(w => `<li>${esc(w)}</li>`).join('')}</ul>` : ''}
+  ${p.updated ? `<p class="t-tiny post__updated">Updated ${fmtDate(p.updated)}</p>` : ''}
+</article>`;
+}
+
+function newsPage(ogSet) {
+  const main = `
+<div class="wrap crumbs">
+  <nav aria-label="Breadcrumb"><ol>
+    <li><a href="/">Home</a></li><li><span aria-current="page">News</span></li>
+  </ol></nav>
+</div>
+<section class="band band--tight">
+  <div class="wrap">
+    <h1 class="t-h2">News</h1>
+    <p class="t-sub measure-l" style="margin-top:.85rem">Releases, and what to do when a site changes
+      its markup and an extension stops working. Newest first.</p>
+    <p class="linkrow" style="margin-top:1.25rem">
+      <a class="clink" href="/news/feed.xml">${RSS_ICON} Subscribe by RSS ${CHEV}</a>
+      ${site.facebook ? `<a class="clink" href="${esc(site.facebook)}" rel="noopener">Breakage notices on Facebook ${CHEV}</a>` : ''}
+    </p>
+    <div class="posts measure-l" style="margin-top:3rem">
+      ${news.length ? news.map(p => newsEntry(p)).join('') : '<p>Nothing yet.</p>'}
+    </div>
+  </div>
+</section>`;
+  return layout({
+    title: `News — ${site.name}`,
+    description: 'Release notes and breakage notices for the Quite Apps extensions, newest first.',
+    path: '/news/',
+    og: ogSet.has('default') ? 'default' : null,
+    jsonld: {
+      '@context': 'https://schema.org', '@type': 'Blog',
+      name: `${site.name} news`, url: abs('/news/'),
+      publisher: { '@type': 'Organization', name: site.name, url: BASE },
+      blogPost: news.map(p => ({
+        '@type': 'BlogPosting',
+        headline: p.title,
+        datePublished: p.date,
+        ...(p.updated ? { dateModified: p.updated } : {}),
+        url: abs(`/news/#${p.id}`),
+        author: { '@type': 'Organization', name: site.name },
+      })),
+    },
+    main,
+  });
+}
+
+/**
+ * RSS 2.0, full text rather than teasers.
+ *
+ * A feed that carries an excerpt makes the reader fetch the page to learn
+ * anything, which defeats the point for the one audience most likely to use it:
+ * someone whose extension just broke and who wants to know why without opening
+ * a browser tab. guid is the permalink and never changes once published, so
+ * editing a post in place updates the entry rather than creating a second one.
+ */
+const rssDate = (d) => new Date(`${d}T09:00:00Z`).toUTCString();
+
+function feed() {
+  const items = news.map(p => {
+    const url = abs(`/news/#${p.id}`);
+    const html = [
+      ...(p.body || []).map(t => `<p>${esc(t)}</p>`),
+      ...((p.works || []).length
+        ? [`<p><strong>What still works</strong></p><ul>${p.works.map(w => `<li>${esc(w)}</li>`).join('')}</ul>`]
+        : []),
+      ...(p.updated ? [`<p><em>Updated ${fmtDate(p.updated)}</em></p>`] : []),
+    ].join('');
+    return `  <item>
+    <title>${esc(p.title)}</title>
+    <link>${url}</link>
+    <guid isPermaLink="true">${url}</guid>
+    <pubDate>${rssDate(p.updated || p.date)}</pubDate>
+    <description><![CDATA[${html}]]></description>
+  </item>`;
+  }).join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>${esc(site.name)}</title>
+  <link>${abs('/news/')}</link>
+  <atom:link href="${abs('/news/feed.xml')}" rel="self" type="application/rss+xml"/>
+  <description>Release notes and breakage notices for the ${esc(site.name)} extensions.</description>
+  <language>en-GB</language>
+${news.length ? `  <lastBuildDate>${rssDate(news[0].updated || news[0].date)}</lastBuildDate>\n` : ''}${items}
+</channel>
+</rss>
+`;
+}
+
 /* ------------------------------------------------------------- non-html */
 
 const sitemap = () => {
@@ -1058,6 +1225,7 @@ const sitemap = () => {
   const urls = [
     { loc: BASE + '/', pri: '1.0', mod: home },
     ...exts.map(x => ({ loc: abs(`/extensions/${x.slug}/`), pri: '0.8', mod: x.updated || site.updated })),
+    ...(news.length ? [{ loc: abs('/news/'), pri: '0.6', mod: news[0].updated || news[0].date }] : []),
     { loc: abs('/contact/'), pri: '0.5', mod: site.updated },
     { loc: abs('/privacy/'), pri: '0.3', mod: site.privacyUpdated },
   ];
@@ -1162,6 +1330,12 @@ ${site.forceHttps ? `  # Force HTTPS
   RewriteRule ^(.*)index\\.html$ /$1 [R=301,L]
 </IfModule>
 
+# Apache maps .xml to text/xml, which some readers refuse. Scoped to the feed
+# by name so sitemap.xml keeps its own type.
+<Files "feed.xml">
+  ForceType application/rss+xml
+</Files>
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml \\
     application/javascript application/json application/xml image/svg+xml
@@ -1200,13 +1374,15 @@ const ogSet = renderOgImages();
 write('index.html', homePage(ogSet));
 for (const x of exts) write(`extensions/${x.slug}/index.html`, extPage(x, ogSet));
 write('contact/index.php', contactPage(ogSet));
+write('news/index.html', newsPage(ogSet));
+write('news/feed.xml', feed());
 write('privacy/index.html', privacyPage(ogSet));
 write('404.html', notFoundPage());
 write('styles.css', CSS_TEXT);
 write('sitemap.xml', sitemap());
 write('robots.txt', robots());
 write('llms.txt', llmsTxt());
-write('favicon.svg', favicon());
+write('favicon.svg', brandFile('favicon.svg') ? readFileSync(brandFile('favicon.svg'), 'utf8') : favicon());
 write('.htaccess', htaccess());
 // No visible twin in dist/: deploys are via git now, and anything in dist/ is
 // served, which would publish the server config at /htaccess.txt.

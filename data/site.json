@@ -67,6 +67,7 @@
   "installFirstZip": "On GitHub, click the green <b>Code</b> button, choose <b>Download ZIP</b>, and unzip it. You need the <b>folder</b> — keep it somewhere permanent, because moving or deleting it stops the extension working.",
   "sslLive": true,
   "forceHttps": false,
-  "updated": "2026-08-28",
-  "privacyUpdated": "2026-08-28"
+  "updated": "2026-08-29",
+  "privacyUpdated": "2026-08-28",
+  "facebook": "https://www.facebook.com/quiteapps/"
 }

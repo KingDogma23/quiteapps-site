@@ -1,0 +1,46 @@
+{
+  "_README": "Reverse-chronological. Newest first — the build does not sort, so keep them in order. `id` becomes the anchor (/news/#id) and the RSS guid, so never change one once published. `date` is the publication date and drives both the page and the feed; `updated` is optional and only for a post edited in place after publishing. `ext` ties a post to an extension slug so its page can show the latest entry inline. `body` is an array of paragraphs, rendered as-is into both the page and the feed — the feed carries the full text, not a teaser. `works` is the 'what still works' list used by breakage posts; omit it elsewhere. See _template at the bottom.",
+  "posts": [
+    {
+      "id": "2026-08-29-counters",
+      "date": "2026-08-29",
+      "title": "The YouTube counter was measuring the same thing twice",
+      "ext": "quite-for-youtube",
+      "tag": "Fixed",
+      "body": [
+        "The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive lines. One of them was never a measurement of anything.",
+        "Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different — videos where the ad schedule was stopped before the player ever saw it — and is labelled “Videos protected”, which is what it counts.",
+        "It credits once per video rather than once per stopped response, because a single video can produce several: a retry, or returning to the same watch page. Counting each would inflate the figure with work done twice on one video.",
+        "Stored totals are reset once on upgrade. Every previous value was a copy of the skip count, and carrying it forward would have left a number that was never true sitting under a label that now means something specific. The counter starts again from zero, honestly."
+      ]
+    },
+    {
+      "id": "2026-08-28-cookies",
+      "date": "2026-08-28",
+      "title": "Quite for Cookies",
+      "ext": "quite-for-cookies",
+      "tag": "New",
+      "body": [
+        "A third extension. It shows exactly what a site has stored in your browser — every cookie, grouped by the domain that set it, with sizes, and the ones holding your sign-in marked as such — and removes only what you pick.",
+        "Then it counts again and tells you what actually went: how many were removed, how many could not be, and how many the page has already set again because it is still open. Those numbers come from re-reading the browser rather than assuming the delete worked.",
+        "Version 0.20.0 adds a sweep that runs on its own. Turn on “clear a site when I close its last tab” and the job happens in the background as you browse, sparing sign-ins and anything on your spared list. Chrome's own session-only setting cannot do this — it waits until you close the entire browser. Every sweep is recorded, so a run that cleared nothing can never be mistaken for one that worked.",
+        "It installs with no access to any website. Access is asked for one domain at a time, at the moment you press the button, and is reversible from the popup."
+      ]
+    }
+  ],
+  "_template": {
+    "id": "YYYY-MM-DD-slug",
+    "date": "YYYY-MM-DD",
+    "title": "What broke, in plain words",
+    "ext": "quite-for-youtube",
+    "tag": "Breakage",
+    "body": [
+      "What changed on their side, and what you are seeing because of it.",
+      "What we are doing about it, and roughly when. If the fix is written but waiting on store review, say so — the wait is days, not hours, and people deserve to know which one they are in."
+    ],
+    "works": [
+      "The parts still working, listed one by one",
+      "So nobody uninstalls a thing that is 90% fine"
+    ]
+  }
+}

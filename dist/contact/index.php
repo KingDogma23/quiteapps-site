@@ -81,7 +81,8 @@ function err(array $e, string $k): string {
 <meta name="twitter:image" content="https://quiteapps.co.uk/og/default.png">
 <meta name="twitter:title" content="Contact — Quite Apps">
 <meta name="twitter:description" content="Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.">
-<link rel="stylesheet" href="/styles.css?v=144e2f37">
+<link rel="stylesheet" href="/styles.css?v=8e2f4a55">
+<link rel="alternate" type="application/rss+xml" title="Quite Apps news" href="https://quiteapps.co.uk/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script>document.documentElement.classList.add('js')</script>
@@ -96,6 +97,7 @@ function err(array $e, string $k): string {
     <ul>
       <li><a class="gnav__link" href="/#extensions">Extensions</a></li>
       <li class="is-optional"><a class="gnav__link" href="/#approach">Approach</a></li>
+      <li><a class="gnav__link" href="/news/">News</a></li>
       <li><a class="gnav__link" href="/contact/">Contact</a></li>
       <li class="gnav__coffee"><a class="gnav__link" href="https://buymeacoffee.com/kingdogma23" rel="noopener">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none"><path d="M4 8h13v6.5A5.5 5.5 0 0 1 11.5 20h-2A5.5 5.5 0 0 1 4 14.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M17 9.5h1.75a2.75 2.75 0 0 1 0 5.5H17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 2.5v2.2M12 2.5v2.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></li>
@@ -183,7 +185,9 @@ function err(array $e, string $k): string {
         <h2>Studio</h2>
         <ul>
           <li><a href="/#approach">Approach</a></li>
+          <li><a href="/news/">News</a></li>
           <li><a href="/contact/">Contact</a></li>
+          <li><a href="https://www.facebook.com/quiteapps/" rel="noopener">Breakage notices</a></li>
         </ul>
       </div>
       <div>

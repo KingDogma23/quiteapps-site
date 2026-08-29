@@ -38,6 +38,12 @@ ErrorDocument 404 /404.html
   RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
 </IfModule>
 
+# Apache maps .xml to text/xml, which some readers refuse. Scoped to the feed
+# by name so sitemap.xml keeps its own type.
+<Files "feed.xml">
+  ForceType application/rss+xml
+</Files>
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml \
     application/javascript application/json application/xml image/svg+xml

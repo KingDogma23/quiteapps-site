@@ -287,7 +287,8 @@
         }
       ],
       "metaTitle": "Hide Facebook Ads & Suggested Posts — Quite for Facebook",
-      "ground": "#1a1820"
+      "ground": "#1a1820",
+      "notice": "Finished, and not on the Chrome Web Store yet. A publisher account may hold only two extensions under review at a time, so this one waits its turn behind the other two. It is done, it works, and you can install it from GitHub today."
     },
     {
       "slug": "quite-for-cookies",

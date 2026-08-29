@@ -97,7 +97,11 @@ for (const f of ['sitemap.xml', 'robots.txt', 'llms.txt', 'favicon.svg',
 
 const sm = read('sitemap.xml');
 const locs = [...sm.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-ok(locs.length === exts.length + 3, `sitemap lists ${locs.length} urls`);  // home, contact, privacy
+const newsPosts = existsSync(join(ROOT, 'data/news.json'))
+  ? JSON.parse(readFileSync(join(ROOT, 'data/news.json'), 'utf8')).posts || []
+  : [];
+// home, news (only when there are posts), contact, privacy
+ok(locs.length === exts.length + 3 + (newsPosts.length ? 1 : 0), `sitemap lists ${locs.length} urls`);
 ok(locs.every(l => l.startsWith(site.url + '/')), 'all sitemap urls on the canonical host');
 ok(!locs.some(l => l.includes('404')), '404 excluded from sitemap');
 ok(read('robots.txt').includes('Sitemap:'), 'robots.txt points at the sitemap');
@@ -107,7 +111,11 @@ ok(read('robots.txt').includes('Sitemap:'), 'robots.txt points at the sitemap');
 // shipped, so every date here must be traceable to site.json or an extension's
 // own `updated`. A build run tomorrow must produce the same sitemap.
 const mods = [...sm.matchAll(/<lastmod>(.*?)<\/lastmod>/g)].map(m => m[1]);
-const known = new Set([site.updated, site.privacyUpdated, ...exts.map(x => x.updated)].filter(Boolean));
+const known = new Set([
+  site.updated, site.privacyUpdated,
+  ...exts.map(x => x.updated),
+  ...newsPosts.flatMap(p => [p.date, p.updated]),
+].filter(Boolean));
 const today = new Date().toISOString().slice(0, 10);
 ok(mods.length === locs.length, `every sitemap url carries a lastmod`);
 ok(mods.every(d => known.has(d)), 'every lastmod comes from the data, not the build date');
