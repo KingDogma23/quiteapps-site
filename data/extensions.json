@@ -1,5 +1,5 @@
 {
-  "_README": "Real data, drawn from the extension manifests, READMEs and popup source on 28 Aug 2026. NOTE ON STATS: the Quite for Facebook figures (213/313/65) are real, taken from the live popup, and the Quite for Cookies figures (357/45/228) are real, measured. The Quite for YouTube figures are PLACEHOLDERS — replace them with real ones from its diagnostics before launch. NOTE ON VERSIONS: `version` is the version a visitor can actually download, not the local manifest version — see _versionNotes. As of 28 Aug 2026 the YouTube manifest is 0.26.0 and Facebook's is 2.5.5, both ahead of their newest tags (v0.20.8, v2.5.4). All three link to a bare tag rather than a formal GitHub Release, so the download is GitHub's auto-generated source zip. NOTE ON REPO NAMES: yt-ad-cleaner and fb-feed-cleaner were renamed to quite-for-youtube and quite-for-facebook on 28 Aug 2026. The old URLs only redirect; use the new ones.",
+  "_README": "Real data, drawn from the extension manifests, READMEs and popup source on 28 Aug 2026. NOTE ON STATS: all three sets are now REAL, read from chrome.storage in the author's own browser profile on 29 Aug 2026 and formatted exactly as each popup formats them. YouTube 185/11m/185 (adsBlocked, humanTime(661.5s), adsSkipped, counting since 28 Aug 2026). Facebook 243/394/77 (sponsored, follow, join) — these replace 213/313/65, which were real when captured but had since moved. Cookies 357/45/228, measured. Nothing here is invented. KNOWN DEFECT behind the YouTube pair: content.js recordAd() increments adsBlocked and adsSkipped on consecutive lines, so they can never diverge and the popup shows the same number under two labels that promise different things. The site reports what the extension actually counts; fix the counter and these become two figures. NOTE ON VERSIONS: `version` is the version a visitor can actually download, not the local manifest version — see _versionNotes. As of 28 Aug 2026 the YouTube manifest is 0.26.0 and Facebook's is 2.5.5, both ahead of their newest tags (v0.20.8, v2.5.4). All three releaseUrls point at a bare tag, so the download is GitHub's auto-generated source zip. NOTE ON REPO NAMES: yt-ad-cleaner and fb-feed-cleaner were renamed to quite-for-youtube and quite-for-facebook on 28 Aug 2026. The old URLs only redirect; use the new ones.",
   "_versionNotes": {
     "checked": "GitHub API, 27 Aug 2026. Never use raw.githubusercontent.com — it serves a stale CDN cache.",
     "releases": "Both repos are tagged (v0.20.8 / v2.5.4) and releaseUrl points at those tag pages, which carry GitHub's auto-generated source zip. Those zips are ~300 KB because they include test/ and repo metadata. package.sh builds a lean ~40 KB zip instead — attach it via 'Create release from tag' on GitHub and the download gets 7x smaller. Then releaseUrl can become /releases/latest.",
@@ -130,15 +130,15 @@
       "popupSub": "Ads removed before they load",
       "stats": [
         {
-          "value": "1,284",
+          "value": "185",
           "label": "Ads stopped"
         },
         {
-          "value": "3h 41m",
+          "value": "11m",
           "label": "Time saved"
         },
         {
-          "value": "412",
+          "value": "185",
           "label": "Ads skipped"
         }
       ],
@@ -274,15 +274,15 @@
       "popupSub": "Feed clutter hidden as it loads",
       "stats": [
         {
-          "value": "213",
+          "value": "243",
           "label": "Ads hidden"
         },
         {
-          "value": "313",
+          "value": "394",
           "label": "Suggestions"
         },
         {
-          "value": "65",
+          "value": "77",
           "label": "Groups"
         }
       ],
