@@ -3,7 +3,8 @@
   "_versionNotes": {
     "checked": "GitHub API, 27 Aug 2026. Never use raw.githubusercontent.com — it serves a stale CDN cache.",
     "releases": "Both repos are tagged (v0.20.8 / v2.5.4) and releaseUrl points at those tag pages, which carry GitHub's auto-generated source zip. Those zips are ~300 KB because they include test/ and repo metadata. package.sh builds a lean ~40 KB zip instead — attach it via 'Create release from tag' on GitHub and the download gets 7x smaller. Then releaseUrl can become /releases/latest.",
-    "size": "Reflects the GitHub source zip a visitor actually downloads, not the packaged extension."
+    "size": "Reflects the GitHub source zip a visitor actually downloads, not the packaged extension.",
+    "cookies": "Store ships 0.22.0, published 29 Aug 2026. Newest GitHub tag is v0.20.0, so releaseUrl is deliberately empty and GitHub is offered as source rather than as a download. Tag v0.22.0 and restore releaseUrl to give the unpacked route back."
   },
   "extensions": [
     {
@@ -306,15 +307,15 @@
       "priceValue": "0",
       "currency": "GBP",
       "licence": "MIT",
-      "version": "0.20.0",
+      "version": "0.22.0",
       "released": "2026-08-27",
-      "updated": "2026-08-28",
+      "updated": "2026-08-29",
       "size": "About 77 KB",
       "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
       "manifest": "Manifest V3",
       "reloadTarget": "site you were looking at",
       "githubUrl": "https://github.com/KingDogma23/quite-for-cookies",
-      "releaseUrl": "https://github.com/KingDogma23/quite-for-cookies/releases/tag/v0.20.0",
+      "releaseUrl": "",
       "permissions": [
         {
           "name": "activeTab",

@@ -14,7 +14,7 @@ We are a small independent studio in the UK. We make Chrome extensions that take
   - Version 2.5.4, updated 27 August 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.
 - [Quite for Cookies](https://quiteapps.co.uk/extensions/quite-for-cookies/): Shows exactly what a site has stored in your browser, deletes only what you pick, then counts again and tells you what actually went. It can also clear a site on its own when you close its last tab. Free, MIT licensed. Chrome Web Store: https://chromewebstore.google.com/detail/quite-for-cookies/iagkmeadnfkmgocminiglpibkcnibnch. Source: https://github.com/KingDogma23/quite-for-cookies
   - Permissions: activeTab, cookies, browsingData, scripting, storage, None at install
-  - Version 0.20.0, updated 28 August 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.
+  - Version 0.22.0, updated 29 August 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.
 
 ## How the extensions are distributed
 
