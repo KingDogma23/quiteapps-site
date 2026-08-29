@@ -657,3 +657,18 @@ h1, h2, h3, h4 { font-weight: 600; letter-spacing: -.015em; line-height: 1.08; }
   .postnav { grid-template-columns: 1fr; }
   .postnav a:last-child { text-align: left; }
 }
+
+/* --------------------------------------------- the icon's tile, in the dark
+   Each mark is its accent on its own near-black ground, per the brand guide.
+   Against a light card that ground reads as an app tile at about 17:1. Against
+   the dark card it is 1.00:1 for YouTube — literally the same luminance — so
+   the tile vanished and the mark floated with nothing behind it.
+
+   The colours are the brand's and stay untouched; this only draws the edge the
+   ground can no longer describe on its own. Absent in light mode, where the
+   tile is already obvious, and absent from the OG cards, which carry their own
+   stylesheet and render on white. */
+@media (prefers-color-scheme: dark) {
+  .icon__tile { stroke: rgb(255 255 255 / .14); stroke-width: .9; }
+}
+.tile--dark .icon__tile { stroke: rgb(255 255 255 / .14); stroke-width: .9; }

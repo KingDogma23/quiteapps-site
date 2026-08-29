@@ -81,7 +81,7 @@ function err(array $e, string $k): string {
 <meta name="twitter:image" content="https://quiteapps.co.uk/og/default.png">
 <meta name="twitter:title" content="Contact — Quite Apps">
 <meta name="twitter:description" content="Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.">
-<link rel="stylesheet" href="/styles.css?v=ce59d1f0">
+<link rel="stylesheet" href="/styles.css?v=d8f6d5da">
 <link rel="alternate" type="application/rss+xml" title="Quite Apps news" href="https://quiteapps.co.uk/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">

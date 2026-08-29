@@ -73,7 +73,7 @@ function icon(x, cls = 'icon', px = 56) {
   const a = accentOf(x);
   const ground = x.ground || '#14201b';
   return `<svg class="${cls}" viewBox="0 0 48 48" width="${px}" height="${px}" role="img" aria-label="${esc(x.name)} icon">
-  <rect width="48" height="48" rx="10.56" fill="${ground}"/>
+  <rect class="icon__tile" width="48" height="48" rx="10.56" fill="${ground}"/>
   <g fill="none" stroke="${a}" stroke-width="5.52">
     <circle cx="24" cy="24" r="11.52"/>
     <path d="M26.04 26.04 33.61 33.61"/>
