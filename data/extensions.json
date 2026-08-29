@@ -4,7 +4,7 @@
     "checked": "GitHub API, 27 Aug 2026. Never use raw.githubusercontent.com — it serves a stale CDN cache.",
     "releases": "Both repos are tagged (v0.20.8 / v2.5.4) and releaseUrl points at those tag pages, which carry GitHub's auto-generated source zip. Those zips are ~300 KB because they include test/ and repo metadata. package.sh builds a lean ~40 KB zip instead — attach it via 'Create release from tag' on GitHub and the download gets 7x smaller. Then releaseUrl can become /releases/latest.",
     "size": "Reflects the GitHub source zip a visitor actually downloads, not the packaged extension.",
-    "cookies": "Store ships 0.22.0, published 29 Aug 2026. Newest GitHub tag is v0.20.0, so releaseUrl is deliberately empty and GitHub is offered as source rather than as a download. Tag v0.22.0 and restore releaseUrl to give the unpacked route back."
+    "cookies": "Store ships 0.22.0 and GitHub is tagged v0.22.0, so both routes now offer the same build. They were briefly out of step: the only tag was v0.20.0 while the manifest had moved to 0.22.0, which put an older build behind a button labelled 'latest release', directly under an Add to Chrome installing the newer one."
   },
   "extensions": [
     {
@@ -315,7 +315,7 @@
       "manifest": "Manifest V3",
       "reloadTarget": "site you were looking at",
       "githubUrl": "https://github.com/KingDogma23/quite-for-cookies",
-      "releaseUrl": "",
+      "releaseUrl": "https://github.com/KingDogma23/quite-for-cookies/releases/tag/v0.22.0",
       "permissions": [
         {
           "name": "activeTab",
