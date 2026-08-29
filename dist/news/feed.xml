@@ -8,6 +8,13 @@
   <language>en-GB</language>
   <lastBuildDate>Sat, 29 Aug 2026 09:00:00 GMT</lastBuildDate>
   <item>
+    <title>Some videos start black and silent instead of playing</title>
+    <link>https://quiteapps.co.uk/news/2026-08-29-stuck-player/</link>
+    <guid isPermaLink="true">https://quiteapps.co.uk/news/2026-08-29-stuck-player/</guid>
+    <pubDate>Sat, 29 Aug 2026 09:00:00 GMT</pubDate>
+    <description><![CDATA[<p>On some videos an advert still gets through. When it does, the player can sit black and silent instead of playing either the advert or your video. It looks like the extension has broken, which is the worst way for this to fail, so it is worth saying plainly what is happening.</p><p>The extension does not block requests. It stops YouTube issuing an ad schedule in the first place, which is what keeps your session out of the anti-adblock net. It does not catch every response, and on the ones it misses an advert starts inside a player that was not expecting one.</p><p>There is deliberately no automatic recovery. An earlier version reloaded the player after a stall; measured over repeated loads it produced a YouTube error screen more often than it rescued anything, so it was taken out. A stuck video you can reload is better than an error screen you cannot.</p><p>Reload the video and it usually plays. If it sticks again, add ?ytacoff=1 to the end of the URL — that loads that one video with the extension switched off, which is also how to confirm the extension is what is causing it rather than YouTube having a bad day.</p><p>This is why the store listing says most video ads rather than all of them. Claiming otherwise would earn one-star reviews describing exactly this.</p><p><strong>What still works</strong></p><ul><li>Feed, sidebar, search and Shorts ad panels are still hidden</li><li>Overlay banners drawn on top of the video are still removed</li><li>Most video ads are still stopped before they load, and skippable ones still get skipped</li><li>Nothing about your account, watch history or any other tab is touched</li></ul>]]></description>
+  </item>
+  <item>
     <title>The YouTube counter was measuring the same thing twice</title>
     <link>https://quiteapps.co.uk/news/2026-08-29-counters/</link>
     <guid isPermaLink="true">https://quiteapps.co.uk/news/2026-08-29-counters/</guid>

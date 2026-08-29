@@ -24,7 +24,7 @@
 <meta name="twitter:image" content="https://quiteapps.co.uk/og/quite-for-youtube.png">
 <meta name="twitter:title" content="Remove YouTube Ads — Quite for YouTube, Chrome extension">
 <meta name="twitter:description" content="Free, open-source Chrome extension that skips YouTube video ads and hides feed, sidebar, search and Shorts ad panels. One permission, no tracking.">
-<link rel="stylesheet" href="/styles.css?v=fe10c8ff">
+<link rel="stylesheet" href="/styles.css?v=ce59d1f0">
 <link rel="alternate" type="application/rss+xml" title="Quite Apps news" href="https://quiteapps.co.uk/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -259,17 +259,19 @@
       <p class="t-sub" style="margin-top:.85rem">Releases and breakages for Quite for YouTube.</p>
     </div>
     <div class="posts measure-l">
-<article class="post reveal" id="2026-08-29-counters">
+<article class="post reveal" id="2026-08-29-stuck-player">
   <div class="post__meta">
     <time datetime="2026-08-29">29 August 2026</time>
-    <span class="post__tag">Fixed</span>
+    <span class="post__tag">Breakage</span>
     <a class="post__ext" href="/extensions/quite-for-youtube/">Quite for YouTube</a>
   </div>
   <h3 class="t-h3 post__title">
-    <a href="/news/2026-08-29-counters/">The YouTube counter was measuring the same thing twice</a>
+    <a href="/news/2026-08-29-stuck-player/">Some videos start black and silent instead of playing</a>
   </h3>
-  <p>The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive lines. One of them was never a measurement of anything.</p><p>Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different — videos where the ad schedule was stopped before the player ever saw it — and is labelled “Videos protected”, which is what it counts.</p><p>It credits once per video rather than once per stopped response, because a single video can produce several: a retry, or returning to the same watch page. Counting each would inflate the figure with work done twice on one video.</p><p>Stored totals are reset once on upgrade. Every previous value was a copy of the skip count, and carrying it forward would have left a number that was never true sitting under a label that now means something specific. The counter starts again from zero, honestly.</p>
+  <p>On some videos an advert still gets through. When it does, the player can sit black and silent instead of playing either the advert or your video. It looks like the extension has broken, which is the worst way for this to fail, so it is worth saying plainly what is happening.</p><p>The extension does not block requests. It stops YouTube issuing an ad schedule in the first place, which is what keeps your session out of the anti-adblock net. It does not catch every response, and on the ones it misses an advert starts inside a player that was not expecting one.</p><p>There is deliberately no automatic recovery. An earlier version reloaded the player after a stall; measured over repeated loads it produced a YouTube error screen more often than it rescued anything, so it was taken out. A stuck video you can reload is better than an error screen you cannot.</p><p>Reload the video and it usually plays. If it sticks again, add ?ytacoff=1 to the end of the URL — that loads that one video with the extension switched off, which is also how to confirm the extension is what is causing it rather than YouTube having a bad day.</p><p>This is why the store listing says most video ads rather than all of them. Claiming otherwise would earn one-star reviews describing exactly this.</p>
   
+  <p class="post__works-head">What still works</p>
+  <ul class="post__works"><li>Feed, sidebar, search and Shorts ad panels are still hidden</li><li>Overlay banners drawn on top of the video are still removed</li><li>Most video ads are still stopped before they load, and skippable ones still get skipped</li><li>Nothing about your account, watch history or any other tab is touched</li></ul>
   
 </article></div>
     <p class="center" style="margin-top:2rem">

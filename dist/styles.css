@@ -627,7 +627,8 @@ h1, h2, h3, h4 { font-weight: 600; letter-spacing: -.015em; line-height: 1.08; }
 .post__title a:hover { color: var(--a); }
 .post p { margin: 0 0 .9rem; }
 .post__works-head { font-weight: 600; color: var(--ink); margin-top: 1.25rem; }
-.post__works { margin: .4rem 0 0; padding-left: 1.1rem; color: var(--ink-2); }
+.post__works { margin: .4rem 0 0; padding-left: 1.15rem; color: var(--ink-2); list-style: disc; }
+.post__works::marker, .post__works li::marker { color: var(--a); }
 .post__works li { margin: .3rem 0; }
 .post__updated { color: var(--ink-3); margin-top: 1rem; }
 .rss { vertical-align: -2px; margin-right: .35rem; }

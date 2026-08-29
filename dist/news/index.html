@@ -24,12 +24,12 @@
 <meta name="twitter:image" content="https://quiteapps.co.uk/og/default.png">
 <meta name="twitter:title" content="News — Quite Apps">
 <meta name="twitter:description" content="Release notes and breakage notices for the Quite Apps extensions, newest first.">
-<link rel="stylesheet" href="/styles.css?v=fe10c8ff">
+<link rel="stylesheet" href="/styles.css?v=ce59d1f0">
 <link rel="alternate" type="application/rss+xml" title="Quite Apps news" href="https://quiteapps.co.uk/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script>document.documentElement.classList.add('js')</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Quite Apps news","url":"https://quiteapps.co.uk/news/","publisher":{"@type":"Organization","name":"Quite Apps","url":"https://quiteapps.co.uk"},"blogPost":[{"@type":"BlogPosting","headline":"The YouTube counter was measuring the same thing twice","datePublished":"2026-08-29","url":"https://quiteapps.co.uk/news/2026-08-29-counters/","author":{"@type":"Organization","name":"Quite Apps"}},{"@type":"BlogPosting","headline":"Quite for Cookies","datePublished":"2026-08-28","url":"https://quiteapps.co.uk/news/2026-08-28-cookies/","author":{"@type":"Organization","name":"Quite Apps"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Quite Apps news","url":"https://quiteapps.co.uk/news/","publisher":{"@type":"Organization","name":"Quite Apps","url":"https://quiteapps.co.uk"},"blogPost":[{"@type":"BlogPosting","headline":"Some videos start black and silent instead of playing","datePublished":"2026-08-29","url":"https://quiteapps.co.uk/news/2026-08-29-stuck-player/","author":{"@type":"Organization","name":"Quite Apps"}},{"@type":"BlogPosting","headline":"The YouTube counter was measuring the same thing twice","datePublished":"2026-08-29","url":"https://quiteapps.co.uk/news/2026-08-29-counters/","author":{"@type":"Organization","name":"Quite Apps"}},{"@type":"BlogPosting","headline":"Quite for Cookies","datePublished":"2026-08-28","url":"https://quiteapps.co.uk/news/2026-08-28-cookies/","author":{"@type":"Organization","name":"Quite Apps"}}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -65,6 +65,21 @@
     </p>
     <div class="posts measure-l" style="margin-top:3rem">
       
+<article class="post reveal" id="2026-08-29-stuck-player">
+  <div class="post__meta">
+    <time datetime="2026-08-29">29 August 2026</time>
+    <span class="post__tag">Breakage</span>
+    <a class="post__ext" href="/extensions/quite-for-youtube/">Quite for YouTube</a>
+  </div>
+  <h2 class="t-h3 post__title">
+    <a href="/news/2026-08-29-stuck-player/">Some videos start black and silent instead of playing</a>
+  </h2>
+  <p>On some videos an advert still gets through. When it does, the player can sit black and silent instead of playing either the advert or your video. It looks like the extension has broken, which is the worst way for this to fail, so it is worth saying plainly what is happening.</p><p>The extension does not block requests. It stops YouTube issuing an ad schedule in the first place, which is what keeps your session out of the anti-adblock net. It does not catch every response, and on the ones it misses an advert starts inside a player that was not expecting one.</p><p>There is deliberately no automatic recovery. An earlier version reloaded the player after a stall; measured over repeated loads it produced a YouTube error screen more often than it rescued anything, so it was taken out. A stuck video you can reload is better than an error screen you cannot.</p><p>Reload the video and it usually plays. If it sticks again, add ?ytacoff=1 to the end of the URL — that loads that one video with the extension switched off, which is also how to confirm the extension is what is causing it rather than YouTube having a bad day.</p><p>This is why the store listing says most video ads rather than all of them. Claiming otherwise would earn one-star reviews describing exactly this.</p>
+  
+  <p class="post__works-head">What still works</p>
+  <ul class="post__works"><li>Feed, sidebar, search and Shorts ad panels are still hidden</li><li>Overlay banners drawn on top of the video are still removed</li><li>Most video ads are still stopped before they load, and skippable ones still get skipped</li><li>Nothing about your account, watch history or any other tab is touched</li></ul>
+  
+</article>
 <article class="post reveal" id="2026-08-29-counters">
   <div class="post__meta">
     <time datetime="2026-08-29">29 August 2026</time>

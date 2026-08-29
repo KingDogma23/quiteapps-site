@@ -2,6 +2,26 @@
   "_README": "Reverse-chronological. Newest first — the build does not sort, so keep them in order. `id` becomes the anchor (/news/#id) and the RSS guid, so never change one once published. `date` is the publication date and drives both the page and the feed; `updated` is optional and only for a post edited in place after publishing. `ext` ties a post to an extension slug so its page can show the latest entry inline. `body` is an array of paragraphs, rendered as-is into both the page and the feed — the feed carries the full text, not a teaser. `works` is the 'what still works' list used by breakage posts; omit it elsewhere. See _template at the bottom.",
   "posts": [
     {
+      "id": "2026-08-29-stuck-player",
+      "date": "2026-08-29",
+      "title": "Some videos start black and silent instead of playing",
+      "ext": "quite-for-youtube",
+      "tag": "Breakage",
+      "body": [
+        "On some videos an advert still gets through. When it does, the player can sit black and silent instead of playing either the advert or your video. It looks like the extension has broken, which is the worst way for this to fail, so it is worth saying plainly what is happening.",
+        "The extension does not block requests. It stops YouTube issuing an ad schedule in the first place, which is what keeps your session out of the anti-adblock net. It does not catch every response, and on the ones it misses an advert starts inside a player that was not expecting one.",
+        "There is deliberately no automatic recovery. An earlier version reloaded the player after a stall; measured over repeated loads it produced a YouTube error screen more often than it rescued anything, so it was taken out. A stuck video you can reload is better than an error screen you cannot.",
+        "Reload the video and it usually plays. If it sticks again, add ?ytacoff=1 to the end of the URL — that loads that one video with the extension switched off, which is also how to confirm the extension is what is causing it rather than YouTube having a bad day.",
+        "This is why the store listing says most video ads rather than all of them. Claiming otherwise would earn one-star reviews describing exactly this."
+      ],
+      "works": [
+        "Feed, sidebar, search and Shorts ad panels are still hidden",
+        "Overlay banners drawn on top of the video are still removed",
+        "Most video ads are still stopped before they load, and skippable ones still get skipped",
+        "Nothing about your account, watch history or any other tab is touched"
+      ]
+    },
+    {
       "id": "2026-08-29-counters",
       "date": "2026-08-29",
       "title": "The YouTube counter was measuring the same thing twice",
