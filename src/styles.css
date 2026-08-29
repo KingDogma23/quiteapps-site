@@ -672,3 +672,11 @@ h1, h2, h3, h4 { font-weight: 600; letter-spacing: -.015em; line-height: 1.08; }
   .icon__tile { stroke: rgb(255 255 255 / .14); stroke-width: .9; }
 }
 .tile--dark .icon__tile { stroke: rgb(255 255 255 / .14); stroke-width: .9; }
+
+/* A version caveat is not a sales pitch. One quiet line under the buttons at
+   most; the full explanation lives down by the install steps, where someone is
+   actually deciding how to get it. */
+.notice--thin {
+  background: none; box-shadow: none; padding: 0;
+  margin-top: 1rem; font-size: .875rem; color: var(--ink-3);
+}

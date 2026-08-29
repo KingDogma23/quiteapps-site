@@ -144,7 +144,8 @@
       "metaTitle": "Remove YouTube Ads: Quite for YouTube, Chrome extension",
       "ground": "#14201b",
       "storeUrl": "https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci",
-      "notice": "This page describes version 0.31.8. The Chrome Web Store is still reviewing it, so Add to Chrome installs 0.30.0 today, which shows a third counter in the popup and carries the older wording. The update arrives on its own once approved. If you want it now, the GitHub release below is 0.31.8."
+      "notice": "This page describes version 0.31.8. The Chrome Web Store is still reviewing it, so Add to Chrome installs 0.30.0 today, which shows a third counter in the popup and carries the older wording. The update arrives on its own once approved. If you want it now, the GitHub release below is 0.31.8.",
+      "noticeShort": "Store is on 0.30.0 while 0.31.8 is in review. GitHub has 0.31.8 now."
     },
     {
       "slug": "quite-for-facebook",
@@ -289,7 +290,8 @@
       ],
       "metaTitle": "Hide Facebook Ads & Suggested Posts: Quite for Facebook",
       "ground": "#1a1820",
-      "notice": "Not on the Chrome Web Store yet. A new publisher account may hold only two extensions, and Quite for YouTube and Quite for Cookies have those slots, so this one sits finished and waiting. GitHub carries the newest build in the meantime, and installing it unpacked takes about two minutes."
+      "notice": "Not on the Chrome Web Store yet. A new publisher account may hold only two extensions, and Quite for YouTube and Quite for Cookies have those slots, so this one sits finished and waiting. GitHub carries the newest build in the meantime, and installing it unpacked takes about two minutes.",
+      "noticeShort": "Not on the Chrome Web Store yet. Install it from GitHub in about two minutes."
     },
     {
       "slug": "quite-for-cookies",

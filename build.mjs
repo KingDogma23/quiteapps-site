@@ -539,7 +539,7 @@ function tile(x, i, total) {
     <h2 class="tile__name">${esc(x.name)}</h2>
     <p class="tile__tag">${esc(x.tagline)}</p>
     <p class="tile__price">${esc(x.price)} &middot; ${esc(x.licence || 'MIT')} &middot; Open source</p>
-    ${x.notice ? `<p class="tile__notice">${esc(x.notice)}</p>` : ''}
+    ${x.noticeShort ? `<p class="tile__notice">${esc(x.noticeShort)}</p>` : ''}
     <p class="btnrow" style="margin-top:1.1rem">
       ${x.storeUrl ? `<a class="btn btn--sm" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome</a>` : ''}
       <a class="clink" href="/extensions/${x.slug}/">Learn more ${CHEV}</a>
@@ -706,7 +706,7 @@ function extPage(x, ogSet) {
       ${(site.browsers || []).slice(0, 4).map(b => `<span class="pill">${esc(b)}</span>`).join('')}
     </p>
     <p class="btnrow">${cta}</p>
-    ${x.notice ? `<p class="notice">${esc(x.notice)}</p>` : ''}
+    ${x.noticeShort ? `<p class="notice notice--thin">${esc(x.noticeShort)}</p>` : ''}
     <p class="ahero__note">${nPerms} permission${nPerms === 1 ? '' : 's'} &middot; ${esc(x.accessNote || `Runs only on ${x.reloadTarget}`)} &middot; No tracking &middot; ${esc(x.licence)} licensed</p>
   </div>
   <div class="wrapw" style="margin-top:clamp(2.5rem,5vw,4rem)">
@@ -751,6 +751,7 @@ ${!(x.githubUrl || x.releaseUrl) ? '' : `
   <div class="wrap">
     <div class="band__head center reveal">
       <h2 class="t-h2">Installing it</h2>
+      ${x.notice ? `<p class="notice" style="margin-top:1.25rem">${esc(x.notice)}</p>` : ''}
       <p class="t-sub" style="margin-top:.85rem">${x.storeUrl
         ? `One click from the Chrome Web Store. The unpacked route below still works if you would rather run the source.`
         : `Not on the Chrome Web Store, so it installs unpacked. Two minutes, once.`}</p>
