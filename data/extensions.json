@@ -5,7 +5,8 @@
     "releases": "Both repos are tagged (v0.20.8 / v2.5.4) and releaseUrl points at those tag pages, which carry GitHub's auto-generated source zip. Those zips are ~300 KB because they include test/ and repo metadata. package.sh builds a lean ~40 KB zip instead — attach it via 'Create release from tag' on GitHub and the download gets 7x smaller. Then releaseUrl can become /releases/latest.",
     "size": "Reflects the GitHub source zip a visitor actually downloads, not the packaged extension.",
     "cookies": "Store ships 0.22.0 and GitHub is tagged v0.22.0, so both routes now offer the same build. They were briefly out of step: the only tag was v0.20.0 while the manifest had moved to 0.22.0, which put an older build behind a button labelled 'latest release', directly under an Add to Chrome installing the newer one.",
-    "facebook": "GitHub main is 2.6.0 and that is what the site offers, via Download ZIP. The newest tag is v2.5.4 and the store Draft is 2.5.5, so releaseUrl is deliberately empty: pointing it at v2.5.4 would name 2.6.0 while handing over an older build. 2.6.0 is not tagged because it has not been through store review; tag it and restore releaseUrl if that changes."
+    "facebook": "GitHub main is 2.6.0 and that is what the site offers, via Download ZIP. The newest tag is v2.5.4 and the store Draft is 2.5.5, so releaseUrl is deliberately empty: pointing it at v2.5.4 would name 2.6.0 while handing over an older build. 2.6.0 is not tagged because it has not been through store review; tag it and restore releaseUrl if that changes.",
+    "youtube": "Site names 0.31.8, which is what the GitHub release gives. The store is still serving 0.30.0 while 0.31.8 is in review, and the page notice says so. Before 29 Aug the page named 0.20.8, a version neither route delivered. Drop the notice once the store catches up."
   },
   "extensions": [
     {
@@ -25,15 +26,15 @@
       "priceValue": "0",
       "currency": "GBP",
       "licence": "MIT",
-      "version": "0.20.8",
+      "version": "0.31.8",
       "released": "2026-08-24",
-      "updated": "2026-08-27",
+      "updated": "2026-08-29",
       "size": "About 300 KB",
       "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
       "manifest": "Manifest V3",
       "reloadTarget": "YouTube",
       "githubUrl": "https://github.com/KingDogma23/quite-for-youtube",
-      "releaseUrl": "https://github.com/KingDogma23/quite-for-youtube/releases/tag/v0.20.8",
+      "releaseUrl": "https://github.com/KingDogma23/quite-for-youtube/releases/tag/v0.31.8",
       "permissions": [
         {
           "name": "storage",
@@ -143,7 +144,7 @@
       "metaTitle": "Remove YouTube Ads: Quite for YouTube, Chrome extension",
       "ground": "#14201b",
       "storeUrl": "https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci",
-      "notice": "This page describes version 0.31.8, which is with the Chrome Web Store for review. Installing today gives you the previous version, which still shows a third counter in the popup and carries the older wording. The update arrives on its own once approved, with nothing for you to do."
+      "notice": "This page describes version 0.31.8. The Chrome Web Store is still reviewing it, so Add to Chrome installs 0.30.0 today, which shows a third counter in the popup and carries the older wording. The update arrives on its own once approved. If you want it now, the GitHub release below is 0.31.8."
     },
     {
       "slug": "quite-for-facebook",
