@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>News — Quite Apps</title>
+<title>News | Quite Apps</title>
 <meta name="description" content="Release notes and breakage notices for the Quite Apps extensions, newest first.">
 <link rel="canonical" href="https://quiteapps.co.uk/news/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -13,16 +13,16 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Quite Apps">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="News — Quite Apps">
+<meta property="og:title" content="News | Quite Apps">
 <meta property="og:description" content="Release notes and breakage notices for the Quite Apps extensions, newest first.">
 <meta property="og:url" content="https://quiteapps.co.uk/news/">
 <meta property="og:image" content="https://quiteapps.co.uk/og/default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="News — Quite Apps">
+<meta property="og:image:alt" content="News | Quite Apps">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://quiteapps.co.uk/og/default.png">
-<meta name="twitter:title" content="News — Quite Apps">
+<meta name="twitter:title" content="News | Quite Apps">
 <meta name="twitter:description" content="Release notes and breakage notices for the Quite Apps extensions, newest first.">
 <link rel="stylesheet" href="/styles.css?v=d8f6d5da">
 <link rel="alternate" type="application/rss+xml" title="Quite Apps news" href="https://quiteapps.co.uk/news/feed.xml">
@@ -74,7 +74,7 @@
   <h2 class="t-h3 post__title">
     <a href="/news/2026-08-29-stuck-player/">Some videos start black and silent instead of playing</a>
   </h2>
-  <p>On some videos an advert still gets through. When it does, the player can sit black and silent instead of playing either the advert or your video. It looks like the extension has broken, which is the worst way for this to fail, so it is worth saying plainly what is happening.</p><p>The extension does not block requests. It stops YouTube issuing an ad schedule in the first place, which is what keeps your session out of the anti-adblock net. It does not catch every response, and on the ones it misses an advert starts inside a player that was not expecting one.</p><p>There is deliberately no automatic recovery. An earlier version reloaded the player after a stall; measured over repeated loads it produced a YouTube error screen more often than it rescued anything, so it was taken out. A stuck video you can reload is better than an error screen you cannot.</p><p>Reload the video and it usually plays. If it sticks again, add ?ytacoff=1 to the end of the URL — that loads that one video with the extension switched off, which is also how to confirm the extension is what is causing it rather than YouTube having a bad day.</p><p>This is why the store listing says most video ads rather than all of them. Claiming otherwise would earn one-star reviews describing exactly this.</p>
+  <p>On some videos an advert still gets through. When it does, the player can sit black and silent instead of playing either the advert or your video. It looks like the extension has broken, which is the worst way for this to fail, so it is worth saying plainly what is happening.</p><p>The extension does not block requests. It stops YouTube issuing an ad schedule in the first place, which is what keeps your session out of the anti-adblock net. It does not catch every response, and on the ones it misses an advert starts inside a player that was not expecting one.</p><p>There is deliberately no automatic recovery. An earlier version reloaded the player after a stall; measured over repeated loads it produced a YouTube error screen more often than it rescued anything, so it was taken out. A stuck video you can reload is better than an error screen you cannot.</p><p>Reload the video and it usually plays. If it sticks again, add ?ytacoff=1 to the end of the URL. That loads that one video with the extension switched off, which is also how to confirm the extension is what is causing it rather than YouTube having a bad day.</p><p>This is why the store listing says most video ads rather than all of them. Claiming otherwise would earn one-star reviews describing exactly this.</p>
   
   <p class="post__works-head">What still works</p>
   <ul class="post__works"><li>Feed, sidebar, search and Shorts ad panels are still hidden</li><li>Overlay banners drawn on top of the video are still removed</li><li>Most video ads are still stopped before they load, and skippable ones still get skipped</li><li>Nothing about your account, watch history or any other tab is touched</li></ul>
@@ -89,7 +89,7 @@
   <h2 class="t-h3 post__title">
     <a href="/news/2026-08-29-counters/">The YouTube counter was measuring the same thing twice</a>
   </h2>
-  <p>The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive lines. One of them was never a measurement of anything.</p><p>Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different — videos where the ad schedule was stopped before the player ever saw it — and is labelled “Videos protected”, which is what it counts.</p><p>It credits once per video rather than once per stopped response, because a single video can produce several: a retry, or returning to the same watch page. Counting each would inflate the figure with work done twice on one video.</p><p>Stored totals are reset once on upgrade. Every previous value was a copy of the skip count, and carrying it forward would have left a number that was never true sitting under a label that now means something specific. The counter starts again from zero, honestly.</p>
+  <p>The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive lines. One of them was never a measurement of anything.</p><p>Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different: videos where the ad schedule was stopped before the player ever saw it. That one is labelled “Videos protected”, which is what it counts.</p><p>It credits once per video rather than once per stopped response, because a single video can produce several: a retry, or returning to the same watch page. Counting each would inflate the figure with work done twice on one video.</p><p>Stored totals are reset once on upgrade. Every previous value was a copy of the skip count, and carrying it forward would have left a number that was never true sitting under a label that now means something specific. The counter starts again from zero, honestly.</p>
   
   
 </article>
@@ -102,7 +102,7 @@
   <h2 class="t-h3 post__title">
     <a href="/news/2026-08-28-cookies/">Quite for Cookies</a>
   </h2>
-  <p>A third extension. It shows exactly what a site has stored in your browser — every cookie, grouped by the domain that set it, with sizes, and the ones holding your sign-in marked as such — and removes only what you pick.</p><p>Then it counts again and tells you what actually went: how many were removed, how many could not be, and how many the page has already set again because it is still open. Those numbers come from re-reading the browser rather than assuming the delete worked.</p><p>Version 0.20.0 adds a sweep that runs on its own. Turn on “clear a site when I close its last tab” and the job happens in the background as you browse, sparing sign-ins and anything on your spared list. Chrome&#39;s own session-only setting cannot do this — it waits until you close the entire browser. Every sweep is recorded, so a run that cleared nothing can never be mistaken for one that worked.</p><p>It installs with no access to any website. Access is asked for one domain at a time, at the moment you press the button, and is reversible from the popup.</p>
+  <p>A third extension. It shows exactly what a site has stored in your browser. Every cookie, grouped by the domain that set it, with sizes, and the ones holding your sign-in marked as such. It removes only what you pick.</p><p>Then it counts again and tells you what actually went: how many were removed, how many could not be, and how many the page has already set again because it is still open. Those numbers come from re-reading the browser rather than assuming the delete worked.</p><p>Version 0.20.0 adds a sweep that runs on its own. Turn on “clear a site when I close its last tab” and the job happens in the background as you browse, sparing sign-ins and anything on your spared list. Chrome&#39;s own session-only setting cannot do this. It waits until you close the entire browser. Every sweep is recorded, so a run that cleared nothing can never be mistaken for one that worked.</p><p>It installs with no access to any website. Access is asked for one domain at a time, at the moment you press the button, and is reversible from the popup.</p>
   
   
 </article>

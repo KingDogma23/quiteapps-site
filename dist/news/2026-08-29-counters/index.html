@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The YouTube counter was measuring the same thing twice — Quite Apps</title>
+<title>The YouTube counter was measuring the same thing twice | Quite Apps</title>
 <meta name="description" content="The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive ">
 <link rel="canonical" href="https://quiteapps.co.uk/news/2026-08-29-counters/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -13,16 +13,16 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Quite Apps">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="The YouTube counter was measuring the same thing twice — Quite Apps">
+<meta property="og:title" content="The YouTube counter was measuring the same thing twice | Quite Apps">
 <meta property="og:description" content="The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive ">
 <meta property="og:url" content="https://quiteapps.co.uk/news/2026-08-29-counters/">
 <meta property="og:image" content="https://quiteapps.co.uk/og/news-2026-08-29-counters.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The YouTube counter was measuring the same thing twice — Quite Apps">
+<meta property="og:image:alt" content="The YouTube counter was measuring the same thing twice | Quite Apps">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://quiteapps.co.uk/og/news-2026-08-29-counters.png">
-<meta name="twitter:title" content="The YouTube counter was measuring the same thing twice — Quite Apps">
+<meta name="twitter:title" content="The YouTube counter was measuring the same thing twice | Quite Apps">
 <meta name="twitter:description" content="The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive ">
 <link rel="stylesheet" href="/styles.css?v=d8f6d5da">
 <link rel="alternate" type="application/rss+xml" title="Quite Apps news" href="https://quiteapps.co.uk/news/feed.xml">
@@ -68,7 +68,7 @@
   <h1 class="t-h2 post__title">
     The YouTube counter was measuring the same thing twice
   </h1>
-  <p>The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive lines. One of them was never a measurement of anything.</p><p>Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different — videos where the ad schedule was stopped before the player ever saw it — and is labelled “Videos protected”, which is what it counts.</p><p>It credits once per video rather than once per stopped response, because a single video can produce several: a retry, or returning to the same watch page. Counting each would inflate the figure with work done twice on one video.</p><p>Stored totals are reset once on upgrade. Every previous value was a copy of the skip count, and carrying it forward would have left a number that was never true sitting under a label that now means something specific. The counter starts again from zero, honestly.</p>
+  <p>The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive lines. One of them was never a measurement of anything.</p><p>Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different: videos where the ad schedule was stopped before the player ever saw it. That one is labelled “Videos protected”, which is what it counts.</p><p>It credits once per video rather than once per stopped response, because a single video can produce several: a retry, or returning to the same watch page. Counting each would inflate the figure with work done twice on one video.</p><p>Stored totals are reset once on upgrade. Every previous value was a copy of the skip count, and carrying it forward would have left a number that was never true sitting under a label that now means something specific. The counter starts again from zero, honestly.</p>
   
   
 </article></div>

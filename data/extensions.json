@@ -12,11 +12,11 @@
       "shortName": "YouTube",
       "accent": "#35b98c",
       "tagline": "YouTube, without the advertising.",
-      "summary": "Skips video ads and hides the ad panels in your feed, sidebar, search results and Shorts — without tripping YouTube's anti-adblock check.",
+      "summary": "Skips video ads and hides the ad panels in your feed, sidebar, search results and Shorts, without tripping YouTube's anti-adblock check.",
       "metaDescription": "Free, open-source Chrome extension that skips YouTube video ads and hides feed, sidebar, search and Shorts ad panels. One permission, no tracking.",
       "description": [
-        "Quite for YouTube deals with advertising in two places at once. Video ads are got past — Skip is clicked the moment it appears, and unskippable ads are fast-forwarded. The ad panels scattered through the homepage, sidebar, search results and masthead never paint at all, because they are hidden before the page renders.",
-        "The interesting part is what it does not do. YouTube's responses are never modified. Instead the ad schedule is stopped at source: the request the player sends is declared as an ad unit rather than a watch page, and YouTube answers without an ad schedule of its own. Nothing is deleted and nothing is faked, so there is no mismatch between what the server sent and what the player sees — which is exactly what YouTube's anti-adblock check looks for."
+        "Quite for YouTube deals with advertising in two places at once. Video ads are got past: Skip is clicked the moment it appears, and unskippable ads are fast-forwarded. The ad panels scattered through the homepage, sidebar, search results and masthead never paint at all, because they are hidden before the page renders.",
+        "The interesting part is what it does not do. YouTube's responses are never modified. Instead the ad schedule is stopped at source: the request the player sends is declared as an ad unit rather than a watch page, and YouTube answers without an ad schedule of its own. Nothing is deleted and nothing is faked, so there is no mismatch between what the server sent and what the player sees. That mismatch is exactly what YouTube's anti-adblock check looks for."
       ],
       "status": "live",
       "price": "Free",
@@ -111,7 +111,7 @@
       "faq": [
         {
           "q": "Why not just use a normal ad blocker?",
-          "a": "Network-level blockers trigger YouTube's anti-adblock wall. This works differently — it stops the ad schedule being issued rather than blocking the request afterwards. Running both at once is worse than running either, because you cannot tell which caused what."
+          "a": "Network-level blockers trigger YouTube's anti-adblock wall. This works differently. It stops the ad schedule being issued rather than blocking the request afterwards. Running both at once is worse than running either, because you cannot tell which caused what."
         },
         {
           "q": "Will I still see an ad start?",
@@ -126,7 +126,7 @@
           "a": "Yes. It runs in Chrome, Edge, Brave, Arc, Opera and other Chromium browsers."
         }
       ],
-      "privacy": "Quite for YouTube runs only on youtube.com and has no permission to access any other site. It sends nothing anywhere — no server, no analytics, no account, no tracking. The only thing it stores is your checkbox settings, in your own browser.",
+      "privacy": "Quite for YouTube runs only on youtube.com and has no permission to access any other site. It sends nothing anywhere. No server, no analytics, no account, no tracking. The only thing it stores is your checkbox settings, in your own browser.",
       "popupSub": "Ads removed before they load",
       "stats": [
         {
@@ -142,7 +142,7 @@
           "label": "Ads skipped"
         }
       ],
-      "metaTitle": "Remove YouTube Ads — Quite for YouTube, Chrome extension",
+      "metaTitle": "Remove YouTube Ads: Quite for YouTube, Chrome extension",
       "ground": "#14201b",
       "storeUrl": "https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci"
     },
@@ -156,7 +156,7 @@
       "metaDescription": "Free, open-source Chrome extension that hides ads, suggested posts, suggested groups and the Sponsored column from your Facebook feed. No tracking.",
       "description": [
         "Quite for Facebook strips out the things you never asked to see: posts marked Sponsored or Ad, pages you do not follow pushed into your feed, groups you are not a member of, and the ad panel sitting above your contacts on the right.",
-        "What it leaves alone matters just as much. Your own posts, your friends' posts, groups you are in and pages you already follow are never touched. Nothing is blocked, unfollowed or reported on your behalf — posts are hidden from view, and everything comes straight back the moment you switch it off."
+        "What it leaves alone matters just as much. Your own posts, your friends' posts, groups you are in and pages you already follow are never touched. Nothing is blocked, unfollowed or reported on your behalf. Posts are hidden from view, and everything comes straight back the moment you switch it off."
       ],
       "status": "live",
       "price": "Free",
@@ -256,7 +256,7 @@
       "faq": [
         {
           "q": "It hid a post I wanted to see.",
-          "a": "Facebook shows a Follow button on any page post you do not already follow, including one a friend shared, so those get caught too. Turn on Strict mode and it will only remove posts explicitly marked \"Suggested for you\" — fewer suggestions disappear, but nothing you actually follow will."
+          "a": "Facebook shows a Follow button on any page post you do not already follow, including one a friend shared, so those get caught too. Turn on Strict mode and it will only remove posts explicitly marked \"Suggested for you\". Fewer suggestions disappear, but nothing you actually follow will."
         },
         {
           "q": "Ads have started appearing again.",
@@ -268,10 +268,10 @@
         },
         {
           "q": "How do I tell which version is running?",
-          "a": "Click the extension icon. The version shown is the one actually running in the page — if it does not match what you installed, Chrome is serving an old build. Hit reload on chrome://extensions, then reload Facebook."
+          "a": "Click the extension icon. The version shown is the one actually running in the page. If it does not match what you installed, Chrome is serving an old build. Hit reload on chrome://extensions, then reload Facebook."
         }
       ],
-      "privacy": "Quite for Facebook runs only on facebook.com and has no permission to access any other site. It sends nothing anywhere — no server, no analytics, no account, no tracking. The only thing it stores is your checkbox settings, in your own browser.",
+      "privacy": "Quite for Facebook runs only on facebook.com and has no permission to access any other site. It sends nothing anywhere. No server, no analytics, no account, no tracking. The only thing it stores is your checkbox settings, in your own browser.",
       "popupSub": "Feed clutter hidden as it loads",
       "stats": [
         {
@@ -287,7 +287,7 @@
           "label": "Groups"
         }
       ],
-      "metaTitle": "Hide Facebook Ads & Suggested Posts — Quite for Facebook",
+      "metaTitle": "Hide Facebook Ads & Suggested Posts: Quite for Facebook",
       "ground": "#1a1820",
       "notice": "Finished, and not on the Chrome Web Store yet. Quite for YouTube and Quite for Cookies hold the two store slots, so this one waits its turn. It is done, it works, and you can install it from GitHub today."
     },
@@ -297,12 +297,12 @@
       "shortName": "Cookies",
       "accent": "#55a8e8",
       "tagline": "See it before you delete it.",
-      "summary": "Shows exactly what a site has stored in your browser, deletes only what you pick, then counts again and tells you what actually went — and can clear a site on its own when you close its last tab.",
+      "summary": "Shows exactly what a site has stored in your browser, deletes only what you pick, then counts again and tells you what actually went. It can also clear a site on its own when you close its last tab.",
       "metaDescription": "Free, open-source Chrome extension that shows every cookie a site has stored, deletes only what you pick, then checks it actually went.",
       "description": [
-        "Most cookie cleaners delete first and tell you nothing. Quite for Cookies shows you the list before anything is removed — every cookie the site has stored, grouped by the domain that set it, with sizes. The ones that keep you signed in are marked as such, and left alone unless you say otherwise. Local storage, databases, caches and service workers are listed alongside them.",
+        "Most cookie cleaners delete first and tell you nothing. Quite for Cookies shows you the list before anything is removed. Every cookie the site has stored, grouped by the domain that set it, with sizes. The ones that keep you signed in are marked as such, and left alone unless you say otherwise. Local storage, databases, caches and service workers are listed alongside them.",
         "Removal is cookie by cookie rather than a blunt sweep of the whole site, so unticking a domain genuinely spares it. Afterwards the extension counts again and reports the result: how many went, how many could not be removed, and how many the page has already set again because it is still open. Those numbers come from re-reading the browser, never from assuming the delete worked.",
-        "It can also do the job without being asked. Turn on “clear a site when I close its last tab” and the sweep runs in the background as you browse, sparing sign-ins and anything on your spared list. Chrome’s own session-only setting cannot do this — it waits until you close the whole browser. Every sweep is recorded and shown in the popup, so a run that cleared nothing can never be mistaken for one that worked."
+        "It can also do the job without being asked. Turn on “clear a site when I close its last tab” and the sweep runs in the background as you browse, sparing sign-ins and anything on your spared list. Chrome’s own session-only setting cannot do this. It waits until you close the whole browser. Every sweep is recorded and shown in the popup, so a run that cleared nothing can never be mistaken for one that worked."
       ],
       "status": "live",
       "price": "Free",
@@ -329,7 +329,7 @@
         },
         {
           "name": "browsingData",
-          "why": "To clear local storage, databases, caches and service workers — restricted to the site you are looking at."
+          "why": "To clear local storage, databases, caches and service workers, restricted to the site you are looking at."
         },
         {
           "name": "scripting",
@@ -343,7 +343,7 @@
       "hostPermissions": [
         {
           "name": "None at install",
-          "why": "Unlike the other two, this one starts with no access to any site at all. When you press “Show what this site stored”, it asks for the one domain you are on, and nothing else. Clearing sites automatically as you close them does need browser-wide access, because it has to see which site a closing tab belonged to — that is asked for separately, only if you switch it on, and taken back from the same line of text in the popup."
+          "why": "Unlike the other two, this one starts with no access to any site at all. When you press “Show what this site stored”, it asks for the one domain you are on, and nothing else. Clearing sites automatically as you close them does need browser-wide access, because it has to see which site a closing tab belonged to. That one is asked for separately, only if you switch it on, and taken back from the same line of text in the popup."
         }
       ],
       "features": [
@@ -373,7 +373,7 @@
         },
         {
           "title": "Or sweep the whole browser",
-          "body": "A second tab cleans every site at once. The default removes advertising and analytics cookies only, matched against known tracking domains — it cannot sign you out, because nothing you can log in to is on that list."
+          "body": "A second tab cleans every site at once. The default removes advertising and analytics cookies only, matched against known tracking domains. It cannot sign you out, because nothing you can log in to is on that list."
         },
         {
           "title": "No access until you ask",
@@ -383,12 +383,12 @@
       "options": [
         {
           "name": "This site",
-          "default": "—",
+          "default": "Tab",
           "what": "What the site you are on has stored, grouped by who set it."
         },
         {
           "name": "Every site",
-          "default": "—",
+          "default": "Tab",
           "what": "One sweep across the whole browser."
         },
         {
@@ -435,7 +435,7 @@
         },
         {
           "q": "What does “clear a site when I close its last tab” actually do?",
-          "a": "When the last tab for a site closes, it clears that site’s cookies in the background. If you still have the site open in another tab, nothing happens. Sites on your spared list are never touched, and sign-in cookies are kept unless you turn that off. Chrome’s own session-only setting cannot do this — it waits until you close the entire browser."
+          "a": "When the last tab for a site closes, it clears that site’s cookies in the background. If you still have the site open in another tab, nothing happens. Sites on your spared list are never touched, and sign-in cookies are kept unless you turn that off. Chrome’s own session-only setting cannot do this. It waits until you close the entire browser."
         },
         {
           "q": "Why does it need access to a site?",
@@ -447,10 +447,10 @@
         },
         {
           "q": "Some cookies came back straight away.",
-          "a": "If the page is still open it can set them again the moment they go. The report says so explicitly rather than showing a tick — that is the point of counting a second time. Trackers that keep a copy of your ID in local storage do the same thing, which is what the “also clear stored site data” option is for."
+          "a": "If the page is still open it can set them again the moment they go. The report says so explicitly rather than showing a tick. That is the point of counting a second time. Trackers that keep a copy of your ID in local storage do the same thing, which is what the “also clear stored site data” option is for."
         }
       ],
-      "privacy": "Quite for Cookies installs with no access to any website. It sends nothing anywhere — no server, no analytics, no account, no tracking. The only things it stores are your per-site choices, the counters shown in the popup, and a short local log of what the automatic clear has done, all in your own browser.",
+      "privacy": "Quite for Cookies installs with no access to any website. It sends nothing anywhere. No server, no analytics, no account, no tracking. The only things it stores are your per-site choices, the counters shown in the popup, and a short local log of what the automatic clear has done, all in your own browser.",
       "popupSub": "22 cookies across 3 domains",
       "stats": [
         {
@@ -466,7 +466,7 @@
           "label": "Sites cleaned"
         }
       ],
-      "metaTitle": "See and Delete Cookies — Quite for Cookies, Chrome extension",
+      "metaTitle": "See and Delete Cookies: Quite for Cookies, Chrome extension",
       "ground": "#141c24",
       "statsCaption": "ALL TIME, EVERY SITE",
       "popupStyle": "list",

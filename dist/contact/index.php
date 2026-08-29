@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 $TO      = "hello@quiteapps.co.uk";
-$SUBJECT = 'Website enquiry — ' . "quiteapps.co.uk";
+$SUBJECT = 'Website enquiry from ' . "quiteapps.co.uk";
 $MIN_SECONDS = 3;   // a human takes longer than this to fill the form in
 
 $sent = false;
@@ -60,7 +60,7 @@ function err(array $e, string $k): string {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact — Quite Apps</title>
+<title>Contact | Quite Apps</title>
 <meta name="description" content="Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.">
 <link rel="canonical" href="https://quiteapps.co.uk/contact/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -70,16 +70,16 @@ function err(array $e, string $k): string {
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Quite Apps">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Contact — Quite Apps">
+<meta property="og:title" content="Contact | Quite Apps">
 <meta property="og:description" content="Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.">
 <meta property="og:url" content="https://quiteapps.co.uk/contact/">
 <meta property="og:image" content="https://quiteapps.co.uk/og/default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Contact — Quite Apps">
+<meta property="og:image:alt" content="Contact | Quite Apps">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://quiteapps.co.uk/og/default.png">
-<meta name="twitter:title" content="Contact — Quite Apps">
+<meta name="twitter:title" content="Contact | Quite Apps">
 <meta name="twitter:description" content="Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.">
 <link rel="stylesheet" href="/styles.css?v=d8f6d5da">
 <link rel="alternate" type="application/rss+xml" title="Quite Apps news" href="https://quiteapps.co.uk/news/feed.xml">
@@ -115,7 +115,7 @@ function err(array $e, string $k): string {
 <section class="band band--tight">
   <div class="wrap center">
     <h1 class="t-h2">Get in touch</h1>
-    <p class="t-sub measure" style="margin:1.15rem auto 0">Bug reports, feature requests, or a note to say something broke after a site update — all welcome, and all read by the person who wrote the code. Issues on GitHub work just as well.</p>
+    <p class="t-sub measure" style="margin:1.15rem auto 0">Bug reports, feature requests, or a note to say something broke after a site update. All welcome, and all read by the person who wrote the code. Issues on GitHub work just as well.</p>
   </div>
 </section>
 
@@ -123,7 +123,7 @@ function err(array $e, string $k): string {
   <div class="wrap">
     <?php if ($sent): ?>
       <div class="formcard formcard--done reveal">
-        <h2 class="t-h3">Thank you — that has been sent.</h2>
+        <h2 class="t-h3">Thank you. That has been sent.</h2>
         <p>We read everything ourselves, so a reply may take a day or two, but it will come from a
           person rather than a queue.</p>
         <p style="margin-top:1.5rem"><a class="clink" href="/">Back to the extensions <span aria-hidden="true">&rsaquo;</span></a></p>

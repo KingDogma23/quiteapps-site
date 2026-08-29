@@ -663,7 +663,7 @@ function extPage(x, ogSet) {
   const spec = [
     ['Browsers', (site.browsers || []).join(', ')],
     ['Price', x.price],
-    ['Licence', x.githubUrl ? `${x.licence} — source on GitHub` : x.licence],
+    ['Licence', x.githubUrl ? `${x.licence}, source on GitHub` : x.licence],
     ['Version', x.version],
     ['Updated', fmtDate(x.updated)],
     ['Size', x.size],
@@ -674,7 +674,7 @@ function extPage(x, ogSet) {
   ].filter(([, v]) => v);
 
   const cta = x.storeUrl
-    ? `<a class="btn" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome &mdash; it's free</a>
+    ? `<a class="btn" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome, it's free</a>
        ${x.githubUrl ? `<a class="clink" href="${esc(x.githubUrl)}" rel="noopener" style="margin-left:.5rem">View the source ${CHEV}</a>` : ''}`
     : x.releaseUrl
     ? `<a class="btn" href="${esc(x.releaseUrl)}" rel="noopener">Download the latest release</a>
@@ -773,7 +773,7 @@ ${!(x.githubUrl || x.releaseUrl) ? '' : `
         : `<a class="btn" href="${esc(x.githubUrl)}" rel="noopener">Get ${esc(x.name)} on GitHub</a>`}
     </p>
     ${site.donate ? `<p class="center" style="margin-top:1.5rem">
-      <a class="clink clink--sm" href="${esc(site.donate)}" rel="noopener">${CUP} Free forever &mdash; buy me a coffee if it helped ${CHEV}</a>
+      <a class="clink clink--sm" href="${esc(site.donate)}" rel="noopener">${CUP} Free forever. Buy me a coffee if it helped ${CHEV}</a>
     </p>` : ''}
   </div>
 </section>`}
@@ -825,8 +825,8 @@ ${(x.options || []).length ? `
       ${[...(x.permissions || []), ...(x.hostPermissions || [])].map(p => `
       <div><dt><code>${esc(p.name)}</code></dt><dd>${esc(p.why)}</dd></div>`).join('')}
     </dl>
-    <p class="perms__note">Chrome shows you this list at install time. We would rather you saw it first${
-      x.githubUrl ? ` &mdash; and since the source is public, you can check that it is the whole list` : ''}.</p>
+    <p class="perms__note">Chrome shows you this list at install time. We would rather you saw it first.${
+      x.githubUrl ? ` The source is public, so you can check that it is the whole list.` : ''}</p>
   </div>
 </section>
 
@@ -921,7 +921,7 @@ ${(x.faq || []).length ? `
   }
 
   return layout({
-    title: x.metaTitle || `${x.name} — ${x.tagline} | ${site.name}`,
+    title: x.metaTitle || `${x.name} | ${site.name}`,
     description: x.metaDescription || x.summary,
     path: `/extensions/${x.slug}/`,
     og: ogSet.has(x.slug) ? x.slug : null,
@@ -939,7 +939,7 @@ function contactPage(ogSet) {
 declare(strict_types=1);
 
 $TO      = ${JSON.stringify(site.email)};
-$SUBJECT = 'Website enquiry — ' . ${JSON.stringify(site.domain)};
+$SUBJECT = 'Website enquiry from ' . ${JSON.stringify(site.domain)};
 $MIN_SECONDS = 3;   // a human takes longer than this to fill the form in
 
 $sent = false;
@@ -1012,7 +1012,7 @@ function err(array $e, string $k): string {
   <div class="wrap">
     <?php if ($sent): ?>
       <div class="formcard formcard--done reveal">
-        <h2 class="t-h3">Thank you — that has been sent.</h2>
+        <h2 class="t-h3">Thank you. That has been sent.</h2>
         <p>We read everything ourselves, so a reply may take a day or two, but it will come from a
           person rather than a queue.</p>
         <p style="margin-top:1.5rem"><a class="clink" href="/">Back to the extensions ${CHEV}</a></p>
@@ -1063,7 +1063,7 @@ function err(array $e, string $k): string {
 </section>`;
 
   return PHP + layout({
-    title: `Contact — ${site.name}`,
+    title: `Contact | ${site.name}`,
     description: `Get in touch about any of the Quite Apps extensions. Bug reports, feature requests and questions, all read by the person who wrote the code.`,
     path: '/contact/',
     og: ogSet.has('default') ? 'default' : null,
@@ -1123,7 +1123,7 @@ function privacyPage(ogSet) {
   </div>
 </section>`;
   return layout({
-    title: `Privacy — ${site.name}`,
+    title: `Privacy | ${site.name}`,
     description: `How ${site.name} handles data: no analytics, no cookies, no accounts. What each Chrome extension stores, and your rights under UK GDPR.`,
     path: '/privacy/', og: ogSet.has('default') ? 'default' : null,
     jsonld: {
@@ -1146,7 +1146,7 @@ function notFoundPage() {
   </p>
 </section>`;
   return layout({
-    title: `Page not found — ${site.name}`,
+    title: `Page not found | ${site.name}`,
     description: ('That page could not be found. Quite Apps makes free, open-source Chrome extensions '
       + 'that remove ads and clutter from YouTube and Facebook.'),
     path: '/404.html', og: null, noindex: true,
@@ -1213,7 +1213,7 @@ function newsPostPage(p, ogSet) {
   </div>
 </section>`;
   return layout({
-    title: `${p.title} — ${site.name}`,
+    title: `${p.title} | ${site.name}`,
     description: (p.body || [])[0] ? String(p.body[0]).slice(0, 155) : `News from ${site.name}.`,
     path: `/news/${p.id}/`,
     og: ogSet.has(ogName) ? ogName : (ogSet.has('default') ? 'default' : null),
@@ -1252,7 +1252,7 @@ function newsPage(ogSet) {
   </div>
 </section>`;
   return layout({
-    title: `News — ${site.name}`,
+    title: `News | ${site.name}`,
     description: 'Release notes and breakage notices for the Quite Apps extensions, newest first.',
     path: '/news/',
     og: ogSet.has('default') ? 'default' : null,

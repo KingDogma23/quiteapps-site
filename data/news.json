@@ -11,7 +11,7 @@
         "On some videos an advert still gets through. When it does, the player can sit black and silent instead of playing either the advert or your video. It looks like the extension has broken, which is the worst way for this to fail, so it is worth saying plainly what is happening.",
         "The extension does not block requests. It stops YouTube issuing an ad schedule in the first place, which is what keeps your session out of the anti-adblock net. It does not catch every response, and on the ones it misses an advert starts inside a player that was not expecting one.",
         "There is deliberately no automatic recovery. An earlier version reloaded the player after a stall; measured over repeated loads it produced a YouTube error screen more often than it rescued anything, so it was taken out. A stuck video you can reload is better than an error screen you cannot.",
-        "Reload the video and it usually plays. If it sticks again, add ?ytacoff=1 to the end of the URL — that loads that one video with the extension switched off, which is also how to confirm the extension is what is causing it rather than YouTube having a bad day.",
+        "Reload the video and it usually plays. If it sticks again, add ?ytacoff=1 to the end of the URL. That loads that one video with the extension switched off, which is also how to confirm the extension is what is causing it rather than YouTube having a bad day.",
         "This is why the store listing says most video ads rather than all of them. Claiming otherwise would earn one-star reviews describing exactly this."
       ],
       "works": [
@@ -29,7 +29,7 @@
       "tag": "Fixed",
       "body": [
         "The popup showed two all-time figures, “Ads stopped” and “Ads skipped”. They were always the same number, because the code incremented both on consecutive lines. One of them was never a measurement of anything.",
-        "Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different — videos where the ad schedule was stopped before the player ever saw it — and is labelled “Videos protected”, which is what it counts.",
+        "Version 0.31.0 separates them. “Ads skipped” still counts what it always counted: an ad that reached the player and was skipped or fast-forwarded. The other now counts something genuinely different: videos where the ad schedule was stopped before the player ever saw it. That one is labelled “Videos protected”, which is what it counts.",
         "It credits once per video rather than once per stopped response, because a single video can produce several: a retry, or returning to the same watch page. Counting each would inflate the figure with work done twice on one video.",
         "Stored totals are reset once on upgrade. Every previous value was a copy of the skip count, and carrying it forward would have left a number that was never true sitting under a label that now means something specific. The counter starts again from zero, honestly."
       ]
@@ -41,9 +41,9 @@
       "ext": "quite-for-cookies",
       "tag": "New",
       "body": [
-        "A third extension. It shows exactly what a site has stored in your browser — every cookie, grouped by the domain that set it, with sizes, and the ones holding your sign-in marked as such — and removes only what you pick.",
+        "A third extension. It shows exactly what a site has stored in your browser. Every cookie, grouped by the domain that set it, with sizes, and the ones holding your sign-in marked as such. It removes only what you pick.",
         "Then it counts again and tells you what actually went: how many were removed, how many could not be, and how many the page has already set again because it is still open. Those numbers come from re-reading the browser rather than assuming the delete worked.",
-        "Version 0.20.0 adds a sweep that runs on its own. Turn on “clear a site when I close its last tab” and the job happens in the background as you browse, sparing sign-ins and anything on your spared list. Chrome's own session-only setting cannot do this — it waits until you close the entire browser. Every sweep is recorded, so a run that cleared nothing can never be mistaken for one that worked.",
+        "Version 0.20.0 adds a sweep that runs on its own. Turn on “clear a site when I close its last tab” and the job happens in the background as you browse, sparing sign-ins and anything on your spared list. Chrome's own session-only setting cannot do this. It waits until you close the entire browser. Every sweep is recorded, so a run that cleared nothing can never be mistaken for one that worked.",
         "It installs with no access to any website. Access is asked for one domain at a time, at the moment you press the button, and is reversible from the popup."
       ]
     }
@@ -56,7 +56,7 @@
     "tag": "Breakage",
     "body": [
       "What changed on their side, and what you are seeing because of it.",
-      "What we are doing about it, and roughly when. If the fix is written but waiting on store review, say so — the wait is days, not hours, and people deserve to know which one they are in."
+      "What we are doing about it, and roughly when. If the fix is written but waiting on store review, say so. The wait is days, not hours, and people deserve to know which one they are in."
     ],
     "works": [
       "The parts still working, listed one by one",
