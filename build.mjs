@@ -1106,7 +1106,9 @@ function privacyPage(ogSet) {
         page. Two of them run on a single site and cannot see any other tab you have open; the third
         installs with no access to any site at all and asks for one domain at a time, when you press
         the button. None of them contain analytics, remote code, or a server of ours for your data to
-        sit on.</p>
+        sit on. Two of them keep your settings in Chrome's own extension-settings sync, so with
+        Chrome sync switched on those settings travel with your Chrome profile, the same as any
+        extension's. That is Google's transport and not ours; nothing reaches us either way.</p>
       ${exts.map(e => `<p><strong>${esc(e.name)}.</strong> ${esc(e.privacy)}
         <a href="/extensions/${e.slug}/#permissions">See its permissions</a>.</p>`).join('')}
       <h2 class="t-h3">Nothing is sold</h2>

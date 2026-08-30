@@ -9,9 +9,9 @@ We are a small independent studio in the UK. We make Chrome extensions that take
 - [Quite for YouTube](https://quiteapps.co.uk/extensions/quite-for-youtube/): Skips video ads and hides the ad panels in your feed, sidebar, search results and Shorts, without tripping YouTube's anti-adblock check. Free, MIT licensed. Chrome Web Store: https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci. Source: https://github.com/KingDogma23/quite-for-youtube
   - Permissions: storage, *://*.youtube.com/*
   - Version 0.31.8, updated 29 August 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.
-- [Quite for Facebook](https://quiteapps.co.uk/extensions/quite-for-facebook/): Hides ads, suggested posts, suggested groups and the Sponsored column, and leaves your friends' posts exactly where they were. Free, MIT licensed. Source: https://github.com/KingDogma23/quite-for-facebook
+- [Quite for Facebook](https://quiteapps.co.uk/extensions/quite-for-facebook/): Takes ads, suggested posts, suggested groups and the Sponsored column out of your feed, and leaves your friends' posts exactly where they were. Free, MIT licensed. Source: https://github.com/KingDogma23/quite-for-facebook
   - Permissions: storage, *://*.facebook.com/*
-  - Version 2.6.0, updated 29 August 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.
+  - Version 2.6.1, updated 30 August 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.
 - [Quite for Cookies](https://quiteapps.co.uk/extensions/quite-for-cookies/): Shows exactly what a site has stored in your browser, deletes only what you pick, then counts again and tells you what actually went. It can also clear a site on its own when you close its last tab. Free, MIT licensed. Chrome Web Store: https://chromewebstore.google.com/detail/quite-for-cookies/iagkmeadnfkmgocminiglpibkcnibnch. Source: https://github.com/KingDogma23/quite-for-cookies
   - Permissions: activeTab, cookies, browsingData, scripting, storage, None at install
   - Version 0.22.0, updated 29 August 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.

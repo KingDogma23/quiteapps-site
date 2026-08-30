@@ -129,7 +129,7 @@
           "a": "Yes. It runs in Chrome, Edge, Brave, Arc, Opera and other Chromium browsers."
         }
       ],
-      "privacy": "Quite for YouTube runs only on youtube.com and has no permission to access any other site. It sends nothing anywhere. No server, no analytics, no account, no tracking. The only thing it stores is your checkbox settings, in your own browser.",
+      "privacy": "Quite for YouTube runs only on youtube.com and has no permission to access any other site. No server, no analytics, no account, no tracking, and nothing is sent to us. It stores the checkboxes you have ticked and a running count of what it has skipped or hidden. Settings use Chrome's own extension-settings sync, so with Chrome sync switched on they travel with your Chrome profile, the same as any extension's settings. There is also a diagnostic log that records which videos you hopped between, which is off unless you switch it on with ?ytachistory=1, and which Chrome clears when you quit.",
       "popupSub": "Ads skipped as they appear",
       "stats": [
         {
@@ -154,7 +154,7 @@
       "shortName": "Facebook",
       "accent": "#e0a341",
       "tagline": "A feed of the people you actually know.",
-      "summary": "Hides ads, suggested posts, suggested groups and the Sponsored column, and leaves your friends' posts exactly where they were.",
+      "summary": "Takes ads, suggested posts, suggested groups and the Sponsored column out of your feed, and leaves your friends' posts exactly where they were.",
       "metaDescription": "Free, open-source Chrome extension that hides ads, suggested posts, suggested groups and the Sponsored column from your Facebook feed. No tracking.",
       "description": [
         "Quite for Facebook strips out the things you never asked to see: posts marked Sponsored or Ad, pages you do not follow pushed into your feed, groups you are not a member of, and the ad panel sitting above your contacts on the right.",
@@ -165,9 +165,9 @@
       "priceValue": "0",
       "currency": "GBP",
       "licence": "MIT",
-      "version": "2.6.0",
+      "version": "2.6.1",
       "released": "2026-08-23",
-      "updated": "2026-08-29",
+      "updated": "2026-08-30",
       "size": "About 310 KB",
       "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
       "manifest": "Manifest V3",
@@ -273,27 +273,27 @@
           "a": "Click the extension icon. The version shown is the one actually running in the page. If it does not match what you installed, Chrome is serving an old build. Hit reload on chrome://extensions, then reload Facebook."
         }
       ],
-      "privacy": "Quite for Facebook runs only on facebook.com and has no permission to access any other site. It sends nothing anywhere. No server, no analytics, no account, no tracking. The only thing it stores is your checkbox settings, in your own browser.",
-      "popupSub": "Feed clutter hidden as it loads",
+      "privacy": "Quite for Facebook runs only on facebook.com and has no permission to access any other site. No server, no analytics, no account, no tracking, and nothing is sent to us. It stores the checkboxes you have ticked and a running count of what it has hidden. Settings use Chrome's own extension-settings sync, so with Chrome sync switched on they travel with your Chrome profile, the same as any extension's settings.",
+      "popupSub": "Ads and suggestions hidden",
       "stats": [
         {
-          "value": "243",
+          "value": "63",
           "label": "Ads hidden"
         },
         {
-          "value": "394",
+          "value": "42",
           "label": "Suggestions"
         },
         {
-          "value": "77",
+          "value": "1",
           "label": "Groups"
         }
       ],
       "metaTitle": "Hide Facebook Ads & Suggested Posts: Quite for Facebook",
       "ground": "#1a1820",
-      "notice": "Not on the Chrome Web Store yet. A new publisher account may hold only two extensions, and Quite for YouTube and Quite for Cookies have those slots, so this one sits finished and waiting. GitHub carries the newest build in the meantime, and installing it unpacked takes about two minutes.",
-      "noticeShort": "Not on the Chrome Web Store yet. Install it from GitHub in about two minutes.",
-      "pitch": "Sponsored posts, suggested pages and groups you never joined are hidden as the feed loads. What is left is the people you actually follow."
+      "notice": "Not on the Chrome Web Store yet. Version 2.6.1 was submitted on 30 August and is waiting on review. GitHub carries the same build in the meantime, and installing it unpacked takes about two minutes.",
+      "noticeShort": "Submitted to the Chrome Web Store, waiting on review. GitHub has it now.",
+      "pitch": "Sponsored posts, suggested pages and groups you never joined are taken out of your feed. What is left is the people you actually follow."
     },
     {
       "slug": "quite-for-cookies",
