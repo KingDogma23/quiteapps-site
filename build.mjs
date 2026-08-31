@@ -432,6 +432,7 @@ const footer = () => `
           <li><a href="/news/">News</a></li>
           <li><a href="/contact/">Contact</a></li>
           ${site.facebook ? `<li><a href="${esc(site.facebook)}" rel="noopener">Breakage notices</a></li>` : ''}
+          ${site.instagram ? `<li><a href="${esc(site.instagram)}" rel="noopener">Instagram</a></li>` : ''}
         </ul>
       </div>
       <div>
@@ -623,9 +624,13 @@ ${site.donate ? `
         '@id': abs('/#org'),
         name: site.name, legalName: site.legalName, url: BASE, email: site.email,
         foundingDate: site.foundedYear, description: site.metaDescription,
+
         address: { '@type': 'PostalAddress', addressCountry: 'GB' },
         ...(ogSet.has('default') ? { logo: abs('/og/default.png') } : {}),
-        ...(site.github ? { sameAs: [site.github] } : {}),
+        ...(() => {
+          const same = [site.github, site.facebook, site.instagram].filter(Boolean);
+          return same.length ? { sameAs: same } : {};
+        })(),
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'customer support',

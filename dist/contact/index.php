@@ -188,6 +188,7 @@ function err(array $e, string $k): string {
           <li><a href="/news/">News</a></li>
           <li><a href="/contact/">Contact</a></li>
           <li><a href="https://www.facebook.com/quiteapps/" rel="noopener">Breakage notices</a></li>
+          <li><a href="https://www.instagram.com/quite_apps/" rel="noopener">Instagram</a></li>
         </ul>
       </div>
       <div>
