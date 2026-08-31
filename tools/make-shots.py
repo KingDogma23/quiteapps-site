@@ -166,7 +166,7 @@ def p_stats(d, t, y, caption, items):
 
 def p_coffee(d, t, y):
     d.rectangle([0, y, PW, y + 26], fill=t.card)
-    lead = "Free, and staying that way — "
+    lead = "Free, and staying that way. "
     w = d.textlength(lead, f(9.5)) + d.textlength("buy me a coffee", f(9.5, 700))
     x = (PW - w) / 2
     d.text((x, y + 8), lead, f(9.5), t.MUTED)
@@ -324,7 +324,7 @@ def panel_auto(x, t):
     # run. Showing that line is the whole point of the feature.
     d.rectangle([0, y, PW, y + 34], fill=t.sunk)
     d.text((14, y + 7), "Last sweep", f(9.5, 600), t.MUTED)
-    d.text((14, y + 20), "bbc.co.uk — 22 cookies removed, 2 sign-ins kept, 4 minutes ago",
+    d.text((14, y + 20), "bbc.co.uk, 22 cookies removed, 2 sign-ins kept, 4 minutes ago",
            f(9), t.DIM)
     y += 34
     d.line([0, y, PW, y], fill=t.line)
