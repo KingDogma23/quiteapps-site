@@ -1,6 +1,33 @@
 {
-  "_README": "Reverse-chronological. Newest first — the build does not sort, so keep them in order. `id` becomes the anchor (/news/#id) and the RSS guid, so never change one once published. `date` is the publication date and drives both the page and the feed; `updated` is optional and only for a post edited in place after publishing. `ext` ties a post to an extension slug so its page can show the latest entry inline. `body` is an array of paragraphs, rendered as-is into both the page and the feed — the feed carries the full text, not a teaser. `works` is the 'what still works' list used by breakage posts; omit it elsewhere. See _template at the bottom. PENDING: when Chrome Web Store approves 0.31.8, two edits fire together. The post 2026-08-29-saying-what-it-does turns 'replaces ... once it is approved' and 'will say' into past tense, and the embargoed 0.31.8 post (held in the extensions session, WEBSITE-NEWS-2026-08-29.md post 1) is published dated that day. Both regenerate their RSS entries automatically. Remove the storeLag notice on quite-for-youtube at the same time.",
+  "_README": "Reverse-chronological. Newest first — the build does not sort, so keep them in order. `id` becomes the anchor (/news/#id) and the RSS guid, so never change one once published. `date` is the publication date and drives both the page and the feed; `updated` is optional and only for a post edited in place after publishing. `ext` ties a post to an extension slug so its page can show the latest entry inline. `body` is an array of paragraphs, rendered as-is into both the page and the feed — the feed carries the full text, not a teaser. `works` is the 'what still works' list used by breakage posts; omit it elsewhere. See _template at the bottom. PENDING, 30 Aug 2026: Quite for YouTube 0.31.18 is still in Chrome Web Store review. Post 2 of WEBSITE-NEWS-2026-08-30.md is embargoed on it, because it tells readers their totals will drop and that only makes sense once the build that drops them has arrived. When it publishes: publish that post dated that day, and check whether the 29 Aug post 2026-08-29-saying-what-it-does still needs its future tense turned back. Both regenerate their feed entries on build.",
   "posts": [
+    {
+      "id": "2026-08-30-trackers-only-sign-out",
+      "date": "2026-08-30",
+      "title": "Quite for Cookies 0.22.7: the “trackers only” sweep could sign you out",
+      "ext": "quite-for-cookies",
+      "tag": "Fixed",
+      "body": [
+        "The default sweep is called Trackers only, and until this version the popup told you it could not sign you out of anything, because nothing on its list of tracking domains was a site you could log in to.",
+        "That was not true. The list included analytics and marketing products, among them HubSpot, Mixpanel, Amplitude, Segment, Optimizely and New Relic, whose own customers sign in on those same addresses. The sweep matched the address rather than the cookie, so on those sites it removed everything, sign-in cookies included. If you use any of those tools for work, a sweep may have signed you out of them.",
+        "The safety promise was written in a comment rather than enforced in the code. It is now enforced. Anything that looks like a sign-in is spared in both sweeps, and the checkbox that controls it works in both. It used to be greyed out in the default sweep, so it could not even be switched on.",
+        "Three other ways data could go that should not have are fixed in the same release. Closing a tab in an Incognito window could clear the ordinary profile's cookies and stored data for that site. Unticking a row did not always protect it, when two cookies shared an address. And a site with no cookies could never be added to the spared list, while the automatic clear would still wipe its stored data.",
+        "Nothing about this was reported by a user. It came out of an audit we ran on our own published code before adding a fourth extension."
+      ]
+    },
+    {
+      "id": "2026-08-30-facebook-on-the-store",
+      "date": "2026-08-30",
+      "title": "Quite for Facebook is on the Chrome Web Store",
+      "ext": "quite-for-facebook",
+      "tag": "New",
+      "body": [
+        "Quite for Facebook hides the clutter from your feed and does nothing else: posts marked Sponsored or Ad, suggested posts from pages you do not follow, suggested groups, and the Sponsored column on the right.",
+        "Two options are worth knowing about. Strict mode only hides posts that are also marked “Suggested for you”, for anyone who wants it to err on the cautious side. A placeholder option leaves a small strip with a Show button where a post was, so you can always see what was hidden and put it back, which is also the honest way to check it is not hiding things you wanted.",
+        "It runs only on facebook.com. It has no account and no server, and nothing is sent to us.",
+        "It is free, MIT licensed, and the source is on GitHub."
+      ]
+    },
     {
       "id": "2026-08-29-saying-what-it-does",
       "date": "2026-08-29",

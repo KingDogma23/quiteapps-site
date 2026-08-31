@@ -262,16 +262,16 @@
       <p class="t-sub" style="margin-top:.85rem">Releases and breakages for Quite for Cookies.</p>
     </div>
     <div class="posts measure-l">
-<article class="post reveal" id="2026-08-29-cookies-on-the-store">
+<article class="post reveal" id="2026-08-30-trackers-only-sign-out">
   <div class="post__meta">
-    <time datetime="2026-08-29">29 August 2026</time>
-    <span class="post__tag">New</span>
+    <time datetime="2026-08-30">30 August 2026</time>
+    <span class="post__tag">Fixed</span>
     <a class="post__ext" href="/extensions/quite-for-cookies/">Quite for Cookies</a>
   </div>
   <h3 class="t-h3 post__title">
-    <a href="/news/2026-08-29-cookies-on-the-store/">Quite for Cookies is on the Chrome Web Store</a>
+    <a href="/news/2026-08-30-trackers-only-sign-out/">Quite for Cookies 0.22.7: the “trackers only” sweep could sign you out</a>
   </h3>
-  <p>Quite for Cookies shows you what a site has stored before it deletes anything, lets you pick what goes, and then re-reads the site to prove it actually went. It can also clear a site automatically when you close its last tab.</p><p>Sign-in cookies are left alone unless you say otherwise, so clearing a site does not sign you out of it.</p><p>It is free, MIT licensed, and the source is on GitHub.</p>
+  <p>The default sweep is called Trackers only, and until this version the popup told you it could not sign you out of anything, because nothing on its list of tracking domains was a site you could log in to.</p><p>That was not true. The list included analytics and marketing products, among them HubSpot, Mixpanel, Amplitude, Segment, Optimizely and New Relic, whose own customers sign in on those same addresses. The sweep matched the address rather than the cookie, so on those sites it removed everything, sign-in cookies included. If you use any of those tools for work, a sweep may have signed you out of them.</p><p>The safety promise was written in a comment rather than enforced in the code. It is now enforced. Anything that looks like a sign-in is spared in both sweeps, and the checkbox that controls it works in both. It used to be greyed out in the default sweep, so it could not even be switched on.</p><p>Three other ways data could go that should not have are fixed in the same release. Closing a tab in an Incognito window could clear the ordinary profile&#39;s cookies and stored data for that site. Unticking a row did not always protect it, when two cookies shared an address. And a site with no cookies could never be added to the spared list, while the automatic clear would still wipe its stored data.</p><p>Nothing about this was reported by a user. It came out of an audit we ran on our own published code before adding a fourth extension.</p>
   
   
 </article></div>
