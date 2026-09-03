@@ -26,15 +26,14 @@
       "priceValue": "0",
       "currency": "GBP",
       "licence": "MIT",
-      "version": "0.31.8",
+      "version": "0.32.4",
       "released": "2026-08-24",
-      "updated": "2026-08-29",
+      "updated": "2026-09-01",
       "size": "About 300 KB",
       "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
       "manifest": "Manifest V3",
       "reloadTarget": "YouTube",
       "githubUrl": "https://github.com/KingDogma23/quite-for-youtube",
-      "releaseUrl": "https://github.com/KingDogma23/quite-for-youtube/releases/tag/v0.31.8",
       "permissions": [
         {
           "name": "storage",
@@ -144,8 +143,6 @@
       "metaTitle": "Remove YouTube Ads: Quite for YouTube, Chrome extension",
       "ground": "#14201b",
       "storeUrl": "https://chromewebstore.google.com/detail/quite-for-youtube/ibfocboidmabkdgnencnlbloigohcgci",
-      "notice": "This page describes version 0.31.8. The Chrome Web Store is still reviewing it, so Add to Chrome installs 0.30.0 today, which shows a third counter in the popup and carries the older wording. The update arrives on its own once approved. If you want it now, the GitHub release below is 0.31.8.",
-      "noticeShort": "Store is on 0.30.0 while 0.31.8 is in review. GitHub has 0.31.8 now.",
       "pitch": "Skip is clicked the moment it appears and unskippable ads are fast-forwarded. The ad panels in your feed, sidebar, search results and Shorts never paint at all."
     },
     {
@@ -165,15 +162,14 @@
       "priceValue": "0",
       "currency": "GBP",
       "licence": "MIT",
-      "version": "2.6.3",
+      "version": "2.6.6",
       "released": "2026-08-23",
-      "updated": "2026-08-30",
+      "updated": "2026-09-01",
       "size": "About 310 KB",
       "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
       "manifest": "Manifest V3",
       "reloadTarget": "Facebook",
       "githubUrl": "https://github.com/KingDogma23/quite-for-facebook",
-      "releaseUrl": "https://github.com/KingDogma23/quite-for-facebook/releases/tag/v2.6.3",
       "permissions": [
         {
           "name": "storage",
@@ -312,7 +308,7 @@
       "priceValue": "0",
       "currency": "GBP",
       "licence": "MIT",
-      "version": "0.22.7",
+      "version": "0.22.6",
       "released": "2026-08-27",
       "updated": "2026-08-30",
       "size": "About 77 KB",
@@ -320,7 +316,7 @@
       "manifest": "Manifest V3",
       "reloadTarget": "site you were looking at",
       "githubUrl": "https://github.com/KingDogma23/quite-for-cookies",
-      "releaseUrl": "https://github.com/KingDogma23/quite-for-cookies/releases/tag/v0.22.7",
+      "releaseUrl": "https://github.com/KingDogma23/quite-for-cookies/releases/tag/v0.22.6",
       "permissions": [
         {
           "name": "activeTab",

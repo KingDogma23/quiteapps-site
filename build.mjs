@@ -1108,14 +1108,18 @@ function privacyPage(ogSet) {
         troubleshooting; we do not analyse them or share them.</p>
       <h2 class="t-h3">The extensions</h2>
       <p>Every permission each extension asks for is listed with its reason on that extension's own
-        page. Two of them run on a single site and cannot see any other tab you have open; the third
-        installs with no access to any site at all and asks for one domain at a time, when you press
-        the button. None of them contain analytics, remote code, or a server of ours for your data to
-        sit on. Two of them keep your settings in Chrome's own extension-settings sync, so with
-        Chrome sync switched on those settings travel with your Chrome profile, the same as any
-        extension's. That is Google's transport and not ours; nothing reaches us either way.</p>
-      ${exts.map(e => `<p><strong>${esc(e.name)}.</strong> ${esc(e.privacy)}
-        <a href="/extensions/${e.slug}/#permissions">See its permissions</a>.</p>`).join('')}
+        page. Three of them run on a single site each and cannot see any other tab you have open; the
+        fourth, Quite for Cookies, installs with no access to any site at all and asks for one domain
+        at a time, when you press the button. None of them contain analytics, remote code, or a server
+        of ours for your data to sit on. Three of them keep your settings in Chrome's own
+        extension-settings sync, so with Chrome sync switched on those settings travel with your
+        Chrome profile, the same as any extension's. That is Google's transport and not ours; nothing reaches us either way.</p>
+      ${exts.flatMap(e => [
+        ...(site.privacyExtra || []).filter(x => x.before === e.slug)
+          .map(x => `<p><strong>${esc(x.name)}.</strong> ${esc(x.body)}</p>`),
+        `<p><strong>${esc(e.name)}.</strong> ${esc(e.privacy)}
+        <a href="/extensions/${e.slug}/#permissions">See its permissions</a>.</p>`,
+      ]).join('')}
       <h2 class="t-h3">Nothing is sold</h2>
       <p>The extensions are free and MIT licensed. There is no purchase, no licence key and no
         payment processor involved, so there is no payment data for anyone to hold.</p>

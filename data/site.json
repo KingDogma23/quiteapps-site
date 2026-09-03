@@ -49,7 +49,7 @@
     },
     {
       "title": "The fewest permissions we can ask for",
-      "body": "Two of them ask for a single permission and access to the one site they are for. The third starts with no access to any site at all, and asks for one domain at a time, at the moment you press the button."
+      "body": "Most ask for a single permission and access to the one site they are for. Quite for Cookies starts with no access to any site at all, and asks for one domain at a time, at the moment you press the button."
     },
     {
       "title": "Read the code yourself",
@@ -62,14 +62,21 @@
   "heroHeadline": "Small extensions,<br>quietly made.",
   "donate": "https://buymeacoffee.com/kingdogma23",
   "donateHeading": "Free, and staying free.",
-  "donateBody": "All three extensions are free, MIT licensed and always will be. There is no paid tier waiting behind them. If one has saved you some irritation and you feel like putting something in the hat, it keeps the work going. If not, that is genuinely fine.",
+  "donateBody": "Every extension is free, MIT licensed and always will be. There is no paid tier waiting behind them. If one has saved you some irritation and you feel like putting something in the hat, it keeps the work going. If not, that is genuinely fine.",
   "installFirstRelease": "Download the latest release and unzip it. You need the <b>folder</b>. Keep it somewhere permanent, because moving or deleting it stops the extension working.",
   "installFirstZip": "On GitHub, click the green <b>Code</b> button, choose <b>Download ZIP</b>, and unzip it. You need the <b>folder</b>. Keep it somewhere permanent, because moving or deleting it stops the extension working.",
   "sslLive": true,
   "forceHttps": false,
   "updated": "2026-08-29",
-  "privacyUpdated": "2026-08-28",
+  "privacyUpdated": "2026-09-03",
   "facebook": "https://www.facebook.com/quiteapps/",
   "markInk": "#f2f0f4",
-  "instagram": "https://www.instagram.com/quite_apps/"
+  "instagram": "https://www.instagram.com/quite_apps/",
+  "privacyExtra": [
+    {
+      "before": "quite-for-cookies",
+      "name": "Quite for Instagram",
+      "body": "Quite for Instagram runs only on instagram.com and has no permission to access any other site. No server, no analytics, no account, no tracking, and nothing is sent to us. It stores the checkboxes you have ticked and a running count of what it has hidden. Settings use Chrome's own extension-settings sync, so with Chrome sync switched on they travel with your Chrome profile, the same as any extension's settings."
+    }
+  ]
 }
