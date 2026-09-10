@@ -419,12 +419,18 @@ PLAN = {
         "tile": ("Quite for Facebook", "A feed of people you know."),
         "shots": [
             ("01-a-quieter-feed", ["A feed of the people", "you actually know."],
-             ["Sponsored posts hidden as the feed loads",
+             ["Sponsored posts removed as they appear",
               "Suggested pages and groups gone",
-              "The Sponsored column removed"], "main"),
-            ("02-hidden-as-it-loads", ["Hidden as it loads,", "not after."],
-             ["Posts never paint, so nothing flickers away",
-              "Keeps working as the feed scrolls",
+              "The Sponsored column taken out"], "main"),
+            # Claims here are bounded by SCAN_DEBOUNCE_MS = 60 in the extension's
+            # content.js, which its own comment calls the upper bound on how long
+            # a post can be visible before removal. It hides with CSS keyed on an
+            # attribute JavaScript sets, so the post does reach the DOM first.
+            # Anything saying it never paints is false; YouTube is the one that
+            # can say that, off structural :has() rules at document_start.
+            ("02-gone-in-milliseconds", ["Gone in under", "a tenth of a second."],
+             ["A 60ms scan window, too short to read as a flash",
+              "Keeps up as the feed scrolls, and in a background tab",
               "A placeholder strip instead, if you prefer"], "alt"),
             ("03-nothing-hidden", ["One permission.", "No tracking."],
              ["Storage, to remember your six checkboxes",
