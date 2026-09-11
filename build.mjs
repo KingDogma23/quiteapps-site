@@ -462,10 +462,10 @@ const footer = () => `
       <span>United Kingdom</span>
     </div>
     <p class="foot__legal">${esc(site.name)} is an independent studio in the United Kingdom. Our extensions
-      are free, MIT licensed and published as source on GitHub. They install unpacked and run in Chrome,
-      Edge, Brave, Arc, Opera and other Chromium browsers. Not affiliated with, endorsed by or connected to
-      Google, YouTube or Meta. Chrome and YouTube are trademarks of Google LLC; Facebook is a trademark of
-      Meta Platforms, Inc.</p>
+      are free and MIT licensed, and install from the Chrome Web Store. They run in Chrome, Edge, Brave,
+      Arc, Opera and other Chromium browsers. Not affiliated with, endorsed by or connected to Google,
+      YouTube or Meta. Chrome and YouTube are trademarks of Google LLC; Facebook and Instagram are
+      trademarks of Meta Platforms, Inc.</p>
   </div>
 </footer>`;
 
@@ -1402,8 +1402,9 @@ ${exts.map(x => `- [${x.name}](${abs(`/extensions/${x.slug}/`)}): ${x.summary} $
 
 ## How the extensions are distributed
 
-Not on the Chrome Web Store. They install unpacked: download the folder from
-GitHub, open chrome://extensions, turn on Developer mode, and use Load unpacked.
+All of them install from the Chrome Web Store. The full source of
+${listNames(exts.filter(e => e.githubUrl).map(e => e.name))} is public on GitHub
+at ${site.github}.
 
 ## Privacy
 

@@ -7,9 +7,9 @@
   "country": "United Kingdom",
   "tagline": "Small extensions, quietly made.",
   "metaTitle": "Quite Apps: free Chrome extensions that remove ads and clutter",
-  "metaDescription": "Free, open-source Chrome extensions from an independent UK studio. Remove YouTube ads, clear your Facebook feed, and see what sites store on you.",
-  "leadIn": "We are a small independent studio in the UK. We make Chrome extensions that take things away rather than add them. We publish the source too, so you never have to take our word for what they do.",
-  "heroLead": "Free Chrome extensions that strip the advertising out of YouTube, clear the clutter from Facebook, and show you what sites have stored on your machine before you delete it. No account, no tracking, and you can read every line of the code.",
+  "metaDescription": "Free Chrome extensions from an independent UK studio. Remove YouTube ads, clear your Facebook and Instagram feeds, and see what sites store on you.",
+  "leadIn": "We are a small independent studio in the UK. We make Chrome extensions that take things away rather than add them. Each one does a single job and then gets out of the way.",
+  "heroLead": "Free Chrome extensions that strip the advertising out of YouTube, clear the clutter from Facebook and Instagram, and show you what sites have stored on your machine before you delete it. No account, no tracking, and nothing is ever sent to us.",
   "accent": "#110f16",
   "email": "hello@quiteapps.co.uk",
   "supportEmail": "support@quiteapps.co.uk",
@@ -53,7 +53,7 @@
     },
     {
       "title": "Read the code yourself",
-      "body": "Everything we ship is MIT licensed, and the source of every extension on this site is public on GitHub. Nothing is sent anywhere. There is no server and no analytics. You do not have to trust us on that, because you can check it yourself."
+      "body": "Everything we ship is MIT licensed, and the source of most of them is public on GitHub. Nothing is sent anywhere. There is no server and no analytics. You do not have to trust us on that, because you can check it yourself."
     }
   ],
   "contactHeading": "Get in touch",
@@ -71,12 +71,5 @@
   "privacyUpdated": "2026-09-11",
   "facebook": "https://www.facebook.com/quiteapps/",
   "markInk": "#f2f0f4",
-  "instagram": "https://www.instagram.com/quite_apps/",
-  "privacyExtra": [
-    {
-      "before": "quite-for-cookies",
-      "name": "Quite for Instagram",
-      "body": "Quite for Instagram runs only on instagram.com and has no permission to access any other site. No server, no analytics, no account, no tracking, and nothing is sent to us. It stores the checkboxes you have ticked and a running count of what it has hidden. Settings use Chrome's own extension-settings sync, so with Chrome sync switched on they travel with your Chrome profile, the same as any extension's settings."
-    }
-  ]
+  "instagram": "https://www.instagram.com/quite_apps/"
 }

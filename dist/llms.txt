@@ -1,8 +1,8 @@
 # Quite Apps
 
-> Free, open-source Chrome extensions from an independent UK studio. Remove YouTube ads, clear your Facebook feed, and see what sites store on you.
+> Free Chrome extensions from an independent UK studio. Remove YouTube ads, clear your Facebook and Instagram feeds, and see what sites store on you.
 
-We are a small independent studio in the UK. We make Chrome extensions that take things away rather than add them. We publish the source too, so you never have to take our word for what they do.
+We are a small independent studio in the UK. We make Chrome extensions that take things away rather than add them. Each one does a single job and then gets out of the way.
 
 ## Extensions
 
@@ -12,14 +12,18 @@ We are a small independent studio in the UK. We make Chrome extensions that take
 - [Quite for Facebook](https://quiteapps.co.uk/extensions/quite-for-facebook/): Takes ads, suggested posts, suggested groups and the Sponsored column out of your feed, and leaves your friends' posts exactly where they were. Free, MIT licensed. Chrome Web Store: https://chromewebstore.google.com/detail/quite-for-facebook/mmkkijoeabmdogijjnkglkmeckhdhedl. Source: https://github.com/KingDogma23/quite-for-facebook
   - Permissions: storage, *://*.facebook.com/*
   - Version 2.6.6, updated 1 September 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.
+- [Quite for Instagram](https://quiteapps.co.uk/extensions/quite-for-instagram/): Hides adverts and the suggested posts pushed at you from accounts you do not follow, and does nothing else. What is left is the people you chose. Free, MIT licensed. Chrome Web Store: https://chromewebstore.google.com/detail/quite-for-instagram/mlnienohcfmeaankmfbclaikelngmbjk. Not yet released.
+  - Permissions: storage, *://*.instagram.com/*
+  - Version 0.1.24, updated 3 September 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.
 - [Quite for Cookies](https://quiteapps.co.uk/extensions/quite-for-cookies/): Shows exactly what a site has stored in your browser, deletes only what you pick, then counts again and tells you what actually went. It can also clear a site on its own when you close its last tab. Free, MIT licensed. Chrome Web Store: https://chromewebstore.google.com/detail/quite-for-cookies/iagkmeadnfkmgocminiglpibkcnibnch. Source: https://github.com/KingDogma23/quite-for-cookies
   - Permissions: activeTab, cookies, browsingData, scripting, storage, None at install
   - Version 0.23.2, updated 10 September 2026. Runs on Chrome, Edge, Brave, Arc, Opera, Vivaldi.
 
 ## How the extensions are distributed
 
-Not on the Chrome Web Store. They install unpacked: download the folder from
-GitHub, open chrome://extensions, turn on Developer mode, and use Load unpacked.
+All of them install from the Chrome Web Store. The full source of
+Quite for YouTube, Quite for Facebook and Quite for Cookies is public on GitHub
+at https://github.com/KingDogma23.
 
 ## Privacy
 

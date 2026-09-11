@@ -291,6 +291,129 @@
       "storeUrl": "https://chromewebstore.google.com/detail/quite-for-facebook/mmkkijoeabmdogijjnkglkmeckhdhedl"
     },
     {
+      "slug": "quite-for-instagram",
+      "name": "Quite for Instagram",
+      "shortName": "Instagram",
+      "accent": "#a97ae0",
+      "tagline": "A feed of the people you actually follow.",
+      "summary": "Hides adverts and the suggested posts pushed at you from accounts you do not follow, and does nothing else. What is left is the people you chose.",
+      "metaDescription": "Free Chrome extension that hides Instagram adverts and suggested posts from accounts you do not follow. No account, no tracking, nothing sent anywhere.",
+      "description": [
+        "Instagram's feed arrives with two things you did not ask for: posts marked “Ad”, “Sponsored” or “Paid partnership”, and “Suggested for you” posts from accounts you have never followed. Quite for Instagram takes out both and leaves the rest of the app exactly as it was.",
+        "A hidden post leaves a small labelled card rather than vanishing outright, which is deliberate rather than a compromise. Instagram reserves scroll space for the posts it has loaded, and closing that gap entirely desynchronises its own height model from what is on screen. Measured on a live feed, collapsing the gap dropped the reader 26,136px past the end of the feed; keeping the card brought that to 223px, and the feed served roughly ten times as much content. A compact card is on by default, shrinking the gap to about a third.",
+        "It is built to fail in the safer direction. When Instagram changes its markup, and it does so regularly, the extension lets an advert through rather than hiding a post you wanted to see."
+      ],
+      "status": "live",
+      "price": "Free",
+      "priceValue": "0",
+      "currency": "GBP",
+      "licence": "MIT",
+      "version": "0.1.24",
+      "released": "2026-09-03",
+      "updated": "2026-09-03",
+      "size": "About 90 KB",
+      "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
+      "manifest": "Manifest V3",
+      "reloadTarget": "Instagram",
+      "permissions": [
+        {
+          "name": "storage",
+          "why": "To remember your checkbox settings, and a running count of what it has hidden. Settings use Chrome's own extension-settings sync, so with Chrome sync on they travel with your Chrome profile. The count stays on the machine it was made on."
+        }
+      ],
+      "hostPermissions": [
+        {
+          "name": "*://*.instagram.com/*",
+          "why": "The extension runs on Instagram and nowhere else. It has no permission to read any other site, and cannot see any other tab you have open."
+        }
+      ],
+      "features": [
+        {
+          "title": "Adverts out of the feed",
+          "body": "Posts marked “Ad”, “Sponsored” or “Paid partnership” are taken out. Detection is an exact string match inside the post's header band rather than a guess at the whole post, so an advert getting through is the failure it is built for, not a post you wanted disappearing."
+        },
+        {
+          "title": "Suggested posts, gone",
+          "body": "“Suggested for you” posts come from accounts you have never followed. Untick nothing and they stop arriving. What is left is the people you chose to follow."
+        },
+        {
+          "title": "The gap is on purpose",
+          "body": "A hidden post leaves a labelled card the size Instagram reserved for it. Closing that gap sounds better and is worse: it desynchronises the feed's own height model and drops you past the end of what has loaded. A compact card, on by default, shrinks it to about a third."
+        },
+        {
+          "title": "Put one back",
+          "body": "Switch on the placeholder and a hidden post leaves a strip with a Show button, so anything taken out can be read anyway. Nothing is ever removed beyond recall."
+        },
+        {
+          "title": "One permission, one site",
+          "body": "It asks for storage and nothing else, and runs on instagram.com alone. No account, no server, no analytics, and nothing is sent to us."
+        }
+      ],
+      "options": [
+        {
+          "name": "Hide ads",
+          "default": "On",
+          "what": "Posts marked “Ad”, “Sponsored” or “Paid partnership”."
+        },
+        {
+          "name": "Hide suggested posts",
+          "default": "On",
+          "what": "Accounts you do not follow, pushed into your feed."
+        },
+        {
+          "name": "Require a second signal on ads",
+          "default": "Off",
+          "what": "Only hide a post marked “Ad” when it also carries an advertiser's button. Safer, and lets more adverts through."
+        },
+        {
+          "name": "Keep the space a hidden post used",
+          "default": "On",
+          "what": "Leaves a labelled card the same size instead of closing the gap, which is what stops the feed losing its place."
+        },
+        {
+          "name": "Use a compact card",
+          "default": "On",
+          "what": "Shrinks the space a hidden post leaves to about a third. Less to scroll past."
+        },
+        {
+          "name": "Show a placeholder",
+          "default": "Off",
+          "what": "Leaves a strip with a Show button, so you can put a hidden post back."
+        }
+      ],
+      "screenshots": [],
+      "faq": [
+        {
+          "q": "Does it post, like or follow anything?",
+          "a": "No. It reads the feed to decide what to hide and does nothing else. It cannot act on your account, and it has no permission to reach any site other than instagram.com."
+        },
+        {
+          "q": "Why do hidden posts leave a gap?",
+          "a": "Because removing it outright breaks the feed. Instagram reserves scroll height for the posts it has loaded, and collapsing that space leaves you scrolling into emptiness while it catches up. The card is the fix, and the compact option makes it small."
+        },
+        {
+          "q": "Some adverts still get through.",
+          "a": "Instagram changes its markup regularly, and when it does some posts stop matching until the extension is updated. It is deliberately built to fail that way round rather than hide something you wanted to see."
+        }
+      ],
+      "privacy": "Quite for Instagram runs only on instagram.com and has no permission to access any other site. No server, no analytics, no account, no tracking, and nothing is sent to us. It stores the checkboxes you have ticked and a running count of what it has hidden. Settings use Chrome's own extension-settings sync, so with Chrome sync switched on they travel with your Chrome profile, the same as any extension's settings.",
+      "popupSub": "Ads and suggested posts hidden",
+      "stats": [
+        {
+          "value": "12",
+          "label": "Ads hidden"
+        },
+        {
+          "value": "574",
+          "label": "Suggested posts"
+        }
+      ],
+      "metaTitle": "Hide Instagram Ads and Suggested Posts: Quite for Instagram",
+      "ground": "#1b1522",
+      "pitch": "Adverts and the suggested posts from accounts you never followed are taken out. What is left is the people you actually follow.",
+      "storeUrl": "https://chromewebstore.google.com/detail/quite-for-instagram/mlnienohcfmeaankmfbclaikelngmbjk"
+    },
+    {
       "slug": "quite-for-cookies",
       "name": "Quite for Cookies",
       "shortName": "Cookies",
