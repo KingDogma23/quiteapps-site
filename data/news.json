@@ -2,6 +2,20 @@
   "_README": "Reverse-chronological. Newest first — the build does not sort, so keep them in order. `id` becomes the anchor (/news/#id) and the RSS guid, so never change one once published. `date` is the publication date and drives both the page and the feed; `updated` is optional and only for a post edited in place after publishing. `ext` ties a post to an extension slug so its page can show the latest entry inline. `body` is an array of paragraphs, rendered as-is into both the page and the feed — the feed carries the full text, not a teaser. `works` is the 'what still works' list used by breakage posts; omit it elsewhere. See _template at the bottom. PENDING, 30 Aug 2026: Quite for YouTube 0.31.18 is still in Chrome Web Store review. Post 2 of WEBSITE-NEWS-2026-08-30.md is embargoed on it, because it tells readers their totals will drop and that only makes sense once the build that drops them has arrived. When it publishes: publish that post dated that day, and check whether the 29 Aug post 2026-08-29-saying-what-it-does still needs its future tense turned back. Both regenerate their feed entries on build.",
   "posts": [
     {
+      "id": "2026-09-11-instagram-on-the-store",
+      "date": "2026-09-11",
+      "title": "Quite for Instagram is on the Chrome Web Store",
+      "ext": "quite-for-instagram",
+      "tag": "New",
+      "body": [
+        "Quite for Instagram hides adverts and suggested posts from your feed and does nothing else: posts marked “Ad”, “Sponsored” or “Paid partnership”, and the “Suggested for you” posts pushed at you from accounts you have never followed.",
+        "The thing worth explaining is the gap. A hidden post leaves a small labelled card rather than disappearing, and that looks at first like a job half done. It is deliberate. Instagram reserves scroll height for the posts it has loaded, and closing that space entirely desynchronises its own model from what is on screen. Measured on a live feed: collapsing the gap put the reader 26,136px past the end of the feed, against 223px with the card kept, and the feed served roughly ten times as much content. A compact card is on by default and shrinks it to about a third. A placeholder option turns it into a strip with a Show button, so anything hidden can be read anyway.",
+        "It runs only on instagram.com, asks for the storage permission and nothing else, and cannot see any other tab you have open. No account, no server, no analytics, and nothing is sent to us.",
+        "It is built to fail in the safer direction. Instagram changes its markup regularly, and when it does the extension lets an advert through rather than hiding a post you wanted to see. That is the trade we would rather make, and when it happens it gets written up here.",
+        "One difference from the other three: its source is not on GitHub yet. The rest of the family is public and this one will follow."
+      ]
+    },
+    {
       "id": "2026-08-30-trackers-only-sign-out",
       "date": "2026-08-30",
       "title": "Quite for Cookies 0.22.6: the “trackers only” sweep could sign you out",

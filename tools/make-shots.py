@@ -102,6 +102,7 @@ THEMES = {
     "quite-for-youtube": Theme("#35b98c", "#0d1512", "#141d19", "#1a2622", "#25332d"),
     "quite-for-facebook": Theme("#e0a341", "#0f0e13", "#17161c", "#1e1d25", "#2b2933"),
     "quite-for-cookies": Theme("#55a8e8", "#0f151b", "#141c24", "#1a242e", "#253039"),
+    "quite-for-instagram": Theme("#a97ae0", "#120f18", "#1a1622", "#221d2c", "#2e2838"),
 }
 
 PW = 320                                     # logical popup width

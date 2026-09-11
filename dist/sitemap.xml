@@ -27,8 +27,13 @@
   </url>
   <url>
     <loc>https://quiteapps.co.uk/news/</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://quiteapps.co.uk/news/2026-09-11-instagram-on-the-store/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://quiteapps.co.uk/news/2026-08-30-trackers-only-sign-out/</loc>
