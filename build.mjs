@@ -36,6 +36,12 @@ const esc = (s) => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
+/** "a", "a and b", "a, b and c". Used where naming the list beats a count,
+ *  because a count goes stale the moment an extension is added. */
+const listNames = (xs) => xs.length < 2
+  ? esc(xs[0] || '')
+  : `${xs.slice(0, -1).map(esc).join(', ')} and ${esc(xs[xs.length - 1])}`;
+
 const abs = (p) => BASE + p;
 const pad2 = (n) => String(n).padStart(2, '0');
 const write = (rel, body) => {
@@ -1126,8 +1132,9 @@ function privacyPage(ogSet) {
       <p>The extensions are free and MIT licensed. There is no purchase, no licence key and no
         payment processor involved, so there is no payment data for anyone to hold.</p>
       <h2 class="t-h3">You can check all of this</h2>
-      <p>The full source of every released extension is public. If you would rather verify than trust,
-        the code is at <a href="${esc(site.github)}" rel="noopener">${esc(site.github.replace(/^https?:\/\//, ''))}</a>.</p>
+      <p>The full source of ${listNames(exts.filter(e => e.githubUrl).map(e => e.name))} is public.
+        If you would rather verify than trust, the code is at
+        <a href="${esc(site.github)}" rel="noopener">${esc(site.github.replace(/^https?:\/\//, ''))}</a>.</p>
       <h2 class="t-h3">Email</h2>
       <p>If you write to us, we keep the message so we can reply and so we remember the
         conversation next time. We do not add you to a mailing list, because we do not have one.</p>
