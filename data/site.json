@@ -49,7 +49,7 @@
     },
     {
       "title": "The fewest permissions we can ask for",
-      "body": "Most ask for a single permission and access to the one site they are for. Quite for Cookies starts with no access to any site at all, and asks for one domain at a time, at the moment you press the button."
+      "body": "Most ask for a single permission and access to the one site they are for. Quite for Cookies starts with no access to any site at all, and asks a site at a time, at the moment you press the button. Its automatic clear is the exception, because clearing sites as you close them needs access to every site."
     },
     {
       "title": "Read the code yourself",
@@ -67,8 +67,8 @@
   "installFirstZip": "On GitHub, click the green <b>Code</b> button, choose <b>Download ZIP</b>, and unzip it. You need the <b>folder</b>. Keep it somewhere permanent, because moving or deleting it stops the extension working.",
   "sslLive": true,
   "forceHttps": false,
-  "updated": "2026-08-29",
-  "privacyUpdated": "2026-09-03",
+  "updated": "2026-09-11",
+  "privacyUpdated": "2026-09-11",
   "facebook": "https://www.facebook.com/quiteapps/",
   "markInk": "#f2f0f4",
   "instagram": "https://www.instagram.com/quite_apps/",

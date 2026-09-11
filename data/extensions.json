@@ -308,15 +308,14 @@
       "priceValue": "0",
       "currency": "GBP",
       "licence": "MIT",
-      "version": "0.22.6",
+      "version": "0.23.2",
       "released": "2026-08-27",
-      "updated": "2026-08-30",
+      "updated": "2026-09-10",
       "size": "About 77 KB",
       "requires": "Chrome, Edge, Brave, Arc, Opera or another Chromium browser.",
       "manifest": "Manifest V3",
       "reloadTarget": "site you were looking at",
       "githubUrl": "https://github.com/KingDogma23/quite-for-cookies",
-      "releaseUrl": "https://github.com/KingDogma23/quite-for-cookies/releases/tag/v0.22.6",
       "permissions": [
         {
           "name": "activeTab",
@@ -332,7 +331,7 @@
         },
         {
           "name": "scripting",
-          "why": "To run a short read-only snippet in the page that counts the cookies the page itself can see. This is what makes the preview accurate rather than approximate."
+          "why": "To run a short read-only snippet in the page that counts the cookies the page itself can see. This is what makes the preview accurate rather than approximate. On a news site you have ticked, the same permission hides the named pop-up boxes and counts them. It reads nothing from the page either way."
         },
         {
           "name": "storage",
@@ -375,8 +374,16 @@
           "body": "A second tab cleans every site at once. The default removes advertising and analytics cookies only, matched against known tracking domains. It cannot sign you out, because nothing you can log in to is on that list."
         },
         {
+          "title": "Your cookie-consent answers survive",
+          "body": "Clearing a site used to delete the cookie remembering your answer to its “accept cookies?” box, so the box came back everywhere. Those answers are kept by default now, beside your sign-ins, and you can untick that if you would rather they went. Sites that store the answer somewhere other than a cookie will still ask."
+        },
+        {
+          "title": "Pop-ups on news sites, one paper at a time",
+          "body": "Twenty UK papers as tick boxes, plus a box for any other site. Tick one and its “accept cookies?” box and the paper's own subscribe and sale pop-ups are hidden, and the page they were sitting on top of is unlocked. It answers nothing on your behalf, and paid articles stay paid."
+        },
+        {
           "title": "No access until you ask",
-          "body": "It installs with no permission to see any site. Access is requested one domain at a time, at the moment you press the button, and is reversible from the popup."
+          "body": "It installs with no permission to see any site. Access is requested a site at a time, at the moment you press the button, and is reversible from the popup. The automatic clear is the exception, because clearing sites as you close them has to see which site a closing tab belonged to, so that one asks for every site and is taken back from the same line."
         }
       ],
       "options": [
@@ -424,6 +431,16 @@
           "name": "Also clear stored site data",
           "default": "Off",
           "what": "Without it, trackers keeping a copy of your ID in local storage put the same cookie straight back."
+        },
+        {
+          "name": "Keep cookie-consent answers",
+          "default": "On",
+          "what": "Spares the cookie holding your answer to the site's “accept cookies?” box, so it does not ask again."
+        },
+        {
+          "name": "Pop-ups on news sites",
+          "default": "Off",
+          "what": "Twenty UK papers as tick boxes, plus a box for any other site. Ticking one asks for access to that site."
         }
       ],
       "screenshots": [],
@@ -449,7 +466,7 @@
           "a": "If the page is still open it can set them again the moment they go. The report says so explicitly rather than showing a tick. That is the point of counting a second time. Trackers that keep a copy of your ID in local storage do the same thing, which is what the “also clear stored site data” option is for."
         }
       ],
-      "privacy": "Quite for Cookies installs with no access to any website. It sends nothing anywhere. No server, no analytics, no account, no tracking. The only things it stores are your per-site choices, the counters shown in the popup, and a short local log of what the automatic clear has done, all in your own browser.",
+      "privacy": "Quite for Cookies installs with no access to any website, and asks for one site at a time when you press a button, to clear that site or, on a news site you tick, to hide its pop-ups. Switching on the automatic clear is the exception, because clearing sites as you close them needs access to every site, and it asks first. On a ticked site it hides the named pop-up boxes and counts them, and reads nothing from the page. It sends nothing anywhere. No server, no analytics, no account, no tracking. The only things it stores are your per-site choices, the sites you have ticked for pop-up hiding, the counters shown in the popup, and a short local log of what the automatic clear has done, all in your own browser.",
       "popupSub": "22 cookies across 3 domains",
       "stats": [
         {
