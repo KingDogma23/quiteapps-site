@@ -6,3 +6,4 @@
 .DS_Store
 
 # dist/ is deliberately NOT ignored — it is what 20i deploys.
+__pycache__/

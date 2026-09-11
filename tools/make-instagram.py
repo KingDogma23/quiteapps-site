@@ -11,12 +11,18 @@ popup panels. A fourth visual language would be one too many.
 
 Run from the project root:  python3 tools/make-instagram.py
 """
+import importlib.util
 import json
 import os
-import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from make_shots import K, f, Scaled, Theme, THEMES, mark, build_panel  # noqa: E402
+# make-shots.py is hyphenated, so it cannot be imported by name.
+_spec = importlib.util.spec_from_file_location(
+    "make_shots", os.path.join(os.path.dirname(os.path.abspath(__file__)), "make-shots.py"))
+make_shots = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(make_shots)
+K, f, Scaled = make_shots.K, make_shots.f, make_shots.Scaled
+Theme, THEMES, mark, build_panel = (
+    make_shots.Theme, make_shots.THEMES, make_shots.mark, make_shots.build_panel)
 from PIL import Image, ImageDraw  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -88,6 +94,22 @@ def card_text(ground, ink, accent, lines, sub, size=64, lead=80):
     return img
 
 
+def card_news(slug, kicker, lines, sub, size=58, lead=74):
+    """A breakage or fix notice, on the affected extension's own ground.
+
+    The kicker carries the tag and version, because a post has no date on it
+    once it is a few rows down the grid.
+    """
+    t = THEMES[slug]
+    img, d = square(t.ground)
+    wordmark(d, img, Theme.FG, t.accent, t.ground)
+    d.text((72, 198), kicker, f(23, 600), t.accent)
+    y = headline(d, lines, Theme.FG, 252, size=size, lead=lead)
+    body(d, sub, Theme.DIM, y + 26)
+    footer(d, Theme.FG, "#5d646d")
+    return img
+
+
 def card_family():
     """The three marks together: this is a studio, not one extension."""
     img, d = square(PARENT_GROUND)
@@ -147,6 +169,19 @@ def main():
             ["All three are MIT licensed with the source public",
              "on GitHub. When something breaks we write it up,",
              "including the ones nobody reported."], size=58, lead=74)),
+        ("7-signout", card_news("quite-for-cookies",
+            "Fixed · Quite for Cookies 0.22.6",
+            ["The default sweep", "could sign you out."],
+            ["Trackers only told you it could never sign you out of",
+             "anything. That was not true. HubSpot, Mixpanel,",
+             "Segment and the rest are sites people log in to, and",
+             "the sweep matched the address, not the cookie.",
+             "",
+             "The promise was a comment in the code rather than a",
+             "rule. It is a rule now, in both sweeps.",
+             "",
+             "Nobody reported this. We found it auditing our own",
+             "published code."])),
     ]
     for name, img in cards:
         p = os.path.join(OUT, f"{name}.png")
