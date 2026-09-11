@@ -416,7 +416,9 @@ const lnav = (x) => `
       ${x.githubUrl || x.releaseUrl ? `<a class="is-optional" href="#install">Install</a>` : ''}
       <a href="#permissions">Permissions</a>
       <a class="is-optional" href="#questions">Questions</a>
-      ${x.githubUrl || x.releaseUrl
+      ${x.storeUrl
+        ? `<a class="btn btn--sm" href="${esc(x.storeUrl)}" rel="noopener">Add to Chrome</a>`
+        : x.githubUrl || x.releaseUrl
         ? `<a class="btn btn--sm" href="#install">Download</a>`
         : `<span class="btn btn--sm btn--soon">Coming soon</span>`}
     </div>
